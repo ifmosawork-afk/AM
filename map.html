@@ -7,6 +7,10 @@
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Font Awesome (so the location icon appears) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
     <style>
         /* ─── RESET ─── */
         * {
@@ -368,9 +372,6 @@
             document.querySelectorAll('.custom-marker').forEach(el => {
                 el.style.width = size + 'px';
                 el.style.height = size + 'px';
-                // Update the pseudo-element via CSS variable or just let CSS handle it
-                // Since we use ::after, we can't easily change it inline without a style tag.
-                // We'll just let the responsive CSS handle it.
             });
         };
 
