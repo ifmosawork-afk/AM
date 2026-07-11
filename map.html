@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AM International Group - Interactive Map</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        /* ─── RESET ─── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0A0A0A;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+        }
+
+        #map {
+            width: 100%;
+            height: 100vh;
+            background: #0A0A0A;
+        }
+
+        /* ─── CUSTOM MAP TILE OVERRIDES ─── */
+        .leaflet-tile-pane {
+            filter: brightness(0.85) saturate(0.7) contrast(1.05);
+        }
+
+        /* ─── CUSTOM ZOOM CONTROLS ─── */
+        .leaflet-control-zoom {
+            border: none !important;
+            border-radius: 12px !important;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6) !important;
+        }
+
+        .leaflet-control-zoom a {
+            background: #1A1A1A !important;
+            color: #C0C0C0 !important;
+            border: none !important;
+            border-bottom: 1px solid rgba(192, 192, 192, 0.06) !important;
+            transition: background 0.3s ease !important;
+            font-size: 18px !important;
+            line-height: 36px !important;
+            width: 40px !important;
+            height: 40px !important;
+        }
+
+        .leaflet-control-zoom a:hover {
+            background: #7A0019 !important;
+            color: #fff !important;
+        }
+
+        .leaflet-control-zoom a:last-child {
+            border-bottom: none !important;
+        }
+
+        /* ─── CUSTOM ATTRIBUTION ─── */
+        .leaflet-control-attribution {
+            background: rgba(10, 10, 10, 0.85) !important;
+            backdrop-filter: blur(12px) !important;
+            color: rgba(192, 192, 192, 0.5) !important;
+            font-size: 11px !important;
+            padding: 6px 16px !important;
+            border-radius: 20px !important;
+            border: 1px solid rgba(192, 192, 192, 0.06) !important;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.4) !important;
+        }
+
+        .leaflet-control-attribution a {
+            color: rgba(192, 192, 192, 0.6) !important;
+            transition: color 0.3s ease !important;
+        }
+
+        .leaflet-control-attribution a:hover {
+            color: #C0C0C0 !important;
+        }
+
+        /* ─── CUSTOM MARKER ─── */
+        .custom-marker {
+            width: 44px;
+            height: 44px;
+            background: #7A0019;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            box-shadow: 0 0 0 0 rgba(122, 0, 25, 0.6), 0 8px 32px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .custom-marker::after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background: #C0C0C0;
+            border-radius: 50%;
+            transform: rotate(45deg);
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        .custom-marker:hover {
+            transform: rotate(-45deg) scale(1.15);
+            box-shadow: 0 0 0 8px rgba(122, 0, 25, 0.2), 0 8px 40px rgba(122, 0, 25, 0.4);
+        }
+
+        /* ─── CUSTOM POPUP ─── */
+        .leaflet-popup-content-wrapper {
+            background: rgba(20, 20, 20, 0.92) !important;
+            backdrop-filter: blur(16px) !important;
+            border-radius: 16px !important;
+            border: 1px solid rgba(122, 0, 25, 0.2) !important;
+            box-shadow: 0 8px 48px rgba(0, 0, 0, 0.6) !important;
+            padding: 0 !important;
+            overflow: hidden !important;
+        }
+
+        .leaflet-popup-tip {
+            background: rgba(20, 20, 20, 0.92) !important;
+            border: 1px solid rgba(122, 0, 25, 0.2) !important;
+            border-top: none !important;
+            border-left: none !important;
+        }
+
+        .leaflet-popup-content {
+            margin: 0 !important;
+            padding: 20px 24px !important;
+            min-width: 200px !important;
+            max-width: 320px !important;
+        }
+
+        .popup-title {
+            font-family: 'Playfair Display', 'Georgia', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 4px;
+            letter-spacing: -0.01em;
+        }
+
+        .popup-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+            color: rgba(192, 192, 192, 0.6);
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .popup-divider {
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, #7A0019, #C0C0C0);
+            margin: 8px 0 10px 0;
+            border-radius: 2px;
+        }
+
+        .popup-desc {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            font-size: 13px;
+            line-height: 1.6;
+            color: rgba(192, 192, 192, 0.85);
+            font-weight: 300;
+        }
+
+        .popup-desc i {
+            color: #C0C0C0;
+            margin-right: 6px;
+        }
+
+        /* ─── POPUP CLOSE BUTTON ─── */
+        .leaflet-popup-close-button {
+            color: rgba(192, 192, 192, 0.3) !important;
+            font-size: 22px !important;
+            font-weight: 300 !important;
+            transition: color 0.3s ease !important;
+            top: 8px !important;
+            right: 12px !important;
+        }
+
+        .leaflet-popup-close-button:hover {
+            color: #C0C0C0 !important;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 640px) {
+            .leaflet-popup-content {
+                padding: 16px 18px !important;
+                min-width: 150px !important;
+                max-width: 240px !important;
+            }
+            .popup-title {
+                font-size: 16px;
+            }
+            .popup-desc {
+                font-size: 12px;
+            }
+            .custom-marker {
+                width: 36px;
+                height: 36px;
+            }
+            .custom-marker::after {
+                width: 10px;
+                height: 10px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .leaflet-popup-content {
+                min-width: 120px !important;
+                max-width: 180px !important;
+                padding: 12px 14px !important;
+            }
+            .popup-title {
+                font-size: 14px;
+            }
+            .popup-desc {
+                font-size: 11px;
+            }
+            .custom-marker {
+                width: 30px;
+                height: 30px;
+            }
+            .custom-marker::after {
+                width: 8px;
+                height: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="map"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        // ─── INITIALIZE MAP ───
+        const map = L.map('map', {
+            center: [8.0, 48.0],
+            zoom: 4,
+            minZoom: 2,
+            maxZoom: 18,
+            zoomControl: false
+        });
+
+        // ─── ADD ZOOM CONTROLS ───
+        L.control.zoom({
+            position: 'bottomright'
+        }).addTo(map);
+
+        // ─── ADD TILE LAYER ───
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 19,
+            minZoom: 2
+        }).addTo(map);
+
+        // ─── CUSTOM MARKER ICON ───
+        const createMarkerIcon = () => {
+            return L.divIcon({
+                className: 'custom-marker',
+                html: '',
+                iconSize: [44, 44],
+                iconAnchor: [22, 22],
+                popupAnchor: [0, -28]
+            });
+        };
+
+        // ─── MARKER DATA ───
+        const markers = [{
+            coords: [-1.2921, 36.8219],
+            title: "Nairobi",
+            country: "Kenya",
+            desc: "The vibrant green city in the sun, famous for its urban national park and bustling economic hub."
+        }, {
+            coords: [2.0469, 45.3182],
+            title: "Mogadishu",
+            country: "Somalia",
+            desc: "A historic coastal city known for its beautiful architecture along the white sands of the Indian Ocean."
+        }, {
+            coords: [23.5859, 58.4059],
+            title: "Muscat",
+            country: "Oman",
+            desc: "A historic capital blending ancient maritime heritage with stunning modern architectures like the Sultan Qaboos Grand Mosque."
+        }, {
+            coords: [-6.1659, 39.2026],
+            title: "Stone Town",
+            country: "Zanzibar",
+            desc: "An enchanting spice island archipelago celebrated for its rich Swahili culture and winding coral-stone alleys."
+        }];
+
+        // ─── PLACE MARKERS ───
+        markers.forEach(marker => {
+            const icon = createMarkerIcon();
+
+            L.marker(marker.coords, { icon })
+                .addTo(map)
+                .bindPopup(`
+                        <div class="popup-title">${marker.title}</div>
+                        <div class="popup-subtitle">${marker.country}</div>
+                        <div class="popup-divider"></div>
+                        <div class="popup-desc">
+                            <i class="fas fa-location-dot"></i> ${marker.desc}
+                        </div>
+                    `, {
+                    maxWidth: 320,
+                    className: 'custom-popup'
+                });
+        });
+
+        // ─── BRAND WATERMARK ───
+        const brandControl = L.Control.extend({
+            onAdd: function() {
+                const div = L.DomUtil.create('div', 'brand-watermark');
+                div.innerHTML = `
+                        <div style="
+                            font-family: 'Playfair Display', serif;
+                            font-size: 12px;
+                            font-weight: 700;
+                            color: rgba(192, 192, 192, 0.12);
+                            letter-spacing: 2px;
+                            text-transform: uppercase;
+                            padding: 8px 16px;
+                            background: rgba(10, 10, 10, 0.5);
+                            backdrop-filter: blur(8px);
+                            border-radius: 20px;
+                            border: 1px solid rgba(192, 192, 192, 0.04);
+                            pointer-events: none;
+                            user-select: none;
+                        ">
+                            AM International Group
+                        </div>
+                    `;
+                return div;
+            },
+            position: 'bottomleft'
+        });
+
+        map.addControl(new brandControl());
+
+        // ─── RESPONSIVE ADJUSTMENT ───
+        const updateMarkerSizes = () => {
+            const width = window.innerWidth;
+            let size = 44;
+            let coreSize = 14;
+
+            if (width < 400) {
+                size = 30;
+                coreSize = 8;
+            } else if (width < 640) {
+                size = 36;
+                coreSize = 10;
+            }
+
+            document.querySelectorAll('.custom-marker').forEach(el => {
+                el.style.width = size + 'px';
+                el.style.height = size + 'px';
+                // Update the pseudo-element via CSS variable or just let CSS handle it
+                // Since we use ::after, we can't easily change it inline without a style tag.
+                // We'll just let the responsive CSS handle it.
+            });
+        };
+
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(updateMarkerSizes, 200);
+        });
+
+        setTimeout(updateMarkerSizes, 500);
+
+        console.log('🗺️ AM International Group — Interactive Map Loaded');
+        console.log('📍 Locations:', markers.map(m => `${m.title}, ${m.country}`).join(' • '));
+    </script>
+
+</body>
+</html>
