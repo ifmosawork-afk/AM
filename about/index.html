@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | AM International Group</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Global Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+        /* ─── ABOUT PAGE SPECIFIC STYLES ─── */
+        .page-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 140px 24px 80px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 30% 20%, rgba(122, 0, 25, 0.25), transparent 60%),
+                        radial-gradient(ellipse at 70% 80%, rgba(192, 192, 192, 0.05), transparent 50%),
+                        var(--bg-dark);
+            border-bottom: 1px solid rgba(192, 192, 192, 0.06);
+        }
+
+        .page-hero .hero-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(192, 192, 192, 0.04);
+            pointer-events: none;
+            animation: ringPulse 12s ease-in-out infinite alternate;
+        }
+        .page-hero .hero-ring:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            top: -80px;
+            right: -80px;
+            animation-delay: 0s;
+        }
+        .page-hero .hero-ring:nth-child(2) {
+            width: 350px;
+            height: 350px;
+            bottom: -40px;
+            left: -40px;
+            animation-delay: 4s;
+        }
+
+        .page-hero h1 {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 900;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #FFFFFF 30%, var(--silver-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .page-hero .subtitle {
+            font-size: clamp(1.1rem, 1.6vw, 1.5rem);
+            color: var(--silver);
+            font-weight: 300;
+            letter-spacing: 2px;
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+
+        .page-hero p {
+            color: var(--text-muted);
+            font-size: clamp(1rem, 1.2vw, 1.2rem);
+            max-width: 720px;
+            margin: 16px auto 0;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* ─── CONTENT SECTIONS ─── */
+        .content-section {
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(192, 192, 192, 0.06);
+        }
+
+        .content-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .content-section.alt {
+            background: radial-gradient(ellipse at 70% 30%, rgba(122, 0, 25, 0.04), transparent 60%);
+        }
+
+        .content-section .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--silver);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+            opacity: 0.5;
+        }
+
+        .content-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 40%, var(--silver-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .content-section .lead {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            max-width: 800px;
+            font-weight: 300;
+        }
+
+        .content-section p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+            max-width: 800px;
+            font-weight: 300;
+            margin-bottom: 16px;
+        }
+
+        .content-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px 60px;
+            margin-top: 32px;
+        }
+
+        .content-grid .grid-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .content-grid .grid-item p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 100%;
+        }
+
+        /* ─── VALUES GRID ─── */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 32px;
+        }
+
+        .value-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(122, 0, 25, 0.12);
+            transition: var(--transition);
+        }
+
+        .value-card:hover {
+            border-color: rgba(192, 192, 192, 0.2);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-red);
+        }
+
+        .value-card .icon {
+            font-size: 1.8rem;
+            color: var(--silver);
+            margin-bottom: 12px;
+            display: block;
+            opacity: 0.7;
+        }
+
+        .value-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .value-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 100%;
+            margin-bottom: 0;
+        }
+
+        /* ─── FOCUS AREAS ─── */
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .focus-item {
+            background: rgba(20, 20, 20, 0.4);
+            padding: 24px 22px;
+            border-radius: 12px;
+            border-left: 3px solid var(--silver);
+            transition: var(--transition);
+        }
+
+        .focus-item:hover {
+            background: rgba(20, 20, 20, 0.7);
+            border-left-color: var(--primary);
+        }
+
+        .focus-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .focus-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 100%;
+            margin-bottom: 0;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .focus-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 868px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .page-hero {
+                min-height: 50vh;
+                padding: 120px 24px 60px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            .focus-grid {
+                grid-template-columns: 1fr;
+            }
+            .content-section {
+                padding: 60px 0;
+            }
+            .page-hero h1 {
+                font-size: 2.4rem;
+            }
+            .page-hero .subtitle {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ HEADER ═══ -->
+    <header id="header">
+        <div class="container nav-wrapper">
+            <a href="/" class="nav-logo">
+                <img src="favicon.png" alt="AM International Group" />
+                <span>AM<span style="font-weight:300;color:var(--text-muted);font-size:0.7rem;display:block;letter-spacing:1px;font-family:'Inter',sans-serif;">INTERNATIONAL GROUP</span></span>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/about" class="active">About</a></li>
+                <li><a href="/#companies">Companies</a></li>
+                <li><a href="/#why">Why Us</a></li>
+                <li><a href="/#global">Global</a></li>
+                <li class="nav-cta">
+                    <a href="/#contact" class="btn-primary" style="padding:10px 24px;font-size:0.85rem;">Contact</a>
+                </li>
+            </ul>
+
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="page-hero">
+        <div class="hero-ring"></div>
+        <div class="hero-ring"></div>
+
+        <div class="hero-content" style="position:relative;z-index:2;">
+            <div class="subtitle">About AM International Group</div>
+            <h1>Building Connections. Driving Trade.<br />Shaping the Future.</h1>
+            <p>
+                AM International Group is an international business group founded with a vision to contribute
+                to the economic development and prosperity of East Africa.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ FOUNDING STORY ═══ -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-label">Our Story</div>
+            <h2>Founded with Purpose</h2>
+            <p class="lead">
+                Established by a young team born and raised in Europe with strong roots in East Africa,
+                our company combines global experience with a deep commitment to the region we proudly call home.
+            </p>
+            <p>
+                Our journey began with a simple belief: that East Africa possesses extraordinary potential
+                and that sustainable development is achieved through trade, investment, infrastructure,
+                and strong regional partnerships. While our experiences have taken us across different
+                countries and cultures, our mission has always remained focused on creating opportunities
+                for the people and communities of East Africa.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ HERITAGE ═══ -->
+    <section class="content-section alt">
+        <div class="container">
+            <div class="section-label">Our Heritage</div>
+            <h2>Inspired by History</h2>
+            <p>
+                For centuries, the East African coast stood at the centre of some of the world's most
+                important trade routes. Merchants from the Swahili Coast, Somalia, Arabia, and beyond
+                exchanged spices, tea, textiles, agricultural products, knowledge, and culture across
+                the Indian Ocean.
+            </p>
+            <p>
+                These historic connections helped build prosperous communities and thriving commercial
+                centres that linked Africa to global markets.
+            </p>
+            <p>
+                At AM International Group, we are inspired by this legacy. We believe the future of
+                East Africa can be strengthened by reviving the spirit of regional cooperation,
+                international trade, and entrepreneurship that defined our history.
+            </p>
+            <p style="font-style:italic;color:var(--silver);">
+                Our goal is not simply to conduct business but to help reconnect markets, strengthen
+                economic ties, and create opportunities that benefit future generations.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ WHO WE ARE ═══ -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-label">Who We Are</div>
+            <h2>A Diversified Business Group</h2>
+            <p>
+                AM International Group is a diversified business group focused on identifying opportunities
+                that support long-term economic growth and development.
+            </p>
+            <p>
+                We bring together international perspectives, local knowledge, and strategic partnerships
+                to deliver projects that create lasting value. Through responsible business practices
+                and a commitment to excellence, we aim to contribute to stronger economies and more
+                prosperous communities.
+            </p>
+            <p>
+                Today, we are actively involved in development and construction-related projects in
+                Kenya and Somalia while expanding partnerships throughout East Africa and the Gulf region.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ VISION & MISSION ═══ -->
+    <section class="content-section alt" style="border-bottom:1px solid rgba(192,192,192,0.06);">
+        <div class="container">
+            <div class="content-grid">
+                <div class="grid-item">
+                    <div class="section-label">Our Vision</div>
+                    <h2 style="font-size:clamp(1.6rem,2.5vw,2.2rem);margin-bottom:12px;">Connecting East Africa to Global Markets</h2>
+                    <p style="font-size:1.05rem;line-height:1.8;">
+                        To become a leading international business group connecting East Africa with
+                        global markets through trade, investment, infrastructure development, and
+                        sustainable enterprise.
+                    </p>
+                </div>
+                <div class="grid-item">
+                    <div class="section-label">Our Mission</div>
+                    <h2 style="font-size:clamp(1.6rem,2.5vw,2.2rem);margin-bottom:12px;">Creating Opportunities, Driving Growth</h2>
+                    <p style="font-size:1.05rem;line-height:1.8;">
+                        To create opportunities, strengthen regional and international trade, support
+                        economic development, and build businesses that contribute to the long-term
+                        prosperity of East Africa and its global partners.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ AREAS OF FOCUS ═══ -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-label">Our Areas of Focus</div>
+            <h2>Where We Operate</h2>
+            <p class="lead" style="margin-bottom:8px;">
+                We work across multiple sectors to create lasting economic impact.
+            </p>
+
+            <div class="focus-grid">
+                <div class="focus-item">
+                    <h4>Construction & Development</h4>
+                    <p>We support projects that contribute to infrastructure growth, urban development, and long-term economic progress across the region.</p>
+                </div>
+                <div class="focus-item">
+                    <h4>Real Estate</h4>
+                    <p>We invest in opportunities that create value through property development, land projects, and strategic investments.</p>
+                </div>
+                <div class="focus-item">
+                    <h4>Trade & Commerce</h4>
+                    <p>Inspired by historic trade routes, we work to strengthen commercial links between East Africa, the Gulf region, and international markets.</p>
+                </div>
+                <div class="focus-item">
+                    <h4>Food & Agricultural Products</h4>
+                    <p>We seek opportunities that support the movement and distribution of food products, agricultural goods, spices, tea, and other commodities.</p>
+                </div>
+                <div class="focus-item">
+                    <h4>Logistics & Supply Chains</h4>
+                    <p>Efficient logistics are essential for economic growth. We support solutions that connect producers, businesses, and consumers across borders.</p>
+                </div>
+                <div class="focus-item">
+                    <h4>Future Ventures</h4>
+                    <p>We continuously explore new sectors and opportunities that align with our vision for sustainable growth and development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CONNECTING REGIONS ═══ -->
+    <section class="content-section alt">
+        <div class="container">
+            <div class="section-label">Connecting Regions</div>
+            <h2>Building Bridges Across Borders</h2>
+            <p>
+                Our long-term vision extends beyond individual projects. We believe stronger economic
+                cooperation between East Africa and the Gulf region can unlock significant opportunities
+                for trade, investment, tourism, infrastructure development, and job creation.
+            </p>
+            <p>
+                With roots and partnerships spanning countries such as Kenya, Somalia, Tanzania, and Oman,
+                we are committed to helping build stronger commercial bridges between these regions while
+                creating value for businesses and communities alike.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ VALUES ═══ -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-label">Our Values</div>
+            <h2>What We Stand For</h2>
+            <p class="lead" style="margin-bottom:8px;">
+                These principles guide everything we do.
+            </p>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <span class="icon"><i class="fas fa-shield-alt"></i></span>
+                    <h4>Integrity</h4>
+                    <p>We conduct our business with honesty, transparency, and accountability.</p>
+                </div>
+                <div class="value-card">
+                    <span class="icon"><i class="fas fa-star"></i></span>
+                    <h4>Excellence</h4>
+                    <p>We strive for the highest standards in every project and partnership.</p>
+                </div>
+                <div class="value-card">
+                    <span class="icon"><i class="fas fa-handshake"></i></span>
+                    <h4>Partnership</h4>
+                    <p>We believe meaningful relationships are the foundation of long-term success.</p>
+                </div>
+                <div class="value-card">
+                    <span class="icon"><i class="fas fa-lightbulb"></i></span>
+                    <h4>Innovation</h4>
+                    <p>We embrace new ideas and seek practical solutions to modern challenges.</p>
+                </div>
+                <div class="value-card">
+                    <span class="icon"><i class="fas fa-seedling"></i></span>
+                    <h4>Sustainability</h4>
+                    <p>We focus on creating lasting value that benefits future generations.</p>
+                </div>
+                <div class="value-card">
+                    <span class="icon"><i class="fas fa-users"></i></span>
+                    <h4>Community</h4>
+                    <p>We believe business should contribute positively to society and support economic opportunity for all.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ LOOKING TOWARDS TOMORROW ═══ -->
+    <section class="content-section alt" style="border-bottom:1px solid rgba(192,192,192,0.06);">
+        <div class="container">
+            <div class="section-label">Looking Towards Tomorrow</div>
+            <h2>Shaping the Future of East Africa</h2>
+            <p>
+                East Africa is one of the world's most dynamic and promising regions. With a growing
+                population, expanding markets, strategic geographic location, and entrepreneurial spirit,
+                the opportunities ahead are immense.
+            </p>
+            <p>
+                AM International Group was founded with the belief that the private sector has an
+                important role to play in shaping that future.
+            </p>
+            <p style="font-size:1.15rem;color:var(--silver);font-weight:500;font-family:'Playfair Display',serif;margin-top:8px;">
+                To honour our heritage, strengthen regional connections, promote trade and development,
+                and help build a more prosperous future for East Africa and its people.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ CLOSING STATEMENT ═══ -->
+    <section style="padding:60px 0;background:radial-gradient(ellipse at center,rgba(122,0,25,0.08),transparent 70%);">
+        <div class="container" style="text-align:center;">
+            <div style="max-width:700px;margin:0 auto;">
+                <div style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:800;background:linear-gradient(135deg,#fff 40%,var(--silver-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;">
+                    AM International Group
+                </div>
+                <div style="font-family:'Inter',sans-serif;font-size:1.1rem;color:var(--silver);font-weight:300;letter-spacing:2px;text-transform:uppercase;opacity:0.7;">
+                    Building Connections. Driving Trade. Shaping the Future.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="favicon.png" alt="AM International Group" />
+                    <div class="tagline">"Building Businesses For Tomorrow"</div>
+                    <p style="max-width:300px;">
+                        AM International Group is a diversified business group investing across
+                        construction, real estate, food supply, and strategic partnerships.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/#companies">Companies</a></li>
+                        <li><a href="/investments">Investments</a></li>
+                        <li><a href="/careers">Careers</a></li>
+                        <li><a href="/news">News</a></li>
+                        <li><a href="/#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Industries</h4>
+                    <ul>
+                        <li><a href="/am-construction">Construction</a></li>
+                        <li><a href="/am-realestate">Real Estate</a></li>
+                        <li><a href="/am-food-supply">Food &amp; Supply</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="mailto:info@am-internationalgroup.com"><i class="fas fa-envelope" style="width:20px;"></i> info@am-internationalgroup.com</a></li>
+                        <li><a href="tel:+447943146345"><i class="fas fa-phone" style="width:20px;"></i> +44 7943 146345</a></li>
+                        <li><a href="#"><i class="fas fa-map-pin" style="width:20px;"></i> London, United Kingdom</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 AM International Group. All rights reserved.</p>
+                <div class="legal">
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms of Service</a>
+                    <a href="/cookies">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══ Global JavaScript ═══ -->
+    <script src="script.js"></script>
+
+    <script>
+        // ─── Highlight active nav link ───
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            if (link.getAttribute('href') === '/about') {
+                link.style.color = 'var(--silver)';
+            }
+        });
+    </script>
+
+</body>
+</html>
