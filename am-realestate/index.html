@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AM Real Estate | AM International Group</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="/style.css" />
+
+    <style>
+        .page-hero {
+            min-height: 55vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 140px 24px 60px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 30% 20%, rgba(122, 0, 25, 0.25), transparent 60%),
+                        radial-gradient(ellipse at 70% 80%, rgba(192, 192, 192, 0.05), transparent 50%),
+                        var(--bg-dark);
+            border-bottom: 1px solid rgba(192, 192, 192, 0.06);
+        }
+        .page-hero .hero-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(192, 192, 192, 0.04);
+            pointer-events: none;
+            animation: ringPulse 12s ease-in-out infinite alternate;
+        }
+        .page-hero .hero-ring:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            top: -80px;
+            right: -80px;
+            animation-delay: 0s;
+        }
+        .page-hero .hero-ring:nth-child(2) {
+            width: 350px;
+            height: 350px;
+            bottom: -40px;
+            left: -40px;
+            animation-delay: 4s;
+        }
+        .page-hero h1 {
+            font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+            font-weight: 900;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #FFFFFF 30%, var(--silver-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+        .page-hero .subtitle {
+            font-size: clamp(1rem, 1.4vw, 1.3rem);
+            color: var(--silver);
+            font-weight: 300;
+            letter-spacing: 2px;
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+        .page-hero p {
+            color: var(--text-muted);
+            font-size: clamp(1rem, 1.2vw, 1.15rem);
+            max-width: 720px;
+            margin: 16px auto 0;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .content-section {
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(192, 192, 192, 0.06);
+        }
+        .content-section:last-of-type {
+            border-bottom: none;
+        }
+        .content-section.alt {
+            background: radial-gradient(ellipse at 70% 30%, rgba(122, 0, 25, 0.04), transparent 60%);
+        }
+        .content-section .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--silver);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+            opacity: 0.5;
+        }
+        .content-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 3.2vw, 2.6rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 40%, var(--silver-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        .content-section .lead {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            max-width: 800px;
+            font-weight: 300;
+            margin-bottom: 16px;
+        }
+        .content-section p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+            max-width: 800px;
+            font-weight: 300;
+            margin-bottom: 16px;
+        }
+
+        .region-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 32px;
+        }
+        .region-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid rgba(122, 0, 25, 0.15);
+            transition: var(--transition);
+            position: relative;
+        }
+        .region-card:hover {
+            border-color: rgba(192, 192, 192, 0.2);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-red);
+        }
+        .region-card .card-img {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        .region-card .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .region-card:hover .card-img img {
+            transform: scale(1.04);
+        }
+        .region-card .card-img .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 10, 10, 0.6) 0%, transparent 50%);
+        }
+        .region-card .card-body {
+            padding: 24px 26px 30px;
+            text-align: center;
+        }
+        .region-card .card-body h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .region-card .card-body p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 100%;
+            margin-bottom: 16px;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 32px;
+        }
+        .project-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid rgba(122, 0, 25, 0.15);
+            transition: var(--transition);
+        }
+        .project-card:hover {
+            border-color: rgba(192, 192, 192, 0.2);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-red);
+        }
+        .project-card .card-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        .project-card .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .project-card:hover .card-img img {
+            transform: scale(1.04);
+        }
+        .project-card .card-body {
+            padding: 20px 24px 26px;
+        }
+        .project-card .card-body h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .project-card .card-body .location {
+            color: var(--silver);
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 8px;
+        }
+        .project-card .card-body p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 100%;
+            margin-bottom: 12px;
+        }
+        .project-card .card-body .status {
+            display: inline-block;
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: rgba(122, 0, 25, 0.3);
+            color: var(--silver);
+            border: 1px solid rgba(122, 0, 25, 0.2);
+        }
+
+        @media (max-width: 1024px) {
+            .region-grid { grid-template-columns: 1fr; }
+            .project-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 868px) {
+            .page-hero { min-height: 45vh; padding: 120px 24px 50px; }
+        }
+        @media (max-width: 640px) {
+            .project-grid { grid-template-columns: 1fr; }
+            .content-section { padding: 60px 0; }
+            .page-hero h1 { font-size: 2.2rem; }
+            .page-hero .subtitle { font-size: 0.85rem; }
+            .region-card .card-img { height: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <div class="container nav-wrapper">
+            <a href="/" class="nav-logo">
+                <img src="/favicon.png" alt="AM International Group" />
+                <span>AM<span style="font-weight:300;color:var(--text-muted);font-size:0.7rem;display:block;letter-spacing:1px;font-family:'Inter',sans-serif;">INTERNATIONAL GROUP</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/about">About</a></li>
+                <li><a href="/#companies">Companies</a></li>
+                <li><a href="/#why">Why Us</a></li>
+                <li><a href="/#global">Global</a></li>
+                <li class="nav-cta">
+                    <a href="/#contact" class="btn-primary" style="padding:10px 24px;font-size:0.85rem;">Contact</a>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="hero-ring"></div>
+        <div class="hero-ring"></div>
+        <div class="hero-content" style="position:relative;z-index:2;">
+            <div class="subtitle">AM Real Estate</div>
+            <h1>Building Homes, Building Communities</h1>
+            <p>
+                AM Real Estate is dedicated to developing sustainable properties that create lasting value
+                for communities across East Africa. From residential housing to commercial spaces, we are
+                shaping the future of living.
+            </p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="section-label">Our Vision</div>
+            <h2>Investing in East Africa's Future</h2>
+            <p class="lead">
+                With a growing population and rapid urbanization, East Africa presents exceptional
+                opportunities for real estate development. AM Real Estate is committed to building
+                high-quality properties that meet the needs of modern families, businesses, and communities.
+            </p>
+            <p>
+                We combine international standards with local expertise to deliver projects that are
+                sustainable, innovative, and built to last.
+            </p>
+        </div>
+    </section>
+
+    <section class="content-section alt">
+        <div class="container">
+            <div class="section-label">Our Markets</div>
+            <h2>Where We Build</h2>
+            <p class="lead">
+                Explore our active markets across East Africa. Each region presents unique opportunities
+                for growth, investment, and community development.
+            </p>
+
+            <div class="region-grid">
+                <div class="region-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Kenya Properties" loading="lazy" />
+                        <div class="overlay"></div>
+                    </div>
+                    <div class="card-body">
+                        <h3>🇰🇪 Kenya</h3>
+                        <p>Discover modern homes and prime properties across Nairobi, Mombasa, and emerging urban centres.</p>
+                        <a href="/am-realestate/kenya" class="btn-primary">View Properties</a>
+                    </div>
+                </div>
+                <div class="region-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Somalia Properties" loading="lazy" />
+                        <div class="overlay"></div>
+                    </div>
+                    <div class="card-body">
+                        <h3>🇸🇴 Somalia</h3>
+                        <p>Exploring opportunities for growth and modern living in Mogadishu and beyond.</p>
+                        <a href="/am-realestate/somalia" class="btn-primary">View Properties</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="section-label">Future Developments</div>
+            <h2>Upcoming Building Projects</h2>
+            <p class="lead">
+                We are actively developing new projects that will shape the future of urban living in
+                East Africa. Stay tuned for these exciting developments.
+            </p>
+
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Project" loading="lazy" />
+                    </div>
+                    <div class="card-body">
+                        <h4>Nairobi Riverside Estate</h4>
+                        <div class="location">📍 Nairobi, Kenya</div>
+                        <p>A premium residential community featuring modern apartments, green spaces, and world-class amenities.</p>
+                        <span class="status">Planned</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1775634937590-7d27a59e313e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Project" loading="lazy" />
+                    </div>
+                    <div class="card-body">
+                        <h4>Mogadishu Business Centre</h4>
+                        <div class="location">📍 Mogadishu, Somalia</div>
+                        <p>A mixed-use development combining commercial spaces, offices, and retail to support economic growth.</p>
+                        <span class="status">Planned</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Project" loading="lazy" />
+                    </div>
+                    <div class="card-body">
+                        <h4>Mombasa Coastal Residences</h4>
+                        <div class="location">📍 Mombasa, Kenya</div>
+                        <p>Luxury beachfront apartments designed for modern coastal living with breathtaking ocean views.</p>
+                        <span class="status">Planned</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align:center;margin-top:40px;">
+                <a href="/am-realestate/projects" class="btn-secondary">View All Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section alt" style="border-bottom:none;">
+        <div class="container">
+            <div class="section-label">Partner With Us</div>
+            <h2>Invest in East Africa's Growth</h2>
+            <p class="lead">
+                Whether you're looking for a home, an investment opportunity, or a strategic partnership,
+                AM Real Estate is here to help.
+            </p>
+            <div style="margin-top:24px;">
+                <a href="/#contact" class="btn-primary">Get In Touch</a>
+                <a href="/" class="btn-secondary" style="margin-left:12px;">Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="/favicon.png" alt="AM International Group" />
+                    <div class="tagline">"Building Businesses For Tomorrow"</div>
+                    <p style="max-width:300px;">
+                        AM International Group is a diversified business group investing across
+                        construction, real estate, food supply, and strategic partnerships.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/#companies">Companies</a></li>
+                        <li><a href="/investments">Investments</a></li>
+                        <li><a href="/careers">Careers</a></li>
+                        <li><a href="/news">News</a></li>
+                        <li><a href="/#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Industries</h4>
+                    <ul>
+                        <li><a href="/am-construction">Construction</a></li>
+                        <li><a href="/am-realestate">Real Estate</a></li>
+                        <li><a href="/am-food-supply">Food &amp; Supply</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="mailto:info@am-internationalgroup.com"><i class="fas fa-envelope" style="width:20px;"></i> info@am-internationalgroup.com</a></li>
+                        <li><a href="tel:+447943146345"><i class="fas fa-phone" style="width:20px;"></i> +44 7943 146345</a></li>
+                        <li><a href="#"><i class="fas fa-map-pin" style="width:20px;"></i> London, United Kingdom</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AM International Group. All rights reserved.</p>
+                <div class="legal">
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms of Service</a>
+                    <a href="/cookies">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+
+</body>
+</html>
