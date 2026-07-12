@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AM Food & Supply | AM International Group</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="/style.css" />
+
+    <style>
+        /* ─── PAGE-SPECIFIC STYLES ─── */
+        .page-hero {
+            min-height: 55vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 140px 24px 60px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 30% 20%, rgba(122, 0, 25, 0.25), transparent 60%),
+                        radial-gradient(ellipse at 70% 80%, rgba(192, 192, 192, 0.05), transparent 50%),
+                        var(--bg-dark);
+            border-bottom: 1px solid rgba(192, 192, 192, 0.06);
+        }
+        .page-hero .hero-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(192, 192, 192, 0.04);
+            pointer-events: none;
+            animation: ringPulse 12s ease-in-out infinite alternate;
+        }
+        .page-hero .hero-ring:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            top: -80px;
+            right: -80px;
+            animation-delay: 0s;
+        }
+        .page-hero .hero-ring:nth-child(2) {
+            width: 350px;
+            height: 350px;
+            bottom: -40px;
+            left: -40px;
+            animation-delay: 4s;
+        }
+        .page-hero h1 {
+            font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+            font-weight: 900;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #FFFFFF 30%, var(--silver-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+        .page-hero .subtitle {
+            font-size: clamp(1rem, 1.4vw, 1.3rem);
+            color: var(--silver);
+            font-weight: 300;
+            letter-spacing: 2px;
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+        .page-hero p {
+            color: var(--text-muted);
+            font-size: clamp(1rem, 1.2vw, 1.15rem);
+            max-width: 720px;
+            margin: 16px auto 0;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .content-section {
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(192, 192, 192, 0.06);
+        }
+        .content-section:last-of-type {
+            border-bottom: none;
+        }
+        .content-section.alt {
+            background: radial-gradient(ellipse at 70% 30%, rgba(122, 0, 25, 0.04), transparent 60%);
+        }
+        .content-section .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--silver);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+            opacity: 0.5;
+        }
+        .content-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 3.2vw, 2.6rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 40%, var(--silver-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        .content-section .lead {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            max-width: 800px;
+            font-weight: 300;
+            margin-bottom: 16px;
+        }
+        .content-section p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+            max-width: 800px;
+            font-weight: 300;
+            margin-bottom: 16px;
+        }
+        .content-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ─── TEA PORTFOLIO ─── */
+        .tea-portfolio {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 32px;
+        }
+        .tea-item {
+            background: var(--bg-card);
+            padding: 24px 20px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(122, 0, 25, 0.12);
+            transition: var(--transition);
+            text-align: center;
+        }
+        .tea-item:hover {
+            border-color: rgba(192, 192, 192, 0.2);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-red);
+        }
+        .tea-item .grade {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--silver);
+            margin-bottom: 2px;
+        }
+        .tea-item .name {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .tea-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 100%;
+            margin-bottom: 0;
+        }
+
+        /* ─── VIDEO WRAPPER ─── */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            border-radius: var(--radius);
+            margin: 32px 0;
+            background: var(--bg-card);
+            border: 1px solid rgba(122, 0, 25, 0.12);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: var(--radius);
+        }
+
+        /* ─── BLEND NOTE ─── */
+        .blend-note {
+            background: rgba(122, 0, 25, 0.08);
+            border: 1px solid rgba(122, 0, 25, 0.15);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            margin-top: 24px;
+            text-align: center;
+        }
+        .blend-note i {
+            color: var(--silver);
+            margin-right: 8px;
+        }
+        .blend-note p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            max-width: 100%;
+            margin-bottom: 0;
+        }
+
+        /* ─── SPICE GRID ─── */
+        .spice-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 24px;
+        }
+        .spice-item {
+            background: rgba(20, 20, 20, 0.5);
+            padding: 20px 22px;
+            border-radius: 12px;
+            border-left: 3px solid var(--silver);
+            transition: var(--transition);
+        }
+        .spice-item:hover {
+            background: rgba(20, 20, 20, 0.7);
+            border-left-color: var(--primary);
+        }
+        .spice-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+        .spice-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 100%;
+            margin-bottom: 0;
+        }
+
+        /* ─── FRUIT GRID ─── */
+        .fruit-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 24px;
+        }
+        .fruit-item {
+            background: rgba(20, 20, 20, 0.4);
+            padding: 16px 18px;
+            border-radius: 10px;
+            border: 1px solid rgba(122, 0, 25, 0.12);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .fruit-item:hover {
+            border-color: rgba(192, 192, 192, 0.15);
+            background: rgba(20, 20, 20, 0.6);
+        }
+        .fruit-item .emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .fruit-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+        .fruit-item p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            max-width: 100%;
+            margin-bottom: 0;
+        }
+
+        /* ─── FEATURE GRID ─── */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 32px;
+        }
+        .feature-item {
+            background: rgba(20, 20, 20, 0.5);
+            padding: 28px 24px;
+            border-radius: 12px;
+            border-top: 3px solid var(--silver);
+            transition: var(--transition);
+            text-align: center;
+        }
+        .feature-item:hover {
+            background: rgba(20, 20, 20, 0.8);
+            border-top-color: var(--primary);
+        }
+        .feature-item .icon {
+            font-size: 2.5rem;
+            color: var(--silver);
+            margin-bottom: 12px;
+            display: block;
+            opacity: 0.7;
+        }
+        .feature-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .feature-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 100%;
+            margin-bottom: 0;
+        }
+
+        /* ─── TRUST BANNER ─── */
+        .trust-banner {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+            padding: 32px 28px;
+            background: rgba(20, 20, 20, 0.6);
+            border-radius: var(--radius);
+            border: 1px solid rgba(192, 192, 192, 0.06);
+        }
+        .trust-banner .item {
+            text-align: center;
+        }
+        .trust-banner .item .icon {
+            font-size: 2rem;
+            color: var(--silver);
+            opacity: 0.5;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .trust-banner .item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .trust-banner .item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            max-width: 100%;
+            margin-bottom: 0;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            .tea-portfolio { grid-template-columns: repeat(2, 1fr); }
+            .spice-grid { grid-template-columns: repeat(2, 1fr); }
+            .fruit-grid { grid-template-columns: repeat(2, 1fr); }
+            .feature-grid { grid-template-columns: repeat(2, 1fr); }
+            .trust-banner { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 868px) {
+            .page-hero { min-height: 45vh; padding: 120px 24px 50px; }
+        }
+        @media (max-width: 640px) {
+            .tea-portfolio { grid-template-columns: 1fr; }
+            .spice-grid { grid-template-columns: 1fr; }
+            .fruit-grid { grid-template-columns: 1fr; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .trust-banner { grid-template-columns: 1fr; gap: 16px; }
+            .content-section { padding: 60px 0; }
+            .page-hero h1 { font-size: 2.2rem; }
+            .page-hero .subtitle { font-size: 0.85rem; }
+            .blend-note { padding: 18px 16px; }
+            .trust-banner { padding: 24px 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ HEADER ═══ -->
+    <header id="header">
+        <div class="container nav-wrapper">
+            <a href="/" class="nav-logo">
+                <img src="/favicon.png" alt="AM International Group" />
+                <span>AM<span style="font-weight:300;color:var(--text-muted);font-size:0.7rem;display:block;letter-spacing:1px;font-family:'Inter',sans-serif;">INTERNATIONAL GROUP</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/about">About</a></li>
+                <li><a href="/#companies">Companies</a></li>
+                <li><a href="/#why">Why Us</a></li>
+                <li><a href="/#global">Global</a></li>
+                <li class="nav-cta">
+                    <a href="/#contact" class="btn-primary" style="padding:10px 24px;font-size:0.85rem;">Contact</a>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="page-hero">
+        <div class="hero-ring"></div>
+        <div class="hero-ring"></div>
+        <div class="hero-content" style="position:relative;z-index:2;">
+            <div class="subtitle">AM Food & Supply</div>
+            <h1>Connecting Farmers to Global Markets</h1>
+            <p>
+                AM Food & Supply is a dedicated trading and export company specializing in premium agricultural
+                products from East Africa. From Kenyan teas to Tanzanian spices and fresh fruits, we deliver
+                quality and reliability to partners worldwide.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ EXPERTISE ═══ -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-label">Our Expertise</div>
+            <h2>Premium Products from East Africa</h2>
+            <p class="lead">
+                We source the finest agricultural produce from trusted farmers and cooperatives across the region.
+                Our rigorous quality control and strong partnerships ensure that every product meets international
+                standards.
+            </p>
+
+            <!-- Trust Banner -->
+            <div class="trust-banner">
+                <div class="item">
+                    <span class="icon"><i class="fas fa-check-circle"></i></span>
+                    <h4>Farm Visit – We Got You</h4>
+                    <p>Direct relationships with farmers and cooperatives, ensuring transparency and quality at source.</p>
+                </div>
+                <div class="item">
+                    <span class="icon"><i class="fas fa-file-contract"></i></span>
+                    <h4>Verified Export – We Got You</h4>
+                    <p>Full compliance with international export standards, documentation, and quality assurance.</p>
+                </div>
+                <div class="item">
+                    <span class="icon"><i class="fas fa-globe-africa"></i></span>
+                    <h4>Global Deals – We're Already There</h4>
+                    <p>Established international network with buyers across Europe, Asia, the Gulf, and beyond.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ TEA PORTFOLIO ═══ -->
+    <section class="content-section alt">
+        <div class="container">
+            <div class="section-label">Tea Portfolio</div>
+            <h2>Kenya's Finest Teas</h2>
+            <p>
+                Kenya is renowned for producing some of the world's finest teas. We offer a comprehensive
+                selection of tea grades, sourced through our trusted auction partners and direct relationships
+                with leading estates.
+            </p>
+
+            <div class="tea-portfolio">
+                <div class="tea-item">
+                    <div class="grade">BP1</div>
+                    <div class="name">Broken Pekoe 1</div>
+                    <p>A well-balanced broken leaf grade offering a smooth, full-bodied cup with bright colour and consistent quality.</p>
+                </div>
+                <div class="tea-item">
+                    <div class="grade">PF1</div>
+                    <div class="name">Pekoe Fanning 1</div>
+                    <p>High-quality fannings with excellent liquor characteristics, widely used in premium tea blends and tea bags.</p>
+                </div>
+                <div class="tea-item">
+                    <div class="grade">PD</div>
+                    <div class="name">Pekoe Dust</div>
+                    <p>Fine particle grade ideal for tea bags and blends, known for its bold flavour, rich colour, and quick brewing.</p>
+                </div>
+                <div class="tea-item">
+                    <div class="grade">Fannings</div>
+                    <div class="name">Standard Fannings</div>
+                    <p>Small leaf particles that brew quickly and deliver a strong, brisk cup – ideal for everyday consumption and bulk blends.</p>
+                </div>
+            </div>
+
+            <!-- ─── YOUTUBE VIDEO – TEA MARKETING ─── -->
+            <div class="video-wrapper">
+                <iframe
+                    src="https://www.youtube.com/embed/1KN9RD-f6bI"
+                    title="AM Food & Supply – Kenyan Tea, Verified Export, Global Deals"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                ></iframe>
+            </div>
+
+            <div class="blend-note">
+                <p><i class="fas fa-blender-phone"></i> We can create custom tea blends and combinations tailored to your market requirements. Whether you need a specific grade, a unique blend, or private label packaging, our team works with you to deliver exactly what you need.</p>
+            </div>
+
+            <p style="margin-top:24px;">
+                We work closely with auction houses and producers to ensure consistent quality and competitive
+                pricing. Our tea portfolio is available for export in bulk quantities to markets around the world.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ SPICES ═══ -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-label">Spices & Seasonings</div>
+            <h2>From Tanzania's Spice Islands</h2>
+            <p>
+                Tanzania's spice islands and fertile highlands produce some of the most aromatic and flavourful
+                spices in the world. We source directly from farmers to bring you premium quality spices and
+                seasonings.
+            </p>
+
+            <div class="spice-grid">
+                <div class="spice-item">
+                    <h4>Cinnamon</h4>
+                    <p>High-quality cinnamon sticks and powder from Zanzibar, known for their sweet, warm aroma.</p>
+                </div>
+                <div class="spice-item">
+                    <h4>Cloves</h4>
+                    <p>Whole cloves with strong aroma and flavour, perfect for culinary, medicinal, and industrial use.</p>
+                </div>
+                <div class="spice-item">
+                    <h4>Black Pepper</h4>
+                    <p>Premium black pepper with a sharp, pungent flavour and consistent quality for global markets.</p>
+                </div>
+                <div class="spice-item">
+                    <h4>Nutmeg & Mace</h4>
+                    <p>Freshly sourced nutmeg and mace with rich, warm flavour profiles for baking and spice blends.</p>
+                </div>
+                <div class="spice-item">
+                    <h4>Ginger</h4>
+                    <p>Fresh and dried ginger with a sharp, spicy kick for food, beverage, and wellness applications.</p>
+                </div>
+                <div class="spice-item">
+                    <h4>Custom Blends</h4>
+                    <p>Custom seasoning blends crafted to meet specific culinary and industrial requirements.</p>
+                </div>
+            </div>
+
+            <p style="margin-top:24px;">
+                Our spices are carefully processed and packaged to preserve their essential oils and flavours,
+                ensuring that they meet the highest standards for export.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ FRUITS ═══ -->
+    <section class="content-section alt">
+        <div class="container">
+            <div class="section-label">Fresh Produce</div>
+            <h2>Fruits from East Africa</h2>
+            <p>
+                We partner with fruit farmers across East Africa to export fresh, high-quality fruits to
+                international markets. Our supply chain ensures that produce reaches customers in optimal
+                condition.
+            </p>
+
+            <div class="fruit-grid">
+                <div class="fruit-item">
+                    <span class="emoji">🍍</span>
+                    <h4>Pineapples</h4>
+                    <p>Sweet, juicy pineapples from Kenya's coastal region, perfect for fresh consumption and processing.</p>
+                </div>
+                <div class="fruit-item">
+                    <span class="emoji">🥑</span>
+                    <h4>Avocados</h4>
+                    <p>Premium Hass avocados – creamy, rich, and export-grade, grown in Kenya's highlands.</p>
+                </div>
+                <div class="fruit-item">
+                    <span class="emoji">🍌</span>
+                    <h4>Bananas</h4>
+                    <p>Fresh bananas sourced from smallholder farmers across East Africa, available year-round.</p>
+                </div>
+                <div class="fruit-item">
+                    <span class="emoji">🥭</span>
+                    <h4>Mangoes</h4>
+                    <p>Sweet and fragrant mangoes, perfect for fresh consumption, juice production, and processing.</p>
+                </div>
+            </div>
+
+            <p style="margin-top:24px;">
+                We work directly with farmers to ensure fair trade practices and consistent supply, enabling
+                us to meet the demands of international buyers year-round.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ GLOBAL REACH ═══ -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-label">Global Reach</div>
+            <h2>Export Anywhere</h2>
+            <p class="lead">
+                Our logistics network and customs expertise allow us to export agricultural products to
+                destinations across the globe. Whether you're a wholesaler, retailer, or manufacturer,
+                we can deliver the products you need.
+            </p>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <span class="icon"><i class="fas fa-ship"></i></span>
+                    <h4>International Shipping</h4>
+                    <p>Reliable sea and air freight solutions to major ports and airports worldwide.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="icon"><i class="fas fa-handshake"></i></span>
+                    <h4>Trusted Partnerships</h4>
+                    <p>We work with auction houses, farmers, cooperatives, and logistics providers to ensure seamless supply chains.</p>
+                </div>
+                <div class="feature-item">
+                    <span class="icon"><i class="fas fa-clipboard-check"></i></span>
+                    <h4>Quality Assurance</h4>
+                    <p>Our products are carefully selected, processed, and packaged to meet international quality and safety standards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ PARTNER CTA ═══ -->
+    <section class="content-section alt" style="border-bottom:none;">
+        <div class="container">
+            <div class="section-label">Partner With Us</div>
+            <h2>Supply the World with East Africa's Finest</h2>
+            <p class="lead">
+                Whether you're looking for premium teas, aromatic spices, or fresh fruits, AM Food & Supply
+                is your trusted partner. We are ready to export to your market.
+            </p>
+            <div style="margin-top:24px;">
+                <a href="/#contact" class="btn-primary">Get In Touch</a>
+                <a href="/" class="btn-secondary" style="margin-left:12px;">Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="/favicon.png" alt="AM International Group" />
+                    <div class="tagline">"Building Businesses For Tomorrow"</div>
+                    <p style="max-width:300px;">
+                        AM International Group is a diversified business group investing across
+                        construction, real estate, food supply, and strategic partnerships.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/#companies">Companies</a></li>
+                        <li><a href="/investments">Investments</a></li>
+                        <li><a href="/careers">Careers</a></li>
+                        <li><a href="/news">News</a></li>
+                        <li><a href="/#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Industries</h4>
+                    <ul>
+                        <li><a href="/am-construction">Construction</a></li>
+                        <li><a href="/am-realestate">Real Estate</a></li>
+                        <li><a href="/am-food-supply">Food &amp; Supply</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="mailto:info@am-internationalgroup.com"><i class="fas fa-envelope" style="width:20px;"></i> info@am-internationalgroup.com</a></li>
+                        <li><a href="tel:+447943146345"><i class="fas fa-phone" style="width:20px;"></i> +44 7943 146345</a></li>
+                        <li><a href="#"><i class="fas fa-map-pin" style="width:20px;"></i> London, United Kingdom</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AM International Group. All rights reserved.</p>
+                <div class="legal">
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms of Service</a>
+                    <a href="/cookies">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══ Global JavaScript ═══ -->
+    <script src="/script.js"></script>
+
+    <script>
+        // ─── Hamburger toggle ───
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('open');
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('open');
+                });
+            });
+        }
+
+        // ─── Header scroll effect ───
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 40) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        console.log('🚀 AM Food & Supply — Connecting Farmers to Global Markets.');
+    </script>
+</body>
+</html>
