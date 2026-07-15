@@ -104,7 +104,6 @@
             margin-bottom: 16px;
         }
 
-        /* ─── PROJECT GRID ─── */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -214,27 +213,17 @@
         }
 
         @media (max-width: 1024px) {
-            .project-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .project-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 640px) {
-            .project-grid {
-                grid-template-columns: 1fr;
-            }
-            .page-hero {
-                min-height: 35vh;
-                padding: 110px 24px 40px;
-            }
-            .page-hero h1 {
-                font-size: 2rem;
-            }
+            .project-grid { grid-template-columns: 1fr; }
+            .page-hero { min-height: 35vh; padding: 110px 24px 40px; }
+            .page-hero h1 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ═══ HEADER ═══ -->
     <header id="header">
         <div class="container nav-wrapper">
             <a href="/" class="nav-logo">
@@ -255,7 +244,6 @@
         </div>
     </header>
 
-    <!-- ═══ HERO ═══ -->
     <section class="page-hero">
         <div class="hero-ring"></div>
         <div class="hero-ring"></div>
@@ -269,7 +257,6 @@
         </div>
     </section>
 
-    <!-- ═══ PROJECTS GRID ═══ -->
     <section class="content-section">
         <div class="container">
             <h2>Future Developments</h2>
@@ -279,7 +266,7 @@
                 <!-- EYL Coastal Community -->
                 <div class="project-card">
                     <div class="card-img">
-                        <img src="/ely.project/elyresort.jpg" alt="EYL Coastal Community Development" loading="lazy" />
+                        <img src="/images/eylresort.jpg" alt="EYL Coastal Community Development" loading="lazy" />
                         <span class="status-badge">Planned</span>
                     </div>
                     <div class="card-body">
@@ -298,7 +285,6 @@
         </div>
     </section>
 
-    <!-- ═══ FOOTER ═══ -->
     <footer>
         <div class="container">
             <div class="footer-grid">
