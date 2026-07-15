@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EYL Coastal Community | AM Real Estate</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="/style.css" />
+
+    <style>
+        .project-hero {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 140px 24px 50px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 30% 20%, rgba(122, 0, 25, 0.25), transparent 60%),
+                        radial-gradient(ellipse at 70% 80%, rgba(192, 192, 192, 0.05), transparent 50%),
+                        var(--bg-dark);
+            border-bottom: 1px solid rgba(192, 192, 192, 0.06);
+            background-image: url('/eyl.project/eyresort.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .project-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 10, 10, 0.65);
+            z-index: 1;
+        }
+        .project-hero .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .project-hero h1 {
+            font-size: clamp(2.8rem, 5vw, 4rem);
+            font-weight: 900;
+            font-family: 'Playfair Display', serif;
+            color: #fff;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        .project-hero .subtitle {
+            font-size: clamp(1rem, 1.2vw, 1.2rem);
+            color: var(--silver);
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+        .project-hero p {
+            color: rgba(255,255,255,0.8);
+            font-size: clamp(1rem, 1.1vw, 1.1rem);
+            max-width: 680px;
+            margin: 12px auto 0;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .content-section {
+            padding: 60px 0;
+            border-bottom: 1px solid rgba(192, 192, 192, 0.06);
+        }
+        .content-section:last-of-type {
+            border-bottom: none;
+        }
+        .content-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 40%, var(--silver-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+        .content-section p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+            max-width: 800px;
+            font-weight: 300;
+            margin-bottom: 16px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 24px;
+        }
+        .gallery-grid img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            border: 1px solid rgba(122, 0, 25, 0.12);
+            transition: var(--transition);
+        }
+        .gallery-grid img:hover {
+            transform: scale(1.02);
+            border-color: rgba(192, 192, 192, 0.2);
+            box-shadow: 0 0 30px rgba(122, 0, 25, 0.15);
+        }
+
+        @media (max-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .project-hero {
+                min-height: 35vh;
+                padding: 110px 24px 30px;
+            }
+            .project-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ HEADER ═══ -->
+    <header id="header">
+        <div class="container nav-wrapper">
+            <a href="/" class="nav-logo">
+                <img src="/favicon.png" alt="AM International Group" />
+                <span>AM<span style="font-weight:300;color:var(--text-muted);font-size:0.7rem;display:block;letter-spacing:1px;font-family:'Inter',sans-serif;">INTERNATIONAL GROUP</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/about">About</a></li>
+                <li><a href="/#companies">Companies</a></li>
+                <li><a href="/investments">Investments</a></li>
+                <li class="nav-cta">
+                    <a href="/partner" class="btn-primary" style="padding:10px 24px;font-size:0.85rem;">Be a Partner</a>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="project-hero">
+        <div class="hero-content">
+            <div class="subtitle">AM Real Estate</div>
+            <h1>EYL Coastal Community</h1>
+            <p>
+                A master-planned coastal development featuring cliff-top villas, a restaurant, infinity pool,
+                and beach cabanas with stunning ocean views.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ PROJECT OVERVIEW ═══ -->
+    <section class="content-section">
+        <div class="container">
+            <h2>Project Overview</h2>
+            <p>
+                The EYL Coastal Community is a master-planned development designed to create a luxurious
+                coastal living experience. Located along the pristine coastline of EYL, this community
+                offers residents and visitors a unique blend of natural beauty and modern amenities.
+            </p>
+            <p>
+                The master plan includes cliff-top villas with panoramic ocean views, a main building with
+                lobby and restaurant, an infinity pool overlooking the sea, private beach cabanas, and
+                direct access to the beach. Future phases will include additional apartment blocks and a
+                community mosque.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ MASTER PLAN ═══ -->
+    <section class="content-section">
+        <div class="container">
+            <h2>Master Plan</h2>
+            <div style="margin-bottom:16px;">
+                <img src="/eyl.project/eylplan.jpg" alt="EYL Coastal Community Master Plan" style="width:100%;border-radius:var(--radius);border:1px solid rgba(122,0,25,0.12);" />
+            </div>
+            <p style="font-size:0.9rem;color:var(--text-muted);font-weight:300;">
+                <strong>Legend:</strong> 1. Cliff-top Villas • 2. Main Building / Lobby • 3. Restaurant & Bar •
+                4. Infinity Pool • 5. Beach Cabanas • 6. Beach • 7. Access Paths • 8. Existing Resort Development
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ GALLERY ═══ -->
+    <section class="content-section" style="border-bottom:1px solid rgba(192,192,192,0.06);">
+        <div class="container">
+            <h2>Gallery</h2>
+            <div class="gallery-grid">
+                <img src="/eyl.project/eyresort.jpg" alt="Resort View" loading="lazy" />
+                <img src="/eyl.project/EYL.jpg" alt="EYL Coastal Overview" loading="lazy" />
+                <img src="/eyl.project/eylplan.jpg" alt="Master Plan" loading="lazy" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section style="padding:60px 0;border-bottom:1px solid rgba(192,192,192,0.06);">
+        <div class="container" style="text-align:center;">
+            <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;background:linear-gradient(135deg,#fff 40%,var(--silver-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;">Interested in this project?</h2>
+            <p style="color:var(--text-muted);font-size:1rem;line-height:1.8;max-width:600px;margin:0 auto 24px;font-weight:300;">Contact our team to learn more about investment opportunities.</p>
+            <a href="/partner" class="btn-primary">Partner With Us</a>
+            <a href="/am-realestate/projects" class="btn-secondary" style="margin-left:12px;">Back to Projects</a>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="/favicon.png" alt="AM International Group" />
+                    <div class="tagline">"Building Businesses For Tomorrow"</div>
+                    <p style="max-width:300px;">AM International Group is a diversified business group investing across construction, real estate, food supply, and strategic partnerships.</p>
+                    <div class="footer-social">
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/#companies">Companies</a></li>
+                        <li><a href="/investments">Investments</a></li>
+                        <li><a href="/careers">Careers</a></li>
+                        <li><a href="/news">News</a></li>
+                        <li><a href="/partner">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Industries</h4>
+                    <ul>
+                        <li><a href="/am-construction">Construction</a></li>
+                        <li><a href="/am-realestate">Real Estate</a></li>
+                        <li><a href="/am-food-supply">Food &amp; Supply</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="mailto:info@am-internationalgroup.com"><i class="fas fa-envelope" style="width:20px;"></i> info@am-internationalgroup.com</a></li>
+                        <li><a href="tel:+447943146345"><i class="fas fa-phone" style="width:20px;"></i> +44 7943 146345</a></li>
+                        <li><a href="#"><i class="fas fa-map-pin" style="width:20px;"></i> London, United Kingdom</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AM International Group. All rights reserved.</p>
+                <div class="legal">
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms of Service</a>
+                    <a href="/cookies">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+</html>
