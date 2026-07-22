@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Not Found | AM International Group</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Global Stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <style>
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 24px 80px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 30% 20%, rgba(122, 0, 25, 0.15), transparent 60%),
+                        radial-gradient(ellipse at 70% 80%, rgba(192, 192, 192, 0.03), transparent 50%),
+                        var(--bg-dark);
+        }
+        .error-page .error-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(192, 192, 192, 0.04);
+            pointer-events: none;
+            animation: ringPulse 12s ease-in-out infinite alternate;
+        }
+        .error-page .error-ring:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            top: -80px;
+            right: -80px;
+            animation-delay: 0s;
+        }
+        .error-page .error-ring:nth-child(2) {
+            width: 350px;
+            height: 350px;
+            bottom: -40px;
+            left: -40px;
+            animation-delay: 4s;
+        }
+        .error-page .error-ring:nth-child(3) {
+            width: 700px;
+            height: 700px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: 8s;
+            border-color: rgba(122, 0, 25, 0.06);
+        }
+
+        @keyframes ringPulse {
+            0% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.3;
+            }
+            100% {
+                transform: scale(1.2) rotate(12deg);
+                opacity: 0.8;
+            }
+        }
+
+        .error-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+
+        .error-content .error-code {
+            font-size: clamp(8rem, 20vw, 14rem);
+            font-weight: 900;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, rgba(122, 0, 25, 0.15), var(--primary), rgba(122, 0, 25, 0.15));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 8px;
+            letter-spacing: -0.04em;
+            opacity: 0.8;
+        }
+
+        .error-content .error-icon {
+            font-size: 4rem;
+            color: var(--silver);
+            opacity: 0.3;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .error-content h1 {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            font-family: 'Playfair Display', serif;
+            color: #fff;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .error-content p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-weight: 300;
+            max-width: 500px;
+            margin: 0 auto 32px;
+        }
+
+        .error-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+        .error-links a {
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+            background: rgba(20, 20, 20, 0.5);
+            border: 1px solid rgba(192, 192, 192, 0.06);
+            color: var(--text-muted);
+        }
+        .error-links a:hover {
+            background: rgba(122, 0, 25, 0.2);
+            border-color: var(--silver);
+            color: var(--silver);
+            transform: translateY(-2px);
+        }
+
+        .error-links .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            border: 2px solid var(--primary);
+            padding: 10px 28px;
+        }
+        .error-links .btn-primary:hover {
+            background: transparent;
+            color: var(--silver);
+            border-color: var(--silver);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 640px) {
+            .error-content .error-code {
+                font-size: 6rem;
+            }
+            .error-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            .error-links a {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ HEADER ═══ -->
+    <header id="header">
+        <div class="container nav-wrapper">
+            <a href="/" class="nav-logo">
+                <img src="/favicon.png" alt="AM International Group" />
+                <span>AM<span style="font-weight:300;color:var(--text-muted);font-size:0.7rem;display:block;letter-spacing:1px;font-family:'Inter',sans-serif;">INTERNATIONAL GROUP</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/about">About</a></li>
+                <li><a href="/#companies">Companies</a></li>
+                <li><a href="/investments">Investments</a></li>
+                <li><a href="/energy">Energy</a></li>
+                <li class="nav-cta">
+                    <a href="/partner" class="btn-primary" style="padding:10px 24px;font-size:0.85rem;">Be a Partner</a>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ═══ 404 CONTENT ═══ -->
+    <section class="error-page">
+        <div class="error-ring"></div>
+        <div class="error-ring"></div>
+        <div class="error-ring"></div>
+
+        <div class="error-content">
+            <span class="error-icon"><i class="fas fa-compass"></i></span>
+            <div class="error-code">404</div>
+            <h1>Page Not Found</h1>
+            <p>
+                The page you are looking for may have been moved, renamed, or is temporarily unavailable.
+            </p>
+
+            <div class="error-links">
+                <a href="/" class="btn-primary"><i class="fas fa-home"></i> Return Home</a>
+                <a href="/about">About</a>
+                <a href="/#companies">Companies</a>
+                <a href="/investments">Investments</a>
+                <a href="/partner">Partner With Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="/favicon.png" alt="AM International Group" />
+                    <div class="tagline">"Building Businesses For Tomorrow"</div>
+                    <p style="max-width:300px;">
+                        AM International Group is a diversified business group investing across
+                        construction, real estate, food supply, and strategic partnerships.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/#companies">Companies</a></li>
+                        <li><a href="/investments">Investments</a></li>
+                        <li><a href="/Partner">Partner with us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Industries</h4>
+                    <ul>
+                        <li><a href="/am-construction">Construction</a></li>
+                        <li><a href="/am-realestate">Real Estate</a></li>
+                        <li><a href="/am-food-supply">Food &amp; Supply</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="mailto:info@am-internationalgroup.com"><i class="fas fa-envelope" style="width:20px;"></i> info@am-internationalgroup.com</a></li>
+                        <li><a href="tel:+447943146345"><i class="fas fa-phone" style="width:20px;"></i> +44 7943 146345</a></li>
+                        <li><a href="#"><i class="fas fa-map-pin" style="width:20px;"></i> London, United Kingdom</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 AM International Group. All rights reserved.</p>
+                <div class="legal">
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms of Service</a>
+                    <a href="/cookies">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══ Global JavaScript ═══ -->
+    <script src="/script.js"></script>
+
+    <script>
+        // ─── HAMBURGER TOGGLE ───
+        (function() {
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('navLinks');
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    navLinks.classList.toggle('open');
+                });
+                document.querySelectorAll('.nav-links a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        hamburger.classList.remove('active');
+                        navLinks.classList.remove('open');
+                    });
+                });
+            }
+        })();
+
+        // ─── HEADER SCROLL EFFECT ───
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 40) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        console.log('🔍 404 — Page Not Found.');
+    </script>
+</body>
+</html>
