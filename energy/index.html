@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AM Energy | Powering the Horn of Africa</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Global Stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <style>
+        /* ─── AM ENERGY PAGE-SPECIFIC STYLES ─── */
+        .energy-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 24px 80px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 30% 20%, rgba(122, 0, 25, 0.2), transparent 60%),
+                        radial-gradient(ellipse at 70% 80%, rgba(192, 192, 192, 0.05), transparent 50%),
+                        var(--bg-dark);
+        }
+        .energy-hero .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+        .energy-hero h1 {
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #FFFFFF 30%, var(--silver-light) 70%, var(--silver) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .energy-hero h1 .accent {
+            color: var(--primary);
+            -webkit-text-fill-color: var(--primary);
+        }
+        .energy-hero .vision-tag {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--silver);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid rgba(192,192,192,0.15);
+            padding: 6px 20px;
+            border-radius: 50px;
+            margin-bottom: 16px;
+            background: rgba(20,20,20,0.4);
+            backdrop-filter: blur(4px);
+        }
+        .energy-hero p {
+            font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 32px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin: 32px 0 48px;
+        }
+        .hero-metrics .metric-item {
+            text-align: center;
+        }
+        .hero-metrics .metric-item .number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--silver);
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-metrics .metric-item .label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            margin-top: 4px;
+        }
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .energy-section {
+            padding: 80px 0;
+            position: relative;
+        }
+        .energy-section.dark {
+            background: rgba(20, 20, 20, 0.6);
+            border-top: 1px solid rgba(192, 192, 192, 0.06);
+            border-bottom: 1px solid rgba(192, 192, 192, 0.06);
+        }
+        .energy-section.darker {
+            background: var(--bg-dark);
+        }
+
+        .section-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--silver);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+            opacity: 0.7;
+        }
+        .section-title {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #fff 40%, var(--silver-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-title .accent {
+            color: var(--primary);
+            -webkit-text-fill-color: var(--primary);
+        }
+        .section-sub {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* ─── OVERVIEW ─── */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .overview-text p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 16px;
+        }
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .focus-item {
+            background: var(--bg-card);
+            border: 1px solid rgba(122, 0, 25, 0.12);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .focus-item:hover {
+            border-color: rgba(192, 192, 192, 0.2);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-red);
+        }
+        .focus-item i {
+            font-size: 2rem;
+            color: var(--silver);
+            margin-bottom: 8px;
+        }
+        .focus-item h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            color: #fff;
+        }
+        .focus-item p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            margin-top: 4px;
+        }
+
+        /* ─── PROJECT CARDS (SMALL) ─── */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 32px;
+        }
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(122, 0, 25, 0.15);
+            border-radius: var(--radius);
+            padding: 24px 22px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .project-card:hover {
+            border-color: rgba(192, 192, 192, 0.3);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-red);
+        }
+        .project-card .icon {
+            font-size: 2.4rem;
+            color: var(--silver);
+            margin-bottom: 12px;
+            display: block;
+            opacity: 0.7;
+        }
+        .project-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 14px;
+        }
+        .project-card .btn-small {
+            display: inline-block;
+            padding: 8px 22px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--silver);
+            border: 1px solid rgba(192, 192, 192, 0.2);
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+        .project-card .btn-small:hover {
+            background: var(--silver);
+            color: var(--bg-dark);
+            border-color: var(--silver);
+        }
+
+        /* ─── GOVERNMENT LOGOS ─── */
+        .gov-logos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            padding: 40px 20px;
+            flex-wrap: wrap;
+            border-top: 1px solid rgba(192, 192, 192, 0.06);
+            border-bottom: 1px solid rgba(192, 192, 192, 0.06);
+            background: rgba(20, 20, 20, 0.3);
+        }
+        .gov-logos .logo-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .gov-logos .logo-item img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+        .gov-logos .logo-item .logo-label {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+        .gov-logos .divider {
+            color: var(--silver);
+            font-size: 1.2rem;
+            opacity: 0.3;
+            font-weight: 300;
+        }
+        .gov-logos .am-center {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--silver);
+            letter-spacing: 2px;
+        }
+        .gov-logos .am-center span {
+            color: var(--primary);
+        }
+        .gov-logos .tagline {
+            width: 100%;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            opacity: 0.5;
+            margin-top: 6px;
+        }
+
+        /* ─── TIMELINE ─── */
+        .timeline-horizontal {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            margin-top: 40px;
+            position: relative;
+        }
+        .timeline-horizontal::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--silver);
+            opacity: 0.15;
+            transform: translateY(-50%);
+            z-index: 0;
+        }
+        .timeline-item {
+            background: var(--bg-card);
+            border: 1px solid rgba(122, 0, 25, 0.12);
+            border-radius: var(--radius);
+            padding: 20px 16px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+        }
+        .timeline-item:hover {
+            border-color: var(--silver);
+            transform: scale(1.02);
+            box-shadow: var(--shadow-red);
+        }
+        .timeline-item .year {
+            font-weight: 700;
+            color: var(--silver);
+            font-size: 1.1rem;
+        }
+        .timeline-item .event {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* ─── FINAL CTA ─── */
+        .final-cta {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 24px;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-dark);
+        }
+        .final-cta .content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+        .final-cta h2 {
+            font-size: clamp(2.6rem, 5vw, 4.2rem);
+            font-weight: 900;
+            margin-bottom: 16px;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #FFFFFF 30%, var(--silver-light) 70%, var(--silver) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .final-cta h2 .accent {
+            color: var(--primary);
+            -webkit-text-fill-color: var(--primary);
+        }
+        .final-cta p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto 32px;
+            font-weight: 300;
+        }
+
+        /* ─── REVEAL ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            .project-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 868px) {
+            .overview-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .focus-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .timeline-horizontal {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+            .timeline-horizontal::before {
+                display: none;
+            }
+            .hero-metrics {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+            .hero-metrics .metric-item .number {
+                font-size: 1.6rem;
+            }
+            .gov-logos {
+                gap: 20px;
+            }
+            .gov-logos .logo-item img {
+                height: 40px;
+            }
+            .gov-logos .am-center {
+                font-size: 1rem;
+            }
+        }
+        @media (max-width: 640px) {
+            .focus-grid {
+                grid-template-columns: 1fr;
+            }
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            .timeline-horizontal {
+                grid-template-columns: 1fr;
+            }
+            .energy-section {
+                padding: 60px 0;
+            }
+            .gov-logos {
+                gap: 12px;
+                padding: 20px 10px;
+            }
+            .gov-logos .logo-item img {
+                height: 30px;
+            }
+            .gov-logos .divider {
+                font-size: 0.8rem;
+            }
+            .gov-logos .am-center {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ HEADER ═══ -->
+    <header id="header">
+        <div class="container nav-wrapper">
+            <a href="/" class="nav-logo">
+                <img src="/favicon.png" alt="AM International Group" />
+                <span>AM<span style="font-weight:300;color:var(--text-muted);font-size:0.7rem;display:block;letter-spacing:1px;font-family:'Inter',sans-serif;">INTERNATIONAL GROUP</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/about">About</a></li>
+                <li><a href="/#companies">Companies</a></li>
+                <li><a href="/investments">Investments</a></li>
+                <li><a href="/energy" class="active">Energy</a></li>
+                <li class="nav-cta">
+                    <a href="/partner" class="btn-primary" style="padding:10px 24px;font-size:0.85rem;">Be a Partner</a>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="energy-hero" id="hero">
+        <div class="hero-content">
+            <span class="vision-tag">Vision 2050</span>
+            <h1>Leading Energy Supplier in <span class="accent">East Africa</span></h1>
+            <p>
+                AM Energy is building the energy backbone of the Horn of Africa—connecting nations,
+                powering industries, and driving sustainable growth for over 67 million people.
+            </p>
+            <div class="hero-metrics">
+                <div class="metric-item">
+                    <div class="number" data-count="2400">2,400+</div>
+                    <div class="label">MW Planned Capacity</div>
+                </div>
+                <div class="metric-item">
+                    <div class="number" data-count="67">67M+</div>
+                    <div class="label">People Connected</div>
+                </div>
+                <div class="metric-item">
+                    <div class="number">$1.85B</div>
+                    <div class="label">Annual Revenue by 2048</div>
+                </div>
+                <div class="metric-item">
+                    <div class="number" data-count="75">75M</div>
+                    <div class="label">Tons CO₂ Avoided</div>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn-primary">Explore Our Projects</a>
+                <a href="#invest" class="btn-secondary">Investment Opportunities</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ COMPANY OVERVIEW ═══ -->
+    <section class="energy-section darker" id="overview">
+        <div class="container">
+            <div class="overview-grid">
+                <div class="overview-text reveal">
+                    <span class="section-badge">About AM Energy</span>
+                    <h2 class="section-title">Mission</h2>
+                    <p>
+                        AM Energy is developing large-scale renewable energy generation, transmission,
+                        storage, and grid infrastructure across the Horn of Africa.
+                    </p>
+                    <p>
+                        We are building the energy backbone of a continent—connecting nations, powering
+                        industries, and enabling sustainable growth for millions.
+                    </p>
+                </div>
+                <div class="focus-grid reveal">
+                    <div class="focus-item">
+                        <i class="fas fa-sun"></i>
+                        <h4>Solar Energy</h4>
+                        <p>Utility-scale solar farms with storage</p>
+                    </div>
+                    <div class="focus-item">
+                        <i class="fas fa-wind"></i>
+                        <h4>Wind Energy</h4>
+                        <p>Onshore and offshore wind assets</p>
+                    </div>
+                    <div class="focus-item">
+                        <i class="fas fa-battery-full"></i>
+                        <h4>Battery Storage</h4>
+                        <p>Grid-scale storage for reliability</p>
+                    </div>
+                    <div class="focus-item">
+                        <i class="fas fa-flask"></i>
+                        <h4>Green Hydrogen</h4>
+                        <p>Next-generation energy carrier</p>
+                    </div>
+                    <div class="focus-item">
+                        <i class="fas fa-bolt"></i>
+                        <h4>Cross-Border Transmission</h4>
+                        <p>HVDC interconnectors</p>
+                    </div>
+                    <div class="focus-item">
+                        <i class="fas fa-microchip"></i>
+                        <h4>Grid Modernization</h4>
+                        <p>Smart grids and AI-powered management</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ PROJECT CARDS (HUB) ═══ -->
+    <section class="energy-section dark" id="projects">
+        <div class="container">
+            <span class="section-badge">Our Portfolio</span>
+            <h2 class="section-title">Flagship <span class="accent">Projects</span></h2>
+            <p class="section-sub">
+                Explore our key developments that are shaping the energy future of East Africa.
+                Click on any project to learn more.
+            </p>
+            <div class="project-grid">
+                <!-- Solar Parks -->
+                <div class="project-card reveal">
+                    <span class="icon"><i class="fas fa-sun"></i></span>
+                    <h4>Solar Parks</h4>
+                    <p>Utility-scale solar + storage projects in Kenya and Somalia, totalling 630 MW of clean energy.</p>
+                    <a href="/am-realestate/projects" class="btn-small">Learn More</a>
+                </div>
+                <!-- Cross-Border Transmission -->
+                <div class="project-card reveal">
+                    <span class="icon"><i class="fas fa-bolt"></i></span>
+                    <h4>Cross-Border Transmission</h4>
+                    <p>HVDC interconnectors linking Kenya, Somalia, Ethiopia, and the wider East African Power Pool.</p>
+                    <a href="/am-realestate/projects" class="btn-small">Learn More</a>
+                </div>
+                <!-- Offshore Oil & Gas -->
+                <div class="project-card reveal">
+                    <span class="icon"><i class="fas fa-oil-can"></i></span>
+                    <h4>Offshore Oil &amp; Gas</h4>
+                    <p>Developing Somalia's offshore hydrocarbon resources in partnership with the Turkish and Somali governments.</p>
+                    <a href="/somalia-oil-rig-project/" class="btn-small">Learn More</a>
+                </div>
+                <!-- Smart Cities -->
+                <div class="project-card reveal">
+                    <span class="icon"><i class="fas fa-city"></i></span>
+                    <h4>Smart Cities 2044</h4>
+                    <p>Renewable-powered urban centres with smart grids, e-mobility, and sustainable infrastructure.</p>
+                    <a href="/am-realestate/projects" class="btn-small">Learn More</a>
+                </div>
+                <!-- Green Hydrogen -->
+                <div class="project-card reveal">
+                    <span class="icon"><i class="fas fa-flask"></i></span>
+                    <h4>Green Hydrogen</h4>
+                    <p>Next-generation hydrogen production for industrial and export markets, leveraging renewable energy.</p>
+                    <a href="/am-realestate/projects" class="btn-small">Learn More</a>
+                </div>
+                <!-- Grid Modernization -->
+                <div class="project-card reveal">
+                    <span class="icon"><i class="fas fa-microchip"></i></span>
+                    <h4>Grid Modernization</h4>
+                    <p>AI-powered smart grids, storage, and demand-response systems for a resilient energy network.</p>
+                    <a href="/am-realestate/projects" class="btn-small">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ GOVERNMENT PARTNERSHIP LOGOS ═══ -->
+    <section class="energy-section" style="padding: 20px 0;">
+        <div class="container">
+            <div class="gov-logos">
+                <div class="logo-item">
+                    <img src="https://banner2.cleanpng.com/20180810/cju/kisspng-government-of-kenya-counties-of-kenya-east-africa-ministry-of-education-kenya-myskuulkenya-5b6d493e80b4c1.5671909215338888305272.jpg" alt="Government of Kenya" loading="lazy" />
+                    <span class="logo-label">Government of Kenya</span>
+                </div>
+                <div class="divider">✦</div>
+                <div class="am-center">AM<span>Energy</span></div>
+                <div class="divider">✦</div>
+                <div class="logo-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Coat_of_arms_of_Somalia.svg" alt="Federal Government of Somalia" loading="lazy" />
+                    <span class="logo-label">Federal Government of Somalia</span>
+                </div>
+                <div class="tagline">Bridging the Horn of Africa — United for Energy Independence</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ TIMELINE ═══ -->
+    <section class="energy-section darker" id="timeline">
+        <div class="container">
+            <span class="section-badge">Vision 2044</span>
+            <h2 class="section-title">The <span class="accent">Roadmap</span></h2>
+            <div class="timeline-horizontal">
+                <div class="timeline-item reveal">
+                    <div class="year">2026–2028</div>
+                    <div class="event">Feasibility &amp; Development</div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="year">2028–2030</div>
+                    <div class="event">Initial Generation Assets</div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="year">2030–2035</div>
+                    <div class="event">Regional Expansion</div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="year">2035–2040</div>
+                    <div class="event">Offshore Wind &amp; Hydrogen</div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="year">2040–2044</div>
+                    <div class="event">Continental Integration</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ INVESTMENT OPPORTUNITY ═══ -->
+    <section class="energy-section dark" id="invest">
+        <div class="container">
+            <span class="section-badge">Invest</span>
+            <h2 class="section-title">Investment <span class="accent">Opportunity</span></h2>
+            <p class="section-sub">
+                Partner with AM Energy to build the energy future of the Horn of Africa.
+            </p>
+            <div style="text-align:center; margin-top:24px;">
+                <a href="/investments" class="btn-primary">View All Investment Opportunities</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FINAL CTA ═══ -->
+    <section class="final-cta" id="contact">
+        <div class="content">
+            <h2>Building the <span class="accent">Energy Backbone</span> of a Continent</h2>
+            <p>
+                Join us in shaping the future of energy, industry, and economic growth across the Horn of Africa.
+            </p>
+            <a href="/partner" class="btn-primary">Contact AM Investment</a>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="/favicon.png" alt="AM International Group" />
+                    <div class="tagline">"Building Businesses For Tomorrow"</div>
+                    <p style="max-width:300px;">
+                        AM International Group is a diversified business group investing across
+                        construction, real estate, food supply, and strategic partnerships.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/#companies">Companies</a></li>
+                        <li><a href="/investments">Investments</a></li>
+                        <li><a href="/partner">Partner With Us</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Industries</h4>
+                    <ul>
+                        <li><a href="/am-construction">Construction</a></li>
+                        <li><a href="/am-realestate">Real Estate</a></li>
+                        <li><a href="/am-food-supply">Food &amp; Supply</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="mailto:info@am-internationalgroup.com"><i class="fas fa-envelope" style="width:20px;"></i> info@am-internationalgroup.com</a></li>
+                        <li><a href="tel:+447943146345"><i class="fas fa-phone" style="width:20px;"></i> +44 7943 146345</a></li>
+                        <li><a href="#"><i class="fas fa-map-pin" style="width:20px;"></i> London, United Kingdom</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AM International Group. All rights reserved.</p>
+                <div class="legal">
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms of Service</a>
+                    <a href="/cookies">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══ Global JavaScript ═══ -->
+    <script src="/script.js"></script>
+
+    <!-- ═══ PAGE-SPECIFIC SCRIPTS ═══ -->
+    <script>
+        // ─── COUNTER ANIMATION ───
+        function animateCounter(el) {
+            const target = el.getAttribute('data-count');
+            if (!target) return;
+            const suffix = target.match(/[^0-9.]/) ? target.match(/[^0-9.]/)[0] : '';
+            const num = parseFloat(target);
+            const duration = 2000;
+            const startTime = performance.now();
+
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const current = eased * num;
+                if (num >= 1000) {
+                    el.textContent = Math.round(current).toLocaleString() + suffix;
+                } else if (num % 1 !== 0) {
+                    el.textContent = current.toFixed(1) + suffix;
+                } else {
+                    el.textContent = Math.round(current) + suffix;
+                }
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    el.textContent = target;
+                }
+            }
+            requestAnimationFrame(update);
+        }
+
+        // ─── SCROLL REVEAL + COUNTERS ───
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    const counters = entry.target.querySelectorAll('[data-count]');
+                    counters.forEach(c => {
+                        if (!c.dataset.animated) {
+                            c.dataset.animated = 'true';
+                            animateCounter(c);
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.reveal, .project-card, .timeline-item, .focus-item, .overview-text').forEach(el => {
+            observer.observe(el);
+        });
+
+        document.querySelectorAll('.hero-metrics .number[data-count]').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ─── HAMBURGER TOGGLE (fallback) ───
+        (function() {
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('navLinks');
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    navLinks.classList.toggle('open');
+                });
+                document.querySelectorAll('.nav-links a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        hamburger.classList.remove('active');
+                        navLinks.classList.remove('open');
+                    });
+                });
+            }
+        })();
+
+        // ─── HEADER SCROLL EFFECT ───
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 40) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // ─── Highlight active nav link ───
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            if (link.getAttribute('href') === '/energy') {
+                link.style.color = 'var(--silver)';
+            }
+        });
+
+        console.log('🚀 AM Energy — Leading East Africa\'s energy future by 2050.');
+    </script>
+</body>
+</html>
