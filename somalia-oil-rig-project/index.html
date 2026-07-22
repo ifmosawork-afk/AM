@@ -163,6 +163,12 @@
             object-fit: cover;
             border-radius: var(--radius) var(--radius) 0 0;
             display: block;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .content-block .full-img:hover {
+            opacity: 0.9;
+            transform: scale(1.01);
         }
         .content-block .text-card {
             background: var(--bg-card);
@@ -407,6 +413,69 @@
         .reveal.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* ─── LIGHTBOX ─── */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        .lightbox-overlay .lightbox-content {
+            max-width: 90%;
+            max-height: 85vh;
+            position: relative;
+        }
+        .lightbox-overlay .lightbox-content img {
+            width: 100%;
+            height: auto;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: var(--radius);
+            box-shadow: 0 8px 60px rgba(0, 0, 0, 0.8);
+        }
+        .lightbox-overlay .close-btn {
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            background: rgba(122, 0, 25, 0.9);
+            color: #fff;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 1.6rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+        .lightbox-overlay .close-btn:hover {
+            background: var(--primary);
+            transform: rotate(90deg);
+        }
+        @media (max-width: 640px) {
+            .lightbox-overlay { padding: 20px; }
+            .lightbox-overlay .close-btn {
+                top: -30px;
+                right: -10px;
+                width: 36px;
+                height: 36px;
+                font-size: 1.2rem;
+            }
         }
 
         /* ─── RESPONSIVE ─── */
@@ -865,6 +934,14 @@
         </div>
     </section>
 
+    <!-- ═══ LIGHTBOX OVERLAY ═══ -->
+    <div class="lightbox-overlay" id="lightbox">
+        <div class="lightbox-content">
+            <button class="close-btn" id="closeLightbox">&times;</button>
+            <img src="" alt="Enlarged view" id="lightboxImg" />
+        </div>
+    </div>
+
     <!-- ═══ FOOTER ═══ -->
     <footer>
         <div class="container">
@@ -938,6 +1015,47 @@
 
         document.querySelectorAll('.reveal, .revenue-item, .invest-card, .content-block').forEach(el => {
             observer.observe(el);
+        });
+
+        // ─── LIGHTBOX ───
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const closeBtn = document.getElementById('closeLightbox');
+
+        // Open lightbox when clicking any .full-img
+        document.querySelectorAll('.full-img').forEach(img => {
+            img.addEventListener('click', function() {
+                lightboxImg.src = this.src;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close lightbox
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                if (!lightbox.classList.contains('active')) {
+                    lightboxImg.src = '';
+                }
+            }, 300);
+        }
+
+        closeBtn.addEventListener('click', closeLightbox);
+
+        // Click on overlay background to close
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+
+        // ESC key to close
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
         });
 
         // ─── HAMBURGER TOGGLE (fallback) ───
