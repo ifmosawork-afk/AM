@@ -101,9 +101,6 @@
         .energy-section.darker {
             background: var(--bg-dark);
         }
-        .energy-section.primary-glow {
-            background: radial-gradient(ellipse at 70% 30%, rgba(122, 0, 25, 0.06), transparent 60%);
-        }
 
         .section-badge {
             display: inline-block;
@@ -221,10 +218,10 @@
             margin-top: 4px;
         }
 
-        /* ─── SOLAR PARKS (Card Grid) ─── */
+        /* ─── 2044 VISION SOLAR SECTION ─── */
         .solar-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr 1fr;
             gap: 28px;
             margin-top: 32px;
         }
@@ -241,7 +238,7 @@
             box-shadow: var(--shadow-red);
         }
         .solar-card .card-img {
-            height: 220px;
+            height: 280px;
             overflow: hidden;
         }
         .solar-card .card-img img {
@@ -254,19 +251,37 @@
             transform: scale(1.04);
         }
         .solar-card .card-body {
-            padding: 20px 24px 26px;
+            padding: 24px 28px 30px;
+        }
+        .solar-card .card-body .status-tag {
+            display: inline-block;
+            padding: 2px 14px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: rgba(122, 0, 25, 0.3);
+            color: var(--silver);
+            border: 1px solid rgba(122, 0, 25, 0.2);
+            margin-bottom: 8px;
         }
         .solar-card .card-body h4 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: #fff;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
+        }
+        .solar-card .card-body p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 12px;
         }
         .solar-card .card-body .details {
             font-size: 0.9rem;
             color: var(--text-muted);
-            line-height: 1.7;
         }
         .solar-card .card-body .details span {
             display: block;
@@ -309,7 +324,7 @@
             margin-top: 4px;
         }
 
-        /* ─── SMART CITIES (Card) ─── */
+        /* ─── SMART CITIES ─── */
         .smart-card {
             background: var(--bg-card);
             border: 1px solid rgba(122, 0, 25, 0.15);
@@ -384,6 +399,176 @@
         .smart-tags span i {
             color: var(--primary);
             margin-right: 6px;
+        }
+
+        /* ─── SOMALIA OIL PROJECT CARD ─── */
+        .oil-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(122, 0, 25, 0.15);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: var(--transition);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+        }
+        .oil-card:hover {
+            border-color: rgba(192, 192, 192, 0.2);
+            box-shadow: var(--shadow-red);
+        }
+        .oil-card .oil-img {
+            height: 100%;
+            min-height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+        .oil-card .oil-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .oil-card:hover .oil-img img {
+            transform: scale(1.03);
+        }
+        .oil-card .oil-img .oil-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: rgba(122, 0, 25, 0.9);
+            color: var(--silver);
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(192, 192, 192, 0.15);
+        }
+        .oil-card .oil-body {
+            padding: 36px 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .oil-card .oil-body .sub {
+            color: var(--silver);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 300;
+            opacity: 0.7;
+            margin-bottom: 4px;
+        }
+        .oil-card .oil-body h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .oil-card .oil-body p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 6px;
+        }
+        .oil-card .oil-body .oil-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 12px 0 16px;
+        }
+        .oil-card .oil-body .oil-stats .stat {
+            background: rgba(20, 20, 20, 0.5);
+            padding: 10px 14px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .oil-card .oil-body .oil-stats .stat .num {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--silver);
+        }
+        .oil-card .oil-body .oil-stats .stat .lbl {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        .oil-card .oil-body .btn-small {
+            display: inline-block;
+            padding: 10px 28px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--silver);
+            border: 1px solid rgba(192, 192, 192, 0.2);
+            border-radius: 50px;
+            transition: var(--transition);
+            margin-top: 8px;
+            text-align: center;
+        }
+        .oil-card .oil-body .btn-small:hover {
+            background: var(--silver);
+            color: var(--bg-dark);
+            border-color: var(--silver);
+        }
+
+        /* ─── GOVERNMENT LOGOS ─── */
+        .gov-logos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            padding: 40px 20px;
+            flex-wrap: wrap;
+            border-top: 1px solid rgba(192, 192, 192, 0.06);
+            border-bottom: 1px solid rgba(192, 192, 192, 0.06);
+            background: rgba(20, 20, 20, 0.3);
+        }
+        .gov-logos .logo-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .gov-logos .logo-item img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+        .gov-logos .logo-item .logo-label {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+        .gov-logos .divider {
+            color: var(--silver);
+            font-size: 1.2rem;
+            opacity: 0.3;
+            font-weight: 300;
+        }
+        .gov-logos .am-center {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--silver);
+            letter-spacing: 2px;
+        }
+        .gov-logos .am-center span {
+            color: var(--primary);
+        }
+        .gov-logos .tagline {
+            width: 100%;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            opacity: 0.5;
+            margin-top: 6px;
         }
 
         /* ─── INVESTMENT ─── */
@@ -477,7 +662,7 @@
 
         /* ─── FINAL CTA ─── */
         .final-cta {
-            min-height: 80vh;
+            min-height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -514,14 +699,6 @@
             margin: 0 auto 32px;
             font-weight: 300;
         }
-        .final-cta .tagline {
-            margin-top: 40px;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            font-weight: 300;
-            opacity: 0.6;
-        }
 
         /* ─── REVEAL ─── */
         .reveal {
@@ -540,7 +717,13 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             .solar-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
+            }
+            .oil-card {
+                grid-template-columns: 1fr;
+            }
+            .oil-card .oil-img {
+                min-height: 200px;
             }
         }
         @media (max-width: 868px) {
@@ -577,6 +760,18 @@
             .hero-metrics .metric-item .number {
                 font-size: 1.6rem;
             }
+            .gov-logos {
+                gap: 20px;
+            }
+            .gov-logos .logo-item img {
+                height: 40px;
+            }
+            .gov-logos .am-center {
+                font-size: 1rem;
+            }
+            .oil-card .oil-body .oil-stats {
+                grid-template-columns: 1fr 1fr;
+            }
         }
         @media (max-width: 640px) {
             .focus-grid {
@@ -602,6 +797,25 @@
             }
             .smart-card .smart-body {
                 padding: 24px 20px;
+            }
+            .oil-card .oil-body {
+                padding: 24px 20px;
+            }
+            .oil-card .oil-body .oil-stats {
+                grid-template-columns: 1fr;
+            }
+            .gov-logos {
+                gap: 12px;
+                padding: 20px 10px;
+            }
+            .gov-logos .logo-item img {
+                height: 30px;
+            }
+            .gov-logos .divider {
+                font-size: 0.8rem;
+            }
+            .gov-logos .am-center {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -745,10 +959,10 @@
         </div>
     </section>
 
-    <!-- ═══ SOLAR PARKS (Card Grid) ═══ -->
+    <!-- ═══ 2044 VISION: SOLAR PARKS ═══ -->
     <section class="energy-section darker" id="solar">
         <div class="container">
-            <span class="section-badge">Generation</span>
+            <span class="section-badge">Vision 2044</span>
             <h2 class="section-title">Solar Parks</h2>
             <p class="section-sub">
                 Building utility-scale renewable energy assets across East Africa. Each project is designed
@@ -760,10 +974,12 @@
                         <img src="/images/Kismayo.jpg" alt="Kismayo Solar Park" loading="lazy" />
                     </div>
                     <div class="card-body">
+                        <span class="status-tag">Feasibility</span>
                         <h4>Kismayo Solar Park</h4>
+                        <p>Utility-scale solar farm with battery storage in Somalia's port city, part of the cross-border energy corridor.</p>
                         <div class="details">
                             <span><span class="label">🌞 Capacity:</span> 180 MW</span>
-                            <span><span class="label">📅 Completion:</span> 2028</span>
+                            <span><span class="label">📅 Completion:</span> TBD – in investment phase</span>
                             <span><span class="label">💰 Investment:</span> $120M</span>
                             <span><span class="label">👥 Communities:</span> 2.5M</span>
                         </div>
@@ -771,27 +987,31 @@
                 </div>
                 <div class="solar-card reveal">
                     <div class="card-img">
-                        <img src="/images/placeholder-solar.jpg" alt="Loiyangalani Solar + Storage" loading="lazy" />
+                        <img src="/images/lig.jpg" alt="Loiyangalani Solar + Storage" loading="lazy" />
                     </div>
                     <div class="card-body">
+                        <span class="status-tag">Feasibility</span>
                         <h4>Loiyangalani Solar + Storage</h4>
+                        <p>Massive solar + battery facility on the shores of Lake Turkana, Kenya. Partnering with the Kenyan government.</p>
                         <div class="details">
                             <span><span class="label">🌞 Capacity:</span> 200 MW + 100 MWh</span>
-                            <span><span class="label">📅 Completion:</span> 2029</span>
+                            <span><span class="label">📅 Completion:</span> TBD – in investment phase</span>
                             <span><span class="label">💰 Investment:</span> $150M</span>
                             <span><span class="label">👥 Communities:</span> 3.2M</span>
                         </div>
                     </div>
                 </div>
-                <div class="solar-card reveal">
+                <div class="solar-card reveal" style="grid-column: 1 / -1; max-width: 50%; margin: 0 auto;">
                     <div class="card-img">
-                        <img src="/images/placeholder-solar.jpg" alt="Wajir Renewable Hub" loading="lazy" />
+                        <img src="/images/wajr.jpg" alt="Wajir Renewable Hub" loading="lazy" />
                     </div>
                     <div class="card-body">
+                        <span class="status-tag">Feasibility</span>
                         <h4>Wajir Renewable Hub</h4>
+                        <p>Integrated solar and wind facility in Kenya's northern frontier, connecting to the Horn of Africa grid.</p>
                         <div class="details">
                             <span><span class="label">🌞 Capacity:</span> 250 MW (solar + wind)</span>
-                            <span><span class="label">📅 Completion:</span> 2031</span>
+                            <span><span class="label">📅 Completion:</span> TBD – in investment phase</span>
                             <span><span class="label">💰 Investment:</span> $180M</span>
                             <span><span class="label">👥 Communities:</span> 4.0M</span>
                         </div>
@@ -835,8 +1055,55 @@
         </div>
     </section>
 
-    <!-- ═══ SMART CITIES 2044 (Card) ═══ -->
-    <section class="energy-section darker" id="smart">
+    <!-- ═══ SOMALIA OFFSHORE OIL & GAS PROJECT ═══ -->
+    <section class="energy-section darker" id="oil">
+        <div class="container">
+            <span class="section-badge">New Frontier</span>
+            <h2 class="section-title">Somalia Offshore <span class="accent">Oil & Gas</span></h2>
+            <p class="section-sub">
+                AM Energy is partnering with the Somali government to develop offshore oil and gas resources,
+                creating a new energy corridor for the Horn of Africa.
+            </p>
+            <div class="oil-card reveal">
+                <div class="oil-img">
+                    <img src="https://energyindustryreview.com/wp-content/uploads/2017/10/somalia-forum.jpg" alt="Somalia Offshore Oil & Gas" loading="lazy" />
+                    <span class="oil-badge">Strategic Partnership</span>
+                </div>
+                <div class="oil-body">
+                    <div class="sub">Somalia Offshore</div>
+                    <h3>Oil & Gas Exploration</h3>
+                    <p>
+                        AM Energy is working closely with the Federal Government of Somalia to unlock the
+                        country's vast offshore hydrocarbon potential. This landmark project will bring
+                        foreign direct investment, create thousands of jobs, and establish Somalia as a
+                        major energy exporter.
+                    </p>
+                    <div class="oil-stats">
+                        <div class="stat">
+                            <div class="num">30+</div>
+                            <div class="lbl">Offshore Blocks</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">$2.5B+</div>
+                            <div class="lbl">Potential Investment</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">5+</div>
+                            <div class="lbl">International Partners</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">2030</div>
+                            <div class="lbl">First Production Target</div>
+                        </div>
+                    </div>
+                    <a href="/somalia-oil-rig-project" class="btn-small">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ SMART CITIES 2044 ═══ -->
+    <section class="energy-section dark" id="smart">
         <div class="container">
             <span class="section-badge">Smart Cities 2044</span>
             <h2 class="section-title">Sustainable. <span class="accent">Intelligent.</span> Connected.</h2>
@@ -846,13 +1113,13 @@
             </p>
             <div class="smart-card reveal">
                 <div class="smart-img">
-                    <img src="/images/Nairobi.jpg" alt="Smart City Nairobi" loading="lazy" />
+                    <img src="/images/Nairobi.jpg" alt="Smart Cities" loading="lazy" />
                 </div>
                 <div class="smart-body">
                     <div class="sub">Future Vision</div>
-                    <h3>Nairobi – Africa's Smart City</h3>
+                    <h3>Nairobi & Mogadishu – Africa's Smart Cities</h3>
                     <p>
-                        By 2044, Nairobi will be a fully connected, renewable-powered metropolis – a
+                        By 2044, Nairobi & Mogadishu will be a fully connected, renewable-powered metropolis – a
                         blueprint for sustainable urban development across the continent.
                     </p>
                     <div class="smart-tags">
@@ -866,8 +1133,28 @@
         </div>
     </section>
 
+    <!-- ═══ GOVERNMENT PARTNERSHIP LOGOS ═══ -->
+    <section class="energy-section" style="padding: 20px 0;">
+        <div class="container">
+            <div class="gov-logos">
+                <div class="logo-item">
+                    <img src="https://banner2.cleanpng.com/20180810/cju/kisspng-government-of-kenya-counties-of-kenya-east-africa-ministry-of-education-kenya-myskuulkenya-5b6d493e80b4c1.5671909215338888305272.jpg" alt="Government of Kenya" loading="lazy" />
+                    <span class="logo-label">Government of Kenya</span>
+                </div>
+                <div class="divider">✦</div>
+                <div class="am-center">AM<span>Energy</span></div>
+                <div class="divider">✦</div>
+                <div class="logo-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Coat_of_arms_of_Somalia.svg" alt="Federal Government of Somalia" loading="lazy" />
+                    <span class="logo-label">Federal Government of Somalia</span>
+                </div>
+                <div class="tagline">Bridging the Horn of Africa — United for Energy Independence</div>
+            </div>
+        </div>
+    </section>
+
     <!-- ═══ INVESTMENT OPPORTUNITY ═══ -->
-    <section class="energy-section dark" id="invest">
+    <section class="energy-section darker" id="invest">
         <div class="container">
             <span class="section-badge">Invest</span>
             <h2 class="section-title">Investment <span class="accent">Opportunity</span></h2>
@@ -907,7 +1194,7 @@
     </section>
 
     <!-- ═══ VISION 2044 TIMELINE ═══ -->
-    <section class="energy-section darker" id="timeline">
+    <section class="energy-section dark" id="timeline">
         <div class="container">
             <span class="section-badge">Vision 2044</span>
             <h2 class="section-title">The <span class="accent">Roadmap</span></h2>
@@ -944,9 +1231,6 @@
                 Join us in shaping the future of energy, industry, and economic growth across the Horn of Africa.
             </p>
             <a href="/partner" class="btn-primary">Contact AM Investment</a>
-            <div class="tagline">
-                Energy Infrastructure · Renewable Generation · Regional Integration · Sustainable Growth
-            </div>
         </div>
     </section>
 
@@ -1058,7 +1342,7 @@
             });
         }, { threshold: 0.2 });
 
-        document.querySelectorAll('.reveal, .stat-card, .impact-item, .invest-card, .timeline-item, .focus-item, .solar-card, .smart-card, .overview-text').forEach(el => {
+        document.querySelectorAll('.reveal, .stat-card, .impact-item, .invest-card, .timeline-item, .focus-item, .solar-card, .smart-card, .oil-card, .overview-text').forEach(el => {
             observer.observe(el);
         });
 
