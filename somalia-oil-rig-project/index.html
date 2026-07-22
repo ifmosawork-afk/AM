@@ -153,43 +153,29 @@
             font-weight: 300;
         }
 
-        /* ─── IMAGE + TEXT CARDS ─── */
-        .content-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(122, 0, 25, 0.15);
-            border-radius: var(--radius);
-            overflow: hidden;
-            transition: var(--transition);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
+        /* ─── FULL-WIDTH IMAGE + CARD BELOW ─── */
+        .content-block {
             margin-top: 32px;
         }
-        .content-card:hover {
+        .content-block .full-img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            border-radius: var(--radius) var(--radius) 0 0;
+            display: block;
+        }
+        .content-block .text-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(122, 0, 25, 0.15);
+            border-radius: 0 0 var(--radius) var(--radius);
+            padding: 40px 36px;
+            transition: var(--transition);
+        }
+        .content-block .text-card:hover {
             border-color: rgba(192, 192, 192, 0.2);
             box-shadow: var(--shadow-red);
         }
-        .content-card .card-img {
-            height: 100%;
-            min-height: 320px;
-            overflow: hidden;
-        }
-        .content-card .card-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        .content-card:hover .card-img img {
-            transform: scale(1.03);
-        }
-        .content-card .card-body {
-            padding: 40px 36px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .content-card .card-body .sub {
+        .content-block .text-card .sub {
             color: var(--silver);
             font-size: 0.85rem;
             text-transform: uppercase;
@@ -198,32 +184,41 @@
             opacity: 0.7;
             margin-bottom: 4px;
         }
-        .content-card .card-body h3 {
+        .content-block .text-card h3 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(1.6rem, 2.5vw, 2.2rem);
             font-weight: 800;
             color: #fff;
             margin-bottom: 12px;
         }
-        .content-card .card-body p {
+        .content-block .text-card p {
             color: var(--text-muted);
             font-size: 1rem;
             line-height: 1.8;
             font-weight: 300;
             margin-bottom: 12px;
         }
-        .content-card .card-body ul {
+        .content-block .text-card ul {
             color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.8;
             padding-left: 20px;
             font-weight: 300;
         }
-        .content-card .card-body ul li {
+        .content-block .text-card ul li {
             margin-bottom: 4px;
         }
-        .content-card .card-body ul li strong {
+        .content-block .text-card ul li strong {
             color: var(--silver);
+        }
+
+        @media (max-width: 640px) {
+            .content-block .full-img {
+                height: 240px;
+            }
+            .content-block .text-card {
+                padding: 24px 20px;
+            }
         }
 
         /* ─── COST BREAKDOWN TABLE ─── */
@@ -422,12 +417,6 @@
             .revenue-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .content-card {
-                grid-template-columns: 1fr;
-            }
-            .content-card .card-img {
-                min-height: 200px;
-            }
         }
         @media (max-width: 868px) {
             .hero-metrics {
@@ -471,7 +460,7 @@
             .project-hero h1 {
                 font-size: 2.2rem;
             }
-            .content-card .card-body {
+            .content-block .text-card {
                 padding: 24px 20px;
             }
             .security-logos {
@@ -566,11 +555,9 @@
                 Mogadishu Basin, represents Somalia's first-ever offshore oil drilling operation
                 and one of the deepest exploration wells ever attempted.
             </p>
-            <div class="content-card reveal">
-                <div class="card-img">
-                    <img src="/images/oil-project.jpg" alt="Somalia Offshore Oil Project - Master Plan" loading="lazy" />
-                </div>
-                <div class="card-body">
+            <div class="content-block reveal">
+                <img src="/images/oil-project.jpg" alt="Somalia Offshore Oil Project - Master Plan" class="full-img" loading="lazy" />
+                <div class="text-card">
                     <div class="sub">The Master Plan</div>
                     <h3>Engineering a New Energy Corridor</h3>
                     <p>
@@ -603,11 +590,9 @@
         <div class="container">
             <span class="section-badge">Bird's Eye View</span>
             <h2 class="section-title">The <span class="accent">Offshore</span> Development</h2>
-            <div class="content-card reveal" style="grid-template-columns:1fr 1fr;">
-                <div class="card-img">
-                    <img src="/images/masterplan2.jpg" alt="Master Plan - Bird's Eye View" loading="lazy" />
-                </div>
-                <div class="card-body">
+            <div class="content-block reveal">
+                <img src="/images/masterplan2.jpg" alt="Master Plan - Bird's Eye View" class="full-img" loading="lazy" />
+                <div class="text-card">
                     <div class="sub">Infrastructure Vision</div>
                     <h3>Building a World-Class Energy Hub</h3>
                     <p>
@@ -630,8 +615,9 @@
         <div class="container">
             <span class="section-badge">Extraction</span>
             <h2 class="section-title">Deepwater <span class="accent">Extraction</span> Technology</h2>
-            <div class="content-card reveal" style="grid-template-columns:1fr 1fr;">
-                <div class="card-body">
+            <div class="content-block reveal">
+                <img src="/images/extraction.jpg" alt="Extraction Technology" class="full-img" loading="lazy" />
+                <div class="text-card">
                     <div class="sub">Cutting-Edge Engineering</div>
                     <h3>Ultra-Deepwater Drilling Capability</h3>
                     <p>
@@ -646,9 +632,6 @@
                         <li><strong>Safety:</strong> Industry-leading blowout preventer systems</li>
                     </ul>
                 </div>
-                <div class="card-img">
-                    <img src="/images/extraction.jpg" alt="Extraction Technology" loading="lazy" />
-                </div>
             </div>
         </div>
     </section>
@@ -658,11 +641,9 @@
         <div class="container">
             <span class="section-badge">Offshore Hub</span>
             <h2 class="section-title">Energy <span class="accent">Hub</span> of the Future</h2>
-            <div class="content-card reveal" style="grid-template-columns:1fr 1fr;">
-                <div class="card-img">
-                    <img src="/images/offshore.png" alt="Offshore Energy Hub" loading="lazy" />
-                </div>
-                <div class="card-body">
+            <div class="content-block reveal">
+                <img src="/images/offshore.png" alt="Offshore Energy Hub" class="full-img" loading="lazy" />
+                <div class="text-card">
                     <div class="sub">Regional Integration</div>
                     <h3>Connecting East Africa to Global Markets</h3>
                     <p>
@@ -781,11 +762,9 @@
                 The project is secured through a tripartite security arrangement between the
                 Turkish Navy, the Somali Navy, and AM Energy's private security forces.
             </p>
-            <div class="content-card reveal" style="grid-template-columns:1fr 1fr;">
-                <div class="card-img">
-                    <img src="https://www.navalnews.com/wp-content/uploads/2021/02/Analysis-The-Future-of-the-Turkish-Navy.jpg" alt="Turkish Navy" loading="lazy" />
-                </div>
-                <div class="card-body">
+            <div class="content-block reveal">
+                <img src="https://www.navalnews.com/wp-content/uploads/2021/02/Analysis-The-Future-of-the-Turkish-Navy.jpg" alt="Turkish Navy" class="full-img" loading="lazy" />
+                <div class="text-card">
                     <div class="sub">Asset Protection</div>
                     <h3>24/7 Military-Grade Security</h3>
                     <p>
@@ -907,12 +886,12 @@
                 <div class="footer-col">
                     <h4>Company</h4>
                     <ul>
+                        <li><a href="/">Home</a></li>
                         <li><a href="/about">About</a></li>
                         <li><a href="/#companies">Companies</a></li>
                         <li><a href="/investments">Investments</a></li>
-                        <li><a href="/energy">Energy</a></li>
-                        <li><a href="/careers">Careers</a></li>
-                        <li><a href="/partner">Contact</a></li>
+                        <li><a href="/partner">Partner With Us</a></li>
+                        <li><a href="/contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -957,7 +936,7 @@
             });
         }, { threshold: 0.2 });
 
-        document.querySelectorAll('.reveal, .revenue-item, .invest-card, .content-card').forEach(el => {
+        document.querySelectorAll('.reveal, .revenue-item, .invest-card, .content-block').forEach(el => {
             observer.observe(el);
         });
 
