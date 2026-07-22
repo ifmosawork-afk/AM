@@ -50,6 +50,23 @@
                 height: 260px;
             }
         }
+
+        /* Make sectors grid 4 columns */
+        .sectors-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        @media (max-width: 1024px) {
+            .sectors-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .sectors-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -92,7 +109,7 @@
 
             <p>
                 AM International Group is a diversified business group investing in construction, real estate,
-                food supply and future-growth industries across Africa, Europe and the Gulf region.
+                energy, food supply and future-growth industries across Africa, Europe and the Gulf region.
             </p>
 
             <div class="hero-buttons">
@@ -125,7 +142,7 @@
         </div>
     </div>
 
-    <!-- ═══ SECTORS (3 CARDS) ═══ -->
+    <!-- ═══ SECTORS (4 CARDS) ═══ -->
     <section id="sectors">
         <div class="container">
             <div class="section-title">
@@ -173,6 +190,19 @@
                         <a href="/am-food-supply" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
+
+                <!-- Energy -->
+                <div class="sector-card">
+                    <div class="card-img">
+                        <img src="images/am-energy-hero.jpg" alt="Energy" loading="lazy" />
+                        <div class="overlay-glow"></div>
+                    </div>
+                    <div class="card-body">
+                        <h3>Energy</h3>
+                        <p>Developing renewable generation, cross‑border transmission, and oil & gas infrastructure across East Africa.</p>
+                        <a href="/energy" class="card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -188,15 +218,15 @@
                         building and scaling businesses that solve real-world challenges.
                     </p>
                     <p>
-                        From infrastructure and property development to food distribution and strategic
-                        investments, we create long-term value through innovation, partnerships
-                        and disciplined execution.
+                        From infrastructure and property development to food distribution, energy
+                        infrastructure, and strategic investments, we create long-term value through
+                        innovation, partnerships and disciplined execution.
                     </p>
                     <a href="/about" class="btn-primary">Learn More</a>
                 </div>
                 <div class="about-stats">
                     <div class="stat">
-                        <div class="num">3</div>
+                        <div class="num">4</div>
                         <div class="label">Core Verticals</div>
                     </div>
                     <div class="stat">
@@ -216,7 +246,7 @@
         </div>
     </section>
 
-    <!-- ═══ COMPANIES (only 3) ═══ -->
+    <!-- ═══ COMPANIES (4) ═══ -->
     <section id="companies">
         <div class="container">
             <div class="section-title">
@@ -225,7 +255,7 @@
                 <div class="accent-line"></div>
             </div>
 
-            <div class="companies-grid">
+            <div class="companies-grid" style="grid-template-columns: repeat(4, 1fr);">
                 <div class="company-card">
                     <div class="icon-wrap"><i class="fas fa-building"></i></div>
                     <h3>AM Construction</h3>
@@ -243,6 +273,12 @@
                     <h3>AM Foods</h3>
                     <p>Food distribution and supply solutions.</p>
                     <a href="/am-food-supply" class="btn-small">View Company</a>
+                </div>
+                <div class="company-card">
+                    <div class="icon-wrap"><i class="fas fa-bolt"></i></div>
+                    <h3>AM Energy</h3>
+                    <p>Renewable generation, cross-border transmission, and oil & gas infrastructure.</p>
+                    <a href="/energy" class="btn-small">View Company</a>
                 </div>
             </div>
         </div>
@@ -375,7 +411,7 @@
                     <div class="tagline">"Building Businesses For Tomorrow"</div>
                     <p style="max-width:300px;">
                         AM International Group is a diversified business group investing across
-                        construction, real estate, food supply, and strategic partnerships.
+                        construction, real estate, energy, food supply, and strategic partnerships.
                     </p>
                     <div class="footer-social">
                         <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -391,8 +427,8 @@
                         <li><a href="/about">About</a></li>
                         <li><a href="#companies">Companies</a></li>
                         <li><a href="/investments">Investments</a></li>
+                        <li><a href="/energy">Energy</a></li>
                         <li><a href="/careers">Careers</a></li>
-                        <li><a href="/news">News</a></li>
                         <li><a href="/partner">Partner</a></li>
                     </ul>
                 </div>
