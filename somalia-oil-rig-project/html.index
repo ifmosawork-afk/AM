@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Somalia Offshore Oil & Gas | AM Energy</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Global Stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <style>
+        /* ─── PAGE-SPECIFIC STYLES ─── */
+        .project-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 24px 80px;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-dark);
+            background-image: url('https://energyindustryreview.com/wp-content/uploads/2017/10/somalia-forum.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .project-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 10, 10, 0.75);
+            z-index: 1;
+        }
+        .project-hero .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+        .project-hero h1 {
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #FFFFFF 30%, var(--silver-light) 70%, var(--silver) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .project-hero h1 .accent {
+            color: var(--primary);
+            -webkit-text-fill-color: var(--primary);
+        }
+        .project-hero .subtitle {
+            font-size: clamp(1rem, 1.2vw, 1.2rem);
+            color: var(--silver);
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.7;
+            margin-bottom: 8px;
+        }
+        .project-hero p {
+            color: rgba(255,255,255,0.8);
+            font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+            max-width: 700px;
+            margin: 0 auto 32px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin: 32px 0 40px;
+        }
+        .hero-metrics .metric-item {
+            text-align: center;
+        }
+        .hero-metrics .metric-item .number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--silver);
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-metrics .metric-item .label {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            font-weight: 300;
+            margin-top: 4px;
+        }
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .energy-section {
+            padding: 80px 0;
+            position: relative;
+        }
+        .energy-section.dark {
+            background: rgba(20, 20, 20, 0.6);
+            border-top: 1px solid rgba(192, 192, 192, 0.06);
+            border-bottom: 1px solid rgba(192, 192, 192, 0.06);
+        }
+        .energy-section.darker {
+            background: var(--bg-dark);
+        }
+
+        .section-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--silver);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+            opacity: 0.7;
+        }
+        .section-title {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #fff 40%, var(--silver-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-title .accent {
+            color: var(--primary);
+            -webkit-text-fill-color: var(--primary);
+        }
+        .section-sub {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* ─── IMAGE + TEXT CARDS ─── */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(122, 0, 25, 0.15);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: var(--transition);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin-top: 32px;
+        }
+        .content-card:hover {
+            border-color: rgba(192, 192, 192, 0.2);
+            box-shadow: var(--shadow-red);
+        }
+        .content-card .card-img {
+            height: 100%;
+            min-height: 320px;
+            overflow: hidden;
+        }
+        .content-card .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .content-card:hover .card-img img {
+            transform: scale(1.03);
+        }
+        .content-card .card-body {
+            padding: 40px 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .content-card .card-body .sub {
+            color: var(--silver);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 300;
+            opacity: 0.7;
+            margin-bottom: 4px;
+        }
+        .content-card .card-body h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .content-card .card-body p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 12px;
+        }
+        .content-card .card-body ul {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            padding-left: 20px;
+            font-weight: 300;
+        }
+        .content-card .card-body ul li {
+            margin-bottom: 4px;
+        }
+        .content-card .card-body ul li strong {
+            color: var(--silver);
+        }
+
+        /* ─── COST BREAKDOWN TABLE ─── */
+        .cost-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0 16px;
+            font-size: 0.95rem;
+            background: rgba(20, 20, 20, 0.5);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+        .cost-table thead {
+            background: rgba(122, 0, 25, 0.2);
+        }
+        .cost-table th {
+            color: var(--silver);
+            font-weight: 600;
+            text-align: left;
+            padding: 14px 20px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .cost-table td {
+            padding: 14px 20px;
+            color: var(--text-muted);
+            border-bottom: 1px solid rgba(192, 192, 192, 0.04);
+        }
+        .cost-table tr:last-child td {
+            border-bottom: none;
+        }
+        .cost-table td:first-child {
+            font-weight: 500;
+            color: #fff;
+        }
+        .cost-table td strong {
+            color: var(--silver);
+        }
+
+        /* ─── REVENUE PROJECTIONS ─── */
+        .revenue-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+        }
+        .revenue-item {
+            background: var(--bg-card);
+            border: 1px solid rgba(122, 0, 25, 0.12);
+            border-radius: var(--radius);
+            padding: 24px 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .revenue-item:hover {
+            border-color: rgba(192, 192, 192, 0.2);
+            box-shadow: var(--shadow-red);
+        }
+        .revenue-item .year {
+            font-size: 0.85rem;
+            color: var(--silver);
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .revenue-item .amount {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--silver);
+            font-family: 'Playfair Display', serif;
+            margin: 8px 0;
+        }
+        .revenue-item .desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        /* ─── SECURITY LOGOS ─── */
+        .security-logos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            padding: 40px 20px;
+            flex-wrap: wrap;
+            border-top: 1px solid rgba(192, 192, 192, 0.06);
+            border-bottom: 1px solid rgba(192, 192, 192, 0.06);
+            background: rgba(20, 20, 20, 0.3);
+        }
+        .security-logos .logo-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .security-logos .logo-item img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+        .security-logos .logo-item .logo-label {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+        .security-logos .divider {
+            color: var(--silver);
+            font-size: 1.2rem;
+            opacity: 0.3;
+            font-weight: 300;
+        }
+        .security-logos .am-center {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--silver);
+            letter-spacing: 2px;
+        }
+        .security-logos .am-center span {
+            color: var(--primary);
+        }
+        .security-logos .tagline {
+            width: 100%;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            opacity: 0.5;
+            margin-top: 6px;
+        }
+
+        /* ─── INVESTMENT ─── */
+        .invest-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+        }
+        .invest-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(122, 0, 25, 0.12);
+            border-radius: var(--radius);
+            padding: 24px 20px;
+            transition: var(--transition);
+            text-align: center;
+        }
+        .invest-card:hover {
+            border-color: rgba(192, 192, 192, 0.2);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-red);
+        }
+        .invest-card .title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--silver);
+            margin-bottom: 4px;
+            font-family: 'Playfair Display', serif;
+        }
+        .invest-card .min {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .invest-card .return {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin: 8px 0;
+            color: var(--silver);
+        }
+        .invest-card .benefits {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ─── REVEAL ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            .invest-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .revenue-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .content-card {
+                grid-template-columns: 1fr;
+            }
+            .content-card .card-img {
+                min-height: 200px;
+            }
+        }
+        @media (max-width: 868px) {
+            .hero-metrics {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+            .hero-metrics .metric-item .number {
+                font-size: 1.6rem;
+            }
+            .security-logos {
+                gap: 20px;
+            }
+            .security-logos .logo-item img {
+                height: 40px;
+            }
+            .security-logos .am-center {
+                font-size: 1rem;
+            }
+            .cost-table {
+                font-size: 0.85rem;
+            }
+            .cost-table th,
+            .cost-table td {
+                padding: 10px 14px;
+            }
+        }
+        @media (max-width: 640px) {
+            .revenue-grid {
+                grid-template-columns: 1fr;
+            }
+            .invest-grid {
+                grid-template-columns: 1fr;
+            }
+            .energy-section {
+                padding: 60px 0;
+            }
+            .project-hero {
+                min-height: 80vh;
+                padding: 100px 24px 40px;
+            }
+            .project-hero h1 {
+                font-size: 2.2rem;
+            }
+            .content-card .card-body {
+                padding: 24px 20px;
+            }
+            .security-logos {
+                gap: 12px;
+                padding: 20px 10px;
+            }
+            .security-logos .logo-item img {
+                height: 30px;
+            }
+            .security-logos .divider {
+                font-size: 0.8rem;
+            }
+            .security-logos .am-center {
+                font-size: 0.8rem;
+            }
+            .cost-table {
+                font-size: 0.75rem;
+            }
+            .cost-table th,
+            .cost-table td {
+                padding: 8px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ HEADER ═══ -->
+    <header id="header">
+        <div class="container nav-wrapper">
+            <a href="/" class="nav-logo">
+                <img src="/favicon.png" alt="AM International Group" />
+                <span>AM<span style="font-weight:300;color:var(--text-muted);font-size:0.7rem;display:block;letter-spacing:1px;font-family:'Inter',sans-serif;">INTERNATIONAL GROUP</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/about">About</a></li>
+                <li><a href="/#companies">Companies</a></li>
+                <li><a href="/investments">Investments</a></li>
+                <li><a href="/energy">Energy</a></li>
+                <li class="nav-cta">
+                    <a href="/partner" class="btn-primary" style="padding:10px 24px;font-size:0.85rem;">Be a Partner</a>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="project-hero" id="hero">
+        <div class="hero-content">
+            <div class="subtitle">AM Energy · Somalia Offshore</div>
+            <h1>Unlocking the <span class="accent">Horn of Africa's</span> Energy Future</h1>
+            <p>
+                AM Investments are here to develop one of the world's largest untapped offshore hydrocarbon provinces. With an
+                estimated 30 to 40 billion barrels of oil and gas equivalent, the Curad-1 well and
+                surrounding blocks represent a transformative opportunity for the region.
+            </p>
+            <div class="hero-metrics">
+                <div class="metric-item">
+                    <div class="number">30–40B</div>
+                    <div class="label">Barrels of Oil Equivalent</div>
+                </div>
+                <div class="metric-item">
+                    <div class="number">500K</div>
+                    <div class="label">Barrels per Day Target</div>
+                </div>
+                <div class="metric-item">
+                    <div class="number">$2.5B+</div>
+                    <div class="label">Total Investment</div>
+                </div>
+                <div class="metric-item">
+                    <div class="number">2045</div>
+                    <div class="label">Full Production Horizon</div>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="#overview" class="btn-primary">Learn More</a>
+                <a href="#invest" class="btn-secondary">Investment Opportunities</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ PROJECT OVERVIEW ═══ -->
+    <section class="energy-section darker" id="overview">
+        <div class="container">
+            <span class="section-badge">Project Overview</span>
+            <h2 class="section-title">The <span class="accent">Curad-1</span> Exploration</h2>
+            <p class="section-sub">
+                The Curad-1 well, located approximately 372 kilometres northeast of Mogadishu in the
+                Mogadishu Basin, represents Somalia's first-ever offshore oil drilling operation
+                and one of the deepest exploration wells ever attempted.
+            </p>
+            <div class="content-card reveal">
+                <div class="card-img">
+                    <img src="/images/oil-project.jpg" alt="Somalia Offshore Oil Project - Master Plan" loading="lazy" />
+                </div>
+                <div class="card-body">
+                    <div class="sub">The Master Plan</div>
+                    <h3>Engineering a New Energy Corridor</h3>
+                    <p>
+                        The project encompasses three offshore exploration blocks—142, 152, and 153—each
+                        spanning approximately 5,000 square kilometres. The operation is being
+                        executed by Türkiye's state-owned Turkish Petroleum Corporation (TPAO) using the
+                        deep-water drilling vessel Çagir Bey, escorted by Turkish naval warships.
+                    </p>
+                    <ul>
+                        <li><strong>Water Depth:</strong> ~3,500 metres</li>
+                        <li><strong>Target Depth:</strong> ~7,500 metres</li>
+                        <li><strong>Drilling Duration:</strong> Up to 288 days</li>
+                        <li><strong>Blocks:</strong> 142, 152, 153</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.8;font-weight:300;margin-top:24px;">
+                <strong style="color:var(--silver);">Geological Context:</strong> The Mogadishu Basin and surrounding
+                structures were formed during the Mesozoic rifting of the Gondwana supercontinent.
+                Hydrocarbon-bearing formations are believed to exist in both Jurassic and Cretaceous strata,
+                with multiple potential source rocks, reservoirs, and trapping configurations.
+                Only eight wells have been drilled historically in Somali waters—just two in the Somali Basin—
+                and none have produced a commercial discovery, leaving this province largely untested.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ MASTER PLAN VIEW ═══ -->
+    <section class="energy-section dark" id="masterplan">
+        <div class="container">
+            <span class="section-badge">Bird's Eye View</span>
+            <h2 class="section-title">The <span class="accent">Offshore</span> Development</h2>
+            <div class="content-card reveal" style="grid-template-columns:1fr 1fr;">
+                <div class="card-img">
+                    <img src="/images/masterplan2.jpg" alt="Master Plan - Bird's Eye View" loading="lazy" />
+                </div>
+                <div class="card-body">
+                    <div class="sub">Infrastructure Vision</div>
+                    <h3>Building a World-Class Energy Hub</h3>
+                    <p>
+                        The development includes offshore platforms, subsea pipelines, floating production
+                        storage and offloading (FPSO) vessels, and onshore processing facilities. The project
+                        is designed to support production of up to 500,000 barrels per day by 2028.
+                    </p>
+                    <ul>
+                        <li><strong>Production Target:</strong> 500,000 b/d by 2028</li>
+                        <li><strong>Export Route:</strong> Direct shipping to global markets</li>
+                        <li><strong>Strategic Advantage:</strong> No Strait of Hormuz transit</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ EXTRACTION SECTION ═══ -->
+    <section class="energy-section darker" id="extraction">
+        <div class="container">
+            <span class="section-badge">Extraction</span>
+            <h2 class="section-title">Deepwater <span class="accent">Extraction</span> Technology</h2>
+            <div class="content-card reveal" style="grid-template-columns:1fr 1fr;">
+                <div class="card-body">
+                    <div class="sub">Cutting-Edge Engineering</div>
+                    <h3>Ultra-Deepwater Drilling Capability</h3>
+                    <p>
+                        The Curad-1 well is being drilled using TPAO's state-of-the-art drillship,
+                        capable of reaching depths of 7,500 metres in 3,500 metres of water.
+                        This makes it one of the most technically ambitious offshore drilling projects
+                        in the world.
+                    </p>
+                    <ul>
+                        <li><strong>Drillship:</strong> Çagir Bey</li>
+                        <li><strong>Technology:</strong> Ultra-deepwater dynamic positioning</li>
+                        <li><strong>Safety:</strong> Industry-leading blowout preventer systems</li>
+                    </ul>
+                </div>
+                <div class="card-img">
+                    <img src="/images/extraction.jpg" alt="Extraction Technology" loading="lazy" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ OFFSHORE HUB ═══ -->
+    <section class="energy-section dark" id="hub">
+        <div class="container">
+            <span class="section-badge">Offshore Hub</span>
+            <h2 class="section-title">Energy <span class="accent">Hub</span> of the Future</h2>
+            <div class="content-card reveal" style="grid-template-columns:1fr 1fr;">
+                <div class="card-img">
+                    <img src="/images/offshore.png" alt="Offshore Energy Hub" loading="lazy" />
+                </div>
+                <div class="card-body">
+                    <div class="sub">Regional Integration</div>
+                    <h3>Connecting East Africa to Global Markets</h3>
+                    <p>
+                        The offshore hub will serve as a focal point for energy production, processing,
+                        and export across the Horn of Africa. It will include:
+                    </p>
+                    <ul>
+                        <li><strong>FPSO Vessels:</strong> Floating production, storage, and offloading</li>
+                        <li><strong>Subsea Pipelines:</strong> Connecting wells to processing platforms</li>
+                        <li><strong>Export Terminals:</strong> Direct tanker loading for global markets</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ COST BREAKDOWN ═══ -->
+    <section class="energy-section darker" id="cost">
+        <div class="container">
+            <span class="section-badge">Capital Expenditure</span>
+            <h2 class="section-title">Investment <span class="accent">Breakdown</span></h2>
+            <p class="section-sub">
+                The project requires substantial upfront investment, with an estimated total of
+                <strong style="color:var(--silver);">$2.5 billion</strong> for exploration and development.
+                Drilling a single offshore well can easily exceed $100 million.
+            </p>
+            <table class="cost-table">
+                <thead>
+                    <tr>
+                        <th>Phase</th>
+                        <th>Estimated Cost (USD)</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Seismic & Exploration</td>
+                        <td>$500M – $800M</td>
+                        <td>3D seismic surveys, geological studies, exploration drilling</td>
+                    </tr>
+                    <tr>
+                        <td>Platform & Infrastructure</td>
+                        <td>$800M – $1.2B</td>
+                        <td>Offshore platforms, FPSO vessels, subsea pipelines</td>
+                    </tr>
+                    <tr>
+                        <td>Onshore Facilities</td>
+                        <td>$300M – $500M</td>
+                        <td>Processing plants, storage terminals, logistics hubs</td>
+                    </tr>
+                    <tr>
+                        <td>Security & Logistics</td>
+                        <td>$200M – $300M</td>
+                        <td>Naval protection, perimeter security, supply chain</td>
+                    </tr>
+                    <tr style="border-top:2px solid rgba(192,192,192,0.15);">
+                        <td><strong>Total Estimated Investment</strong></td>
+                        <td><strong>$1.8B – $2.8B</strong></td>
+                        <td><strong>Full development cycle</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size:0.9rem;color:var(--text-muted);font-style:italic;margin-top:8px;">
+                * Under the Turkey-Somalia agreement, TPAO may recover up to 90% of production revenue
+                to offset exploration and operational costs in the early stages.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ REVENUE PROJECTIONS ═══ -->
+    <section class="energy-section dark" id="revenue">
+        <div class="container">
+            <span class="section-badge">Financial Projections</span>
+            <h2 class="section-title">Revenue & Production <span class="accent">Outlook to 2045</span></h2>
+            <p class="section-sub">
+                Production is projected to scale from initial discoveries to full commercial output,
+                generating substantial revenue for Somalia and its partners.
+            </p>
+            <div class="revenue-grid">
+                <div class="revenue-item reveal">
+                    <div class="year">2028</div>
+                    <div class="amount">500K b/d</div>
+                    <div class="desc">Turkey's target production rate</div>
+                </div>
+                <div class="revenue-item reveal">
+                    <div class="year">2035</div>
+                    <div class="amount">300K b/d</div>
+                    <div class="desc">Industry analysts' medium-term projection</div>
+                </div>
+                <div class="revenue-item reveal">
+                    <div class="year">2045</div>
+                    <div class="amount">1M+ b/d</div>
+                    <div class="desc">Full production potential horizon</div>
+                </div>
+            </div>
+            <div style="margin-top:24px;background:rgba(122,0,25,0.08);border:1px solid rgba(122,0,25,0.15);border-radius:var(--radius);padding:24px 28px;">
+                <p style="color:var(--text-muted);font-size:1rem;line-height:1.8;font-weight:300;margin-bottom:0;">
+                    <strong style="color:var(--silver);">Projected Revenue by 2045:</strong>
+                    At current oil prices (~$80/bbl), full production of 1M b/d would generate
+                    <strong style="color:var(--silver);">$29 billion annually</strong>
+                    in gross revenue. With a 5% royalty and cost recovery structure, Somalia could
+                    capture <strong style="color:var(--silver);">$1.5–$2 billion</strong> in annual
+                    government revenue once costs are recovered, with profit-sharing escalating
+                    over time.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ SECURITY PARTNERSHIP ═══ -->
+    <section class="energy-section darker" id="security">
+        <div class="container">
+            <span class="section-badge">Security Guarantee</span>
+            <h2 class="section-title">Naval <span class="accent">Protection</span> Partnership</h2>
+            <p class="section-sub">
+                The project is secured through a tripartite security arrangement between the
+                Turkish Navy, the Somali Navy, and AM Energy's private security forces.
+            </p>
+            <div class="content-card reveal" style="grid-template-columns:1fr 1fr;">
+                <div class="card-img">
+                    <img src="https://www.navalnews.com/wp-content/uploads/2021/02/Analysis-The-Future-of-the-Turkish-Navy.jpg" alt="Turkish Navy" loading="lazy" />
+                </div>
+                <div class="card-body">
+                    <div class="sub">Asset Protection</div>
+                    <h3>24/7 Military-Grade Security</h3>
+                    <p>
+                        The drilling vessel and all associated infrastructure are escorted and protected
+                        by Turkish naval warships. The Somali Navy provides coastal patrol and
+                        territorial water security, while AM Energy coordinates integrated intelligence
+                        and perimeter defense.
+                    </p>
+                    <ul>
+                        <li><strong>Turkish Navy:</strong> Deepwater asset protection</li>
+                        <li><strong>Somali Navy:</strong> Coastal and territorial security</li>
+                        <li><strong>AM Energy:</strong> Integrated intelligence &amp; coordination</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ PARTNERSHIP LOGOS ═══ -->
+    <section class="energy-section" style="padding: 20px 0;">
+        <div class="container">
+            <div class="security-logos">
+                <div class="logo-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Seal_of_the_Turkish_Navy.svg/500px-Seal_of_the_Turkish_Navy.svg.png" alt="Turkish Navy" loading="lazy" />
+                    <span class="logo-label">Turkish Navy</span>
+                </div>
+                <div class="divider">✦</div>
+                <div class="logo-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Somali_naval_ensign.svg" alt="Somali Navy" loading="lazy" />
+                    <span class="logo-label">Somali Navy</span>
+                </div>
+                <div class="divider">✦</div>
+                <div class="am-center">AM<span>Energy</span></div>
+                <div class="divider">✦</div>
+                <div class="logo-item">
+                    <img src="https://logowik.com/content/uploads/images/ministry-of-foreign-affairs-turkey9257.logowik.com.webp" alt="Government of Türkiye" loading="lazy" />
+                    <span class="logo-label">Republic of Türkiye</span>
+                </div>
+                <div class="divider">✦</div>
+                <div class="logo-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Coat_of_arms_of_Somalia.svg" alt="Federal Government of Somalia" loading="lazy" />
+                    <span class="logo-label">Federal Government of Somalia</span>
+                </div>
+                <div class="tagline">United for Energy Security — Protecting the Horn of Africa's Resources</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ INVESTMENT OPPORTUNITY ═══ -->
+    <section class="energy-section dark" id="invest">
+        <div class="container">
+            <span class="section-badge">Invest</span>
+            <h2 class="section-title">Investment <span class="accent">Opportunity</span></h2>
+            <p class="section-sub">
+                Partner with AM Energy, the Government of Somalia, and the Republic of Türkiye to develop
+                one of the world's last great frontier oil provinces.
+            </p>
+            <div class="invest-grid">
+                <div class="invest-card reveal">
+                    <div class="title">Founding Partner</div>
+                    <div class="min">Min: $5M</div>
+                    <div class="return">35-45% IRR</div>
+                    <div class="benefits">Equity stake in the project · Board representation · First rights on production</div>
+                </div>
+                <div class="invest-card reveal">
+                    <div class="title">Strategic Investor</div>
+                    <div class="min">Min: $2M</div>
+                    <div class="return">25-35% IRR</div>
+                    <div class="benefits">Equity or convertible notes · Technical partnership opportunities</div>
+                </div>
+                <div class="invest-card reveal">
+                    <div class="title">Infrastructure Bond</div>
+                    <div class="min">Min: $250K</div>
+                    <div class="return">15-18% Fixed</div>
+                    <div class="benefits">Senior secured bonds · Sovereign-backed guarantee · Project-specific</div>
+                </div>
+                <div class="invest-card reveal">
+                    <div class="title">Early Backer</div>
+                    <div class="min">Min: $100K</div>
+                    <div class="return">40-50% IRR</div>
+                    <div class="benefits">Seed-stage equity · High-growth potential · Early-mover advantage</div>
+                </div>
+            </div>
+            <div style="text-align:center; margin-top:40px;">
+                <a href="/partner" class="btn-primary">Request Investment Memorandum</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FINAL CTA ═══ -->
+    <section class="energy-section darker" style="border-bottom:none;">
+        <div class="container" style="text-align:center;">
+            <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:800;background:linear-gradient(135deg,#fff 40%,var(--silver-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;">Join the <span style="color:var(--primary);-webkit-text-fill-color:var(--primary);">Energy Revolution</span></h2>
+            <p style="color:var(--text-muted);font-size:1.1rem;line-height:1.8;max-width:600px;margin:0 auto 24px;font-weight:300;">
+                Be part of the transformation that will power the Horn of Africa and reshape the global energy map.
+            </p>
+            <a href="/partner" class="btn-primary">Contact AM Investment</a>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="/favicon.png" alt="AM International Group" />
+                    <div class="tagline">"Building Businesses For Tomorrow"</div>
+                    <p style="max-width:300px;">
+                        AM International Group is a diversified business group investing across
+                        construction, real estate, food supply, and strategic partnerships.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/#companies">Companies</a></li>
+                        <li><a href="/investments">Investments</a></li>
+                        <li><a href="/energy">Energy</a></li>
+                        <li><a href="/careers">Careers</a></li>
+                        <li><a href="/partner">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Industries</h4>
+                    <ul>
+                        <li><a href="/am-construction">Construction</a></li>
+                        <li><a href="/am-realestate">Real Estate</a></li>
+                        <li><a href="/am-food-supply">Food &amp; Supply</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="mailto:info@am-internationalgroup.com"><i class="fas fa-envelope" style="width:20px;"></i> info@am-internationalgroup.com</a></li>
+                        <li><a href="tel:+447943146345"><i class="fas fa-phone" style="width:20px;"></i> +44 7943 146345</a></li>
+                        <li><a href="#"><i class="fas fa-map-pin" style="width:20px;"></i> London, United Kingdom</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AM International Group. All rights reserved.</p>
+                <div class="legal">
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms of Service</a>
+                    <a href="/cookies">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══ Global JavaScript ═══ -->
+    <script src="/script.js"></script>
+
+    <!-- ═══ PAGE-SPECIFIC SCRIPTS ═══ -->
+    <script>
+        // ─── SCROLL REVEAL ───
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.reveal, .revenue-item, .invest-card, .content-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ─── HAMBURGER TOGGLE (fallback) ───
+        (function() {
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('navLinks');
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    navLinks.classList.toggle('open');
+                });
+                document.querySelectorAll('.nav-links a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        hamburger.classList.remove('active');
+                        navLinks.classList.remove('open');
+                    });
+                });
+            }
+        })();
+
+        // ─── HEADER SCROLL EFFECT ───
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 40) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        console.log('🛢️ Somalia Offshore Oil & Gas — Unlocking the Horn of Africa\'s Energy Future.');
+    </script>
+</body>
+</html>
