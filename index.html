@@ -17,7 +17,7 @@
     <!-- Global Stylesheet -->
     <link rel="stylesheet" href="style.css" />
 
-    <!-- Additional style for map iframe -->
+    <!-- Additional style for map iframe and responsive grids -->
     <style>
         .map-iframe-wrapper {
             position: relative;
@@ -51,8 +51,12 @@
             }
         }
 
-        /* Make sectors grid 4 columns */
+        /* ─── RESPONSIVE GRID OVERRIDES ─── */
         .sectors-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .companies-grid {
             grid-template-columns: repeat(4, 1fr);
         }
 
@@ -60,10 +64,16 @@
             .sectors-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .companies-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 640px) {
             .sectors-grid {
+                grid-template-columns: 1fr;
+            }
+            .companies-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -255,7 +265,7 @@
                 <div class="accent-line"></div>
             </div>
 
-            <div class="companies-grid" style="grid-template-columns: repeat(4, 1fr);">
+            <div class="companies-grid">
                 <div class="company-card">
                     <div class="icon-wrap"><i class="fas fa-building"></i></div>
                     <h3>AM Construction</h3>
@@ -298,7 +308,7 @@
                     <span class="check"><i class="fas fa-check-circle"></i></span>
                     <div>
                         <h4>Focused Expertise</h4>
-                        <p>Deep knowledge in three core industries</p>
+                        <p>Deep knowledge in four core industries</p>
                     </div>
                 </div>
                 <div class="why-item">
