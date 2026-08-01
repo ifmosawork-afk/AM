@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Team | AM International Group</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Global Stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <style>
+        .page-hero {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 140px 24px 60px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 30% 20%, rgba(122, 0, 25, 0.25), transparent 60%),
+                        radial-gradient(ellipse at 70% 80%, rgba(192, 192, 192, 0.05), transparent 50%),
+                        var(--bg-dark);
+            border-bottom: 1px solid rgba(192, 192, 192, 0.06);
+        }
+        .page-hero .hero-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(192, 192, 192, 0.04);
+            pointer-events: none;
+            animation: ringPulse 12s ease-in-out infinite alternate;
+        }
+        .page-hero .hero-ring:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            top: -80px;
+            right: -80px;
+            animation-delay: 0s;
+        }
+        .page-hero .hero-ring:nth-child(2) {
+            width: 350px;
+            height: 350px;
+            bottom: -40px;
+            left: -40px;
+            animation-delay: 4s;
+        }
+        .page-hero h1 {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 900;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #FFFFFF 30%, var(--silver-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+        .page-hero .subtitle {
+            font-size: clamp(1.1rem, 1.6vw, 1.5rem);
+            color: var(--silver);
+            font-weight: 300;
+            letter-spacing: 2px;
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+        .page-hero p {
+            color: var(--text-muted);
+            font-size: clamp(1rem, 1.2vw, 1.2rem);
+            max-width: 720px;
+            margin: 16px auto 0;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .team-section {
+            padding: 80px 0;
+            background: var(--bg-dark);
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .team-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            border: 1px solid rgba(122, 0, 25, 0.15);
+            padding: 40px 32px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .team-card::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: var(--radius);
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(122, 0, 25, 0.3), rgba(192, 192, 192, 0.1));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            transition: all 0.4s ease;
+            opacity: 0;
+        }
+        .team-card:hover {
+            border-color: rgba(192, 192, 192, 0.25);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-red), 0 8px 60px rgba(192, 192, 192, 0.04);
+        }
+        .team-card:hover::before {
+            opacity: 1;
+        }
+        .team-card .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: rgba(122, 0, 25, 0.15);
+            border: 3px solid var(--silver);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--silver);
+            transition: var(--transition);
+        }
+        .team-card:hover .avatar {
+            border-color: var(--primary);
+            background: rgba(122, 0, 25, 0.25);
+            color: #fff;
+        }
+        .team-card .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .team-card .title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--silver);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        .team-card .location {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            margin-bottom: 16px;
+        }
+        .team-card .location i {
+            color: var(--primary);
+            margin-right: 6px;
+        }
+        .team-card .bio {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+        .team-card .social {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+        .team-card .social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(192, 192, 192, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+        .team-card .social a:hover {
+            border-color: var(--silver);
+            color: var(--silver);
+            background: rgba(192, 192, 192, 0.06);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 868px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+            .page-hero {
+                min-height: 40vh;
+                padding: 120px 24px 50px;
+            }
+        }
+        @media (max-width: 640px) {
+            .team-card {
+                padding: 30px 20px;
+            }
+            .team-card .avatar {
+                width: 90px;
+                height: 90px;
+                font-size: 3rem;
+            }
+            .team-card .name {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ HEADER ═══ -->
+    <header id="header">
+        <div class="container nav-wrapper">
+            <a href="/" class="nav-logo">
+                <img src="/favicon.png" alt="AM International Group" />
+                <span>AM<span style="font-weight:300;color:var(--text-muted);font-size:0.7rem;display:block;letter-spacing:1px;font-family:'Inter',sans-serif;">INTERNATIONAL GROUP</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/about">About</a></li>
+                <li><a href="/team">Team</a></li>
+                <li><a href="/#companies">Companies</a></li>
+                <li><a href="/investments">Investments</a></li>
+                <li><a href="/energy">Energy</a></li>
+                <li class="nav-cta">
+                    <a href="/partner" class="btn-primary" style="padding:10px 24px;font-size:0.85rem;">Partner With Us</a>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="page-hero">
+        <div class="hero-ring"></div>
+        <div class="hero-ring"></div>
+        <div class="hero-content" style="position:relative;z-index:2;">
+            <div class="subtitle">Our Leadership</div>
+            <h1>Building the Future, Together</h1>
+            <p>
+                Meet the experienced team driving AM International Group’s vision across East Africa,
+                Europe, and the Gulf region.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ TEAM CARDS ═══ -->
+    <section class="team-section">
+        <div class="container">
+            <div class="team-grid">
+                <!-- CEO Card -->
+                <div class="team-card">
+                    <div class="avatar"><i class="fas fa-user-circle"></i></div>
+                    <div class="name">Abdisamad Mohammed</div>
+                    <div class="title">Chief Executive Officer</div>
+                    <div class="location"><i class="fas fa-map-pin"></i> Garwoe, Somalia</div>
+                    <div class="bio">
+                        With over 20 years of experience in project management and building developments,
+                        Abdisamad leads AM International Group with a clear vision for East Africa’s
+                        economic transformation. His expertise spans large-scale infrastructure,
+                        real estate, and strategic partnerships across the region.
+                    </div>
+                    <div class="social">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                    </div>
+                </div>
+
+                <!-- Mohamud Card -->
+                <div class="team-card">
+                    <div class="avatar"><i class="fas fa-user-circle"></i></div>
+                    <div class="name">Mohamud Yassin Osman</div>
+                    <div class="title">Co-Founder &amp; Tech Lead</div>
+                    <div class="location"><i class="fas fa-map-pin"></i> Stockholm, Sweden</div>
+                    <div class="bio">
+                        Mohamud is a Co-Founder of AM International Group and serves as Tech Lead,
+                        driving the group's digital transformation and technology strategy. He brings
+                        extensive expertise in AI, smart infrastructure, and cross-border trade
+                        platforms, connecting European and East African markets for sustainable growth.
+                    </div>
+                    <div class="social">
+                        <a href="https://www.linkedin.com/in/ifmosa/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="/favicon.png" alt="AM International Group" />
+                    <div class="tagline">"Building Businesses For Tomorrow"</div>
+                    <p style="max-width:300px;">
+                        AM International Group is a diversified business group investing across
+                        construction, real estate, energy, food supply, and strategic partnerships.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/team">Team</a></li>
+                        <li><a href="/#companies">Companies</a></li>
+                        <li><a href="/investments">Investments</a></li>
+                        <li><a href="/partner">Partner With Us</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Industries</h4>
+                    <ul>
+                        <li><a href="/am-construction">Construction</a></li>
+                        <li><a href="/am-realestate">Real Estate</a></li>
+                        <li><a href="/am-food-supply">Food &amp; Supply</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="mailto:info@am-internationalgroup.com"><i class="fas fa-envelope" style="width:20px;"></i> info@am-internationalgroup.com</a></li>
+                        <li><a href="tel:+447943146345"><i class="fas fa-phone" style="width:20px;"></i> +44 7943 146345</a></li>
+                        <li><a href="#"><i class="fas fa-map-pin" style="width:20px;"></i> London, United Kingdom</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 AM International Group. All rights reserved.</p>
+                <div class="legal">
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms of Service</a>
+                    <a href="/cookies">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══ Global JavaScript ═══ -->
+    <script src="/script.js"></script>
+
+    <script>
+        // ─── Highlight active nav link ───
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            if (link.getAttribute('href') === '/team') {
+                link.style.color = 'var(--silver)';
+            }
+        });
+    </script>
+</body>
+</html>
