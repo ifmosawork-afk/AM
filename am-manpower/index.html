@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AM Manpower | AM International Group</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Global Stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+
+    <style>
+        .page-hero {
+            min-height: 55vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 140px 24px 60px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 30% 20%, rgba(122, 0, 25, 0.25), transparent 60%),
+                        radial-gradient(ellipse at 70% 80%, rgba(192, 192, 192, 0.05), transparent 50%),
+                        var(--bg-dark);
+            border-bottom: 1px solid rgba(192, 192, 192, 0.06);
+        }
+        .page-hero .hero-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(192, 192, 192, 0.04);
+            pointer-events: none;
+            animation: ringPulse 12s ease-in-out infinite alternate;
+        }
+        .page-hero .hero-ring:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            top: -80px;
+            right: -80px;
+            animation-delay: 0s;
+        }
+        .page-hero .hero-ring:nth-child(2) {
+            width: 350px;
+            height: 350px;
+            bottom: -40px;
+            left: -40px;
+            animation-delay: 4s;
+        }
+        .page-hero h1 {
+            font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+            font-weight: 900;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #FFFFFF 30%, var(--silver-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+        .page-hero .subtitle {
+            font-size: clamp(1rem, 1.4vw, 1.3rem);
+            color: var(--silver);
+            font-weight: 300;
+            letter-spacing: 2px;
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+        .page-hero p {
+            color: var(--text-muted);
+            font-size: clamp(1rem, 1.2vw, 1.15rem);
+            max-width: 720px;
+            margin: 16px auto 0;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .content-section {
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(192, 192, 192, 0.06);
+        }
+        .content-section:last-of-type {
+            border-bottom: none;
+        }
+        .content-section.alt {
+            background: radial-gradient(ellipse at 70% 30%, rgba(122, 0, 25, 0.04), transparent 60%);
+        }
+        .content-section .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--silver);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+            opacity: 0.5;
+        }
+        .content-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 3.2vw, 2.6rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 40%, var(--silver-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        .content-section .lead {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            max-width: 800px;
+            font-weight: 300;
+            margin-bottom: 16px;
+        }
+        .content-section p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+            max-width: 800px;
+            font-weight: 300;
+            margin-bottom: 16px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 32px;
+        }
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(122, 0, 25, 0.15);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .service-card:hover {
+            border-color: rgba(192, 192, 192, 0.2);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-red);
+        }
+        .service-card .icon {
+            font-size: 2.5rem;
+            color: var(--silver);
+            margin-bottom: 12px;
+            display: block;
+            opacity: 0.7;
+        }
+        .service-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .page-hero {
+                min-height: 45vh;
+                padding: 120px 24px 50px;
+            }
+            .page-hero h1 {
+                font-size: 2.2rem;
+            }
+            .page-hero .subtitle {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ HEADER ═══ -->
+    <header id="header">
+        <div class="container nav-wrapper">
+            <a href="/" class="nav-logo">
+                <img src="/favicon.png" alt="AM International Group" />
+                <span>AM<span style="font-weight:300;color:var(--text-muted);font-size:0.7rem;display:block;letter-spacing:1px;font-family:'Inter',sans-serif;">INTERNATIONAL GROUP</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/about">About</a></li>
+                <li><a href="/#companies">Companies</a></li>
+                <li><a href="/investments">Investments</a></li>
+                <li><a href="/energy">Energy</a></li>
+                <li class="nav-cta">
+                    <a href="/partner" class="btn-primary" style="padding:10px 24px;font-size:0.85rem;">Partner With Us</a>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="page-hero">
+        <div class="hero-ring"></div>
+        <div class="hero-ring"></div>
+        <div class="hero-content" style="position:relative;z-index:2;">
+            <div class="subtitle">AM Manpower</div>
+            <h1>Connecting Talent with Opportunity</h1>
+            <p>
+                AM Manpower is a premier recruitment and workforce solutions provider, connecting skilled
+                professionals with leading employers across East Africa, Europe, and the Gulf region.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ SERVICES ═══ -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-label">Our Services</div>
+            <h2>Workforce Solutions</h2>
+            <p class="lead">
+                We provide end-to-end recruitment and workforce management services tailored to the needs
+                of employers and job seekers alike.
+            </p>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="icon"><i class="fas fa-user-tie"></i></span>
+                    <h4>Executive Search</h4>
+                    <p>Identifying and placing senior-level talent for leadership roles across industries and geographies.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon"><i class="fas fa-users"></i></span>
+                    <h4>Bulk Recruitment</h4>
+                    <p>Efficiently sourcing and onboarding large volumes of skilled and semi-skilled workers for major projects.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon"><i class="fas fa-briefcase"></i></span>
+                    <h4>Staffing &amp; Outsourcing</h4>
+                    <p>Flexible staffing solutions including temporary, contract, and permanent placements for businesses of all sizes.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon"><i class="fas fa-globe"></i></span>
+                    <h4>International Placement</h4>
+                    <p>Connecting East African talent with international employers in Europe, the Gulf, and beyond.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon"><i class="fas fa-graduation-cap"></i></span>
+                    <h4>Skills Development</h4>
+                    <p>Providing training and upskilling programs to prepare candidates for the demands of the modern workforce.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon"><i class="fas fa-file-contract"></i></span>
+                    <h4>HR Consulting</h4>
+                    <p>Expert advice on workforce planning, talent management, and organizational development strategies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ WHY AM MANPOWER ═══ -->
+    <section class="content-section alt">
+        <div class="container">
+            <div class="section-label">Why AM Manpower</div>
+            <h2>The AM Difference</h2>
+            <p class="lead">
+                We combine local market knowledge with international standards to deliver superior recruitment outcomes.
+            </p>
+            <div style="display:grid; grid-template-columns: repeat(2,1fr); gap:24px; margin-top:24px;">
+                <div style="background:var(--bg-card); border-radius:var(--radius); padding:24px 28px; border:1px solid rgba(122,0,25,0.12);">
+                    <h4 style="font-family:'Playfair Display',serif; color:#fff; font-size:1.1rem;">Deep Local Expertise</h4>
+                    <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.6; font-weight:300;">Understanding of East African talent pools, labour markets, and regional employment dynamics.</p>
+                </div>
+                <div style="background:var(--bg-card); border-radius:var(--radius); padding:24px 28px; border:1px solid rgba(122,0,25,0.12);">
+                    <h4 style="font-family:'Playfair Display',serif; color:#fff; font-size:1.1rem;">Global Networks</h4>
+                    <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.6; font-weight:300;">Established connections with employers and recruitment partners across Europe, the Gulf, and beyond.</p>
+                </div>
+                <div style="background:var(--bg-card); border-radius:var(--radius); padding:24px 28px; border:1px solid rgba(122,0,25,0.12);">
+                    <h4 style="font-family:'Playfair Display',serif; color:#fff; font-size:1.1rem;">Quality &amp; Compliance</h4>
+                    <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.6; font-weight:300;">Rigorous screening processes and full compliance with international recruitment standards and regulations.</p>
+                </div>
+                <div style="background:var(--bg-card); border-radius:var(--radius); padding:24px 28px; border:1px solid rgba(122,0,25,0.12);">
+                    <h4 style="font-family:'Playfair Display',serif; color:#fff; font-size:1.1rem;">End-to-End Support</h4>
+                    <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.6; font-weight:300;">Comprehensive services from candidate sourcing to onboarding and post-placement support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="content-section" style="border-bottom:none;">
+        <div class="container" style="text-align:center;">
+            <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;background:linear-gradient(135deg,#fff 40%,var(--silver-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;">Find Your Next Opportunity</h2>
+            <p style="color:var(--text-muted);font-size:1rem;line-height:1.8;max-width:600px;margin:0 auto 24px;font-weight:300;">Whether you're seeking top talent or your next career move, AM Manpower is here to help.</p>
+            <a href="/partner" class="btn-primary">Contact Us</a>
+            <a href="/" class="btn-secondary" style="margin-left:12px;">Back to Home</a>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="/favicon.png" alt="AM International Group" />
+                    <div class="tagline">"Building Businesses For Tomorrow"</div>
+                    <p style="max-width:300px;">AM International Group is a diversified business group investing across construction, real estate, energy, food supply, and strategic partnerships.</p>
+                    <div class="footer-social">
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/#companies">Companies</a></li>
+                        <li><a href="/investments">Investments</a></li>
+                        <li><a href="/energy">Energy</a></li>
+                        <li><a href="/careers">Careers</a></li>
+                        <li><a href="/partner">Partner</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Industries</h4>
+                    <ul>
+                        <li><a href="/am-construction">Construction</a></li>
+                        <li><a href="/am-realestate">Real Estate</a></li>
+                        <li><a href="/am-food-supply">Food &amp; Supply</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="mailto:info@am-internationalgroup.com"><i class="fas fa-envelope" style="width:20px;"></i> info@am-internationalgroup.com</a></li>
+                        <li><a href="tel:+447943146345"><i class="fas fa-phone" style="width:20px;"></i> +44 7943 146345</a></li>
+                        <li><a href="#"><i class="fas fa-map-pin" style="width:20px;"></i> London, United Kingdom</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AM International Group. All rights reserved.</p>
+                <div class="legal">
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms of Service</a>
+                    <a href="/cookies">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+</html>
