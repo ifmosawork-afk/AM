@@ -13,39 +13,61 @@
     <link rel="stylesheet" href="/style.css" />
 
     <style>
-        /* ─── HERO ─── */
+        /* ─── HERO (text only, no image behind) ─── */
         .project-hero {
-            min-height: 100vh;
+            min-height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 120px 24px 80px;
+            padding: 140px 24px 60px;
             position: relative;
             overflow: hidden;
-            background: var(--bg-dark);
-            background-image: url('/images/tuna.jpg');
-            background-size: cover;
-            background-position: center;
+            background: radial-gradient(ellipse at 30% 20%, rgba(122, 0, 25, 0.2), transparent 60%),
+                        radial-gradient(ellipse at 70% 80%, rgba(192, 192, 192, 0.05), transparent 50%),
+                        var(--bg-dark);
         }
-        .project-hero::before {
-            content: '';
+        .project-hero .hero-ring {
             position: absolute;
-            inset: 0;
-            background: rgba(10, 10, 10, 0.72);
-            z-index: 1;
+            border-radius: 50%;
+            border: 1px solid rgba(192, 192, 192, 0.04);
+            pointer-events: none;
+            animation: ringPulse 12s ease-in-out infinite alternate;
+        }
+        .project-hero .hero-ring:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            top: -80px;
+            right: -80px;
+            animation-delay: 0s;
+        }
+        .project-hero .hero-ring:nth-child(2) {
+            width: 350px;
+            height: 350px;
+            bottom: -40px;
+            left: -40px;
+            animation-delay: 4s;
         }
         .project-hero .hero-content {
             position: relative;
             z-index: 2;
             max-width: 900px;
         }
+        .project-hero .subtitle {
+            font-size: clamp(1rem, 1.2vw, 1.2rem);
+            color: var(--silver);
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            opacity: 0.75;
+            margin-bottom: 12px;
+        }
         .project-hero h1 {
-            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-size: clamp(2.6rem, 5.5vw, 4.5rem);
             font-weight: 900;
             line-height: 1.1;
             letter-spacing: -0.02em;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             font-family: 'Playfair Display', serif;
             background: linear-gradient(135deg, #FFFFFF 30%, var(--silver-light) 70%, var(--silver) 100%);
             -webkit-background-clip: text;
@@ -56,19 +78,10 @@
             color: var(--primary);
             -webkit-text-fill-color: var(--primary);
         }
-        .project-hero .subtitle {
-            font-size: clamp(1rem, 1.2vw, 1.2rem);
-            color: var(--silver);
-            font-weight: 300;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            opacity: 0.75;
-            margin-bottom: 8px;
-        }
         .project-hero p {
-            color: rgba(255,255,255,0.82);
-            font-size: clamp(1.1rem, 1.4vw, 1.3rem);
-            max-width: 700px;
+            color: var(--text-muted);
+            font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+            max-width: 660px;
             margin: 0 auto 32px;
             line-height: 1.8;
             font-weight: 300;
@@ -90,7 +103,7 @@
         }
         .hero-metrics .metric-item .label {
             font-size: 0.85rem;
-            color: rgba(255,255,255,0.6);
+            color: var(--text-muted);
             font-weight: 300;
             margin-top: 4px;
         }
@@ -99,6 +112,23 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 16px;
+        }
+
+        /* ─── CLEAN IMAGE BANNER (no overlay, no text) ─── */
+        .image-banner {
+            width: 100%;
+            background: var(--bg-dark);
+            overflow: hidden;
+            border-top: 1px solid rgba(192, 192, 192, 0.06);
+            border-bottom: 1px solid rgba(192, 192, 192, 0.06);
+        }
+        .image-banner img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 640px;
+            object-fit: cover;
+            object-position: center;
         }
 
         /* ─── SECTIONS ─── */
@@ -144,7 +174,7 @@
         .section-sub {
             font-size: 1.1rem;
             color: var(--text-muted);
-            max-width: 750px;
+            max-width: 780px;
             line-height: 1.8;
             font-weight: 300;
         }
@@ -534,6 +564,7 @@
         @media (max-width: 868px) {
             .hero-metrics { grid-template-columns: repeat(2, 1fr); gap: 16px; }
             .hero-metrics .metric-item .number { font-size: 1.6rem; }
+            .image-banner img { max-height: 480px; }
         }
         @media (max-width: 640px) {
             .pillar-grid { grid-template-columns: 1fr; }
@@ -541,10 +572,12 @@
             .supply-grid { grid-template-columns: 1fr; }
             .energy-section { padding: 60px 0; }
             .project-hero {
-                min-height: 80vh;
-                padding: 100px 24px 40px;
+                min-height: 50vh;
+                padding: 120px 24px 50px;
             }
             .project-hero h1 { font-size: 2.2rem; }
+            .project-hero .subtitle { font-size: 0.85rem; }
+            .image-banner img { max-height: 320px; }
         }
     </style>
 </head>
@@ -572,15 +605,16 @@
         </div>
     </header>
 
-    <!-- ═══ HERO ═══ -->
+    <!-- ═══ HERO (TEXT ONLY) ═══ -->
     <section class="project-hero" id="hero">
+        <div class="hero-ring"></div>
+        <div class="hero-ring"></div>
         <div class="hero-content">
             <div class="subtitle">AM Sea Foods</div>
             <h1>Sustainable Seafood. <span class="accent">Ethical Trade.</span></h1>
             <p>
-                From the pristine waters of the East African coast to global markets — we export naturally
-                caught, organically sourced seafood while protecting our oceans and empowering local
-                fishing communities.
+                Naturally caught, organically sourced seafood from the East African coast —
+                exported worldwide while protecting our oceans and empowering local fishermen.
             </p>
             <div class="hero-metrics">
                 <div class="metric-item">
@@ -605,6 +639,11 @@
                 <a href="#products" class="btn-secondary">View Our Products</a>
             </div>
         </div>
+    </section>
+
+    <!-- ═══ CLEAN IMAGE BANNER ═══ -->
+    <section class="image-banner">
+        <img src="/images/tuna.jpg" alt="AM Sea Foods – Fresh Catch from the East African Coast" loading="lazy" />
     </section>
 
     <!-- ═══ PHILOSOPHY ═══ -->
@@ -938,6 +977,7 @@
                         <li><a href="/am-construction">Construction</a></li>
                         <li><a href="/am-realestate">Real Estate</a></li>
                         <li><a href="/am-food-supply">Food &amp; Supply</a></li>
+                        <li><a href="/am-tea">Tea</a></li>
                         <li><a href="/am-sea-foods">Sea Foods</a></li>
                     </ul>
                 </div>
