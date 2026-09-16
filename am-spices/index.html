@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AM Spices | AM International Group</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="/style.css" />
+
+    <style>
+        /* ─── HERO (text only) ─── */
+        .project-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 140px 24px 60px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 30% 20%, rgba(122, 0, 25, 0.2), transparent 60%),
+                        radial-gradient(ellipse at 70% 80%, rgba(192, 192, 192, 0.05), transparent 50%),
+                        var(--bg-dark);
+        }
+        .project-hero .hero-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(192, 192, 192, 0.04);
+            pointer-events: none;
+            animation: ringPulse 12s ease-in-out infinite alternate;
+        }
+        .project-hero .hero-ring:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            top: -80px;
+            right: -80px;
+            animation-delay: 0s;
+        }
+        .project-hero .hero-ring:nth-child(2) {
+            width: 350px;
+            height: 350px;
+            bottom: -40px;
+            left: -40px;
+            animation-delay: 4s;
+        }
+        .project-hero .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+        .project-hero .subtitle {
+            font-size: clamp(1rem, 1.2vw, 1.2rem);
+            color: var(--silver);
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            opacity: 0.75;
+            margin-bottom: 12px;
+        }
+        .project-hero h1 {
+            font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #FFFFFF 30%, var(--silver-light) 70%, var(--silver) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .project-hero h1 .accent {
+            color: var(--primary);
+            -webkit-text-fill-color: var(--primary);
+        }
+        .project-hero p {
+            color: var(--text-muted);
+            font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+            max-width: 680px;
+            margin: 0 auto 32px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin: 32px 0 40px;
+        }
+        .hero-metrics .metric-item {
+            text-align: center;
+        }
+        .hero-metrics .metric-item .number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--silver);
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-metrics .metric-item .label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            margin-top: 4px;
+        }
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        /* ─── CLEAN IMAGE BANNER ─── */
+        .image-banner {
+            width: 100%;
+            background: var(--bg-dark);
+            overflow: hidden;
+            border-top: 1px solid rgba(192, 192, 192, 0.06);
+            border-bottom: 1px solid rgba(192, 192, 192, 0.06);
+        }
+        .image-banner img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 640px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* ─── SECTIONS ─── */
+        .energy-section {
+            padding: 80px 0;
+            position: relative;
+        }
+        .energy-section.dark {
+            background: rgba(20, 20, 20, 0.6);
+            border-top: 1px solid rgba(192, 192, 192, 0.06);
+            border-bottom: 1px solid rgba(192, 192, 192, 0.06);
+        }
+        .energy-section.darker {
+            background: var(--bg-dark);
+        }
+
+        .section-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--silver);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+            opacity: 0.7;
+        }
+        .section-title {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #fff 40%, var(--silver-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-title .accent {
+            color: var(--primary);
+            -webkit-text-fill-color: var(--primary);
+        }
+        .section-sub {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 780px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* ─── IMAGE + TEXT BLOCK ─── */
+        .content-block {
+            margin-top: 32px;
+        }
+        .content-block .full-img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            border-radius: var(--radius) var(--radius) 0 0;
+            display: block;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .content-block .full-img:hover {
+            opacity: 0.92;
+            transform: scale(1.005);
+        }
+        .content-block .text-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(122, 0, 25, 0.15);
+            border-radius: 0 0 var(--radius) var(--radius);
+            padding: 40px 36px;
+            transition: var(--transition);
+        }
+        .content-block .text-card:hover {
+            border-color: rgba(192, 192, 192, 0.2);
+            box-shadow: var(--shadow-red);
+        }
+        .content-block .text-card .sub {
+            color: var(--silver);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 300;
+            opacity: 0.7;
+            margin-bottom: 4px;
+        }
+        .content-block .text-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .content-block .text-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 12px;
+            max-width: 100%;
+        }
+        .content-block .text-card ul {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            padding-left: 20px;
+            font-weight: 300;
+            margin-bottom: 0;
+        }
+        .content-block .text-card ul li {
+            margin-bottom: 4px;
+        }
+        .content-block .text-card ul li strong {
+            color: var(--silver);
+        }
+        .content-block .text-card .note {
+            background: rgba(122, 0, 25, 0.12);
+            border-left: 3px solid var(--primary);
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin-top: 16px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .content-block .text-card .note strong {
+            color: var(--silver);
+        }
+
+        @media (max-width: 640px) {
+            .content-block .full-img {
+                height: 260px;
+            }
+            .content-block .text-card {
+                padding: 24px 20px;
+            }
+        }
+
+        /* ─── SPICE CATALOGUE GRID ─── */
+        .catalogue-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+        }
+        .catalogue-item {
+            background: var(--bg-card);
+            border: 1px solid rgba(122, 0, 25, 0.12);
+            border-radius: var(--radius);
+            padding: 28px 22px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .catalogue-item:hover {
+            border-color: rgba(192, 192, 192, 0.2);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-red);
+        }
+        .catalogue-item .emoji {
+            font-size: 2.4rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .catalogue-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .catalogue-item p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.6;
+            font-weight: 300;
+            margin-bottom: 0;
+        }
+
+        /* ─── SUPPLY GRID ─── */
+        .supply-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+        }
+        .supply-item {
+            background: rgba(20, 20, 20, 0.5);
+            border-radius: 12px;
+            border-top: 3px solid var(--silver);
+            padding: 26px 24px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .supply-item:hover {
+            border-top-color: var(--primary);
+            background: rgba(20, 20, 20, 0.75);
+        }
+        .supply-item i {
+            font-size: 2rem;
+            color: var(--silver);
+            margin-bottom: 10px;
+            display: block;
+            opacity: 0.75;
+        }
+        .supply-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .supply-item p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            font-weight: 300;
+            margin-bottom: 0;
+        }
+
+        /* ─── CTA ─── */
+        .final-cta {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 24px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at center, rgba(122, 0, 25, 0.12), var(--bg-dark) 70%);
+            border-top: 1px solid rgba(192, 192, 192, 0.06);
+        }
+        .final-cta .content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+        .final-cta h2 {
+            font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+            font-weight: 900;
+            margin-bottom: 16px;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #FFFFFF 30%, var(--silver-light) 70%, var(--silver) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .final-cta h2 .accent {
+            color: var(--primary);
+            -webkit-text-fill-color: var(--primary);
+        }
+        .final-cta p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 620px;
+            margin: 0 auto 32px;
+            font-weight: 300;
+        }
+
+        /* ─── REVEAL ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── LIGHTBOX ─── */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.93);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        .lightbox-overlay .lightbox-content {
+            max-width: 92%;
+            max-height: 88vh;
+            position: relative;
+        }
+        .lightbox-overlay .lightbox-content img {
+            width: 100%;
+            height: auto;
+            max-height: 88vh;
+            object-fit: contain;
+            border-radius: var(--radius);
+            box-shadow: 0 8px 60px rgba(0, 0, 0, 0.85);
+        }
+        .lightbox-overlay .close-btn {
+            position: absolute;
+            top: -42px;
+            right: -42px;
+            background: rgba(122, 0, 25, 0.9);
+            color: #fff;
+            border: none;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            font-size: 1.7rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+        .lightbox-overlay .close-btn:hover {
+            background: var(--primary);
+            transform: rotate(90deg);
+        }
+        @media (max-width: 640px) {
+            .lightbox-overlay { padding: 16px; }
+            .lightbox-overlay .close-btn {
+                top: -34px;
+                right: -6px;
+                width: 38px;
+                height: 38px;
+                font-size: 1.3rem;
+            }
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            .catalogue-grid { grid-template-columns: repeat(2, 1fr); }
+            .supply-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 868px) {
+            .hero-metrics { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .hero-metrics .metric-item .number { font-size: 1.6rem; }
+            .image-banner img { max-height: 480px; }
+        }
+        @media (max-width: 640px) {
+            .catalogue-grid { grid-template-columns: 1fr; }
+            .supply-grid { grid-template-columns: 1fr; }
+            .energy-section { padding: 60px 0; }
+            .project-hero {
+                min-height: 50vh;
+                padding: 120px 24px 50px;
+            }
+            .project-hero h1 { font-size: 2.2rem; }
+            .project-hero .subtitle { font-size: 0.85rem; }
+            .image-banner img { max-height: 320px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ HEADER ═══ -->
+    <header id="header">
+        <div class="container nav-wrapper">
+            <a href="/" class="nav-logo">
+                <img src="/favicon.png" alt="AM International Group" />
+                <span>AM<span style="font-weight:300;color:var(--text-muted);font-size:0.7rem;display:block;letter-spacing:1px;font-family:'Inter',sans-serif;">INTERNATIONAL GROUP</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/about">About</a></li>
+                <li><a href="/#companies">Companies</a></li>
+                <li><a href="/investments">Investments</a></li>
+                <li><a href="/energy">Energy</a></li>
+                <li class="nav-cta">
+                    <a href="/partner" class="btn-primary" style="padding:10px 24px;font-size:0.85rem;">Partner With Us</a>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ═══ HERO (TEXT ONLY) ═══ -->
+    <section class="project-hero" id="hero">
+        <div class="hero-ring"></div>
+        <div class="hero-ring"></div>
+        <div class="hero-content">
+            <div class="subtitle">AM Spices</div>
+            <h1>Authentic Spices, <span class="accent">Sourced from East Africa</span></h1>
+            <p>
+                From the spice islands of Zanzibar to the fertile highlands of Kenya and Tanzania —
+                we source, grade, and export premium spices to buyers around the world.
+            </p>
+            <div class="hero-metrics">
+                <div class="metric-item">
+                    <div class="number">10+</div>
+                    <div class="label">Spice Varieties</div>
+                </div>
+                <div class="metric-item">
+                    <div class="number">2</div>
+                    <div class="label">Source Countries</div>
+                </div>
+                <div class="metric-item">
+                    <div class="number">Direct</div>
+                    <div class="label">From Farmers</div>
+                </div>
+                <div class="metric-item">
+                    <div class="number">Global</div>
+                    <div class="label">Export Reach</div>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="#catalogue" class="btn-primary">View Our Spices</a>
+                <a href="#export" class="btn-secondary">Export Ready</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CLEAN IMAGE BANNER ═══ -->
+    <section class="image-banner">
+        <img src="https://images.unsplash.com/photo-1566824099147-bef027d3a333?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bags of Spices Sourced from Kenya and Tanzania" loading="lazy" />
+    </section>
+
+    <!-- ═══ SOURCED FROM EAST AFRICA ═══ -->
+    <section class="energy-section darker" id="catalogue">
+        <div class="container">
+            <span class="section-badge">Our Spices</span>
+            <h2 class="section-title">Sourced from <span class="accent">Kenya &amp; Tanzania</span></h2>
+            <p class="section-sub">
+                We buy directly from farmers, cooperatives, and trusted spice traders across Kenya and
+                Tanzania. The bags you see above represent just a fraction of what we handle — every one
+                of them filled with graded, clean, and export-ready spices destined for international
+                markets.
+            </p>
+            <p class="section-sub" style="margin-top:16px;">
+                Tanzania's Zanzibar archipelago and the fertile highlands of both countries produce some
+                of the most aromatic spices in the world. We work with the same farmers year after year,
+                ensuring consistency, traceability, and fair prices at source.
+            </p>
+
+            <div class="catalogue-grid">
+                <div class="catalogue-item reveal">
+                    <span class="emoji">🌿</span>
+                    <h4>Cinnamon</h4>
+                    <p>Sweet, warm cinnamon sticks and powder from Zanzibar.</p>
+                </div>
+                <div class="catalogue-item reveal">
+                    <span class="emoji">🌰</span>
+                    <h4>Cloves</h4>
+                    <p>Whole cloves with strong aroma and rich essential oils.</p>
+                </div>
+                <div class="catalogue-item reveal">
+                    <span class="emoji">⚫</span>
+                    <h4>Black Pepper</h4>
+                    <p>Sharp, pungent peppercorns, carefully dried and graded.</p>
+                </div>
+                <div class="catalogue-item reveal">
+                    <span class="emoji">🥜</span>
+                    <h4>Nutmeg &amp; Mace</h4>
+                    <p>Warm, aromatic nutmeg with its delicate mace covering.</p>
+                </div>
+                <div class="catalogue-item reveal">
+                    <span class="emoji">🫚</span>
+                    <h4>Ginger</h4>
+                    <p>Fresh and dried ginger with a sharp, spicy kick.</p>
+                </div>
+                <div class="catalogue-item reveal">
+                    <span class="emoji">🟡</span>
+                    <h4>Turmeric</h4>
+                    <p>Bright, earthy turmeric roots and powder.</p>
+                </div>
+                <div class="catalogue-item reveal">
+                    <span class="emoji">🌱</span>
+                    <h4>Cardamom</h4>
+                    <p>Fragrant green cardamom pods, highly prized by blenders.</p>
+                </div>
+                <div class="catalogue-item reveal">
+                    <span class="emoji">🌶️</span>
+                    <h4>Chilli &amp; Paprika</h4>
+                    <p>Sun-dried chillies and paprika for heat and colour.</p>
+                </div>
+                <div class="catalogue-item reveal">
+                    <span class="emoji">🌿</span>
+                    <h4>Cumin</h4>
+                    <p>Warm, earthy cumin seeds, cleaned and graded for export.</p>
+                </div>
+                <div class="catalogue-item reveal">
+                    <span class="emoji">🟤</span>
+                    <h4>Coriander</h4>
+                    <p>Citrusy coriander seeds, whole or ground to order.</p>
+                </div>
+                <div class="catalogue-item reveal">
+                    <span class="emoji">🌾</span>
+                    <h4>Vanilla</h4>
+                    <p>Premium vanilla pods and extract from East African farms.</p>
+                </div>
+                <div class="catalogue-item reveal">
+                    <span class="emoji">✨</span>
+                    <h4>Custom Blends</h4>
+                    <p>Custom seasoning blends crafted to your market's requirements.</p>
+                </div>
+            </div>
+
+            <p style="color:var(--text-muted);font-size:1rem;line-height:1.8;font-weight:300;margin-top:32px;max-width:800px;">
+                Whatever your market needs — whole spices, ground powders, essential oils, or custom
+                blends — we can source it, grade it, and ship it.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ SOURCING & HANDLING ═══ -->
+    <section class="energy-section dark" id="sourcing">
+        <div class="container">
+            <span class="section-badge">How We Source</span>
+            <h2 class="section-title">Direct from Farmers, <span class="accent">Handled with Care</span></h2>
+            <p class="section-sub">
+                Every spice we export is bought directly from farmers, cooperatives, or trusted local
+                traders. No middlemen, no unnecessary markups. This keeps quality high, prices fair,
+                and communities supported.
+            </p>
+
+            <div class="content-block reveal">
+                <img src="https://images.unsplash.com/flagged/photo-1553617569-8ef7a8da3146?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Premium Spices Handled with Care" class="full-img" loading="lazy" />
+                <div class="text-card">
+                    <div class="sub">Sourcing &amp; Handling</div>
+                    <h3>From Farm Gate to Export Container</h3>
+                    <p>
+                        We handle every stage of the supply chain — sourcing, cleaning, drying, grading,
+                        and packaging — following internationally recognised food safety and quality
+                        standards. Nothing leaves our facilities until it meets our specification.
+                    </p>
+                    <ul>
+                        <li><strong>Direct sourcing:</strong> Bought from farmers and cooperatives at fair prices</li>
+                        <li><strong>Natural drying:</strong> Traditional sun-drying, no artificial heat or chemicals</li>
+                        <li><strong>Hand-cleaning:</strong> Manual sorting and removal of foreign matter</li>
+                        <li><strong>Grading:</strong> Graded by size, colour, aroma, and moisture content</li>
+                        <li><strong>Moisture control:</strong> Tested to ensure optimal shelf life</li>
+                        <li><strong>Food-safe packaging:</strong> Sealed bags and cartons ready for export</li>
+                    </ul>
+                    <div class="note">
+                        <strong>Traceability at every step.</strong> Every batch can be traced back to its
+                        source — so you always know where your spices come from and how they were handled.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ EXPORT READY ═══ -->
+    <section class="energy-section darker" id="export">
+        <div class="container">
+            <span class="section-badge">Export Ready</span>
+            <h2 class="section-title">Exporting Internationally, <span class="accent">Backed by Full Documentation</span></h2>
+            <p class="section-sub">
+                We ship spices to buyers across the Middle East, Europe, Asia, and North America.
+                Every shipment leaves with complete export documentation and food safety certifications
+                in place.
+            </p>
+
+            <div class="content-block reveal">
+                <img src="https://images.unsplash.com/photo-1681817009639-9103dc524813?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Spices Packed and Ready for International Export" class="full-img" loading="lazy" />
+                <div class="text-card">
+                    <div class="sub">Export Ready · Global Shipping</div>
+                    <h3>Packed, Documented, Shipped</h3>
+                    <p>
+                        From our facilities in Kenya and Tanzania, we consolidate, pack, and ship spice
+                        shipments to importers, processors, distributors, and private-label brands
+                        around the world. Air freight for urgent orders, sea freight for bulk volumes.
+                    </p>
+                    <ul>
+                        <li><strong>Packaging formats:</strong> 25kg bags, jute sacks, retail pouches, private label</li>
+                        <li><strong>Shipping:</strong> Sea freight (bulk) and air freight (premium/urgent orders)</li>
+                        <li><strong>Documentation:</strong> Phytosanitary certificate, Certificate of Origin, quality analysis</li>
+                        <li><strong>Compliance:</strong> HACCP-aligned handling, food-safe packaging, traceable batches</li>
+                        <li><strong>Markets served:</strong> Middle East, Europe, Asia, North America, and beyond</li>
+                    </ul>
+                    <div class="note">
+                        <strong>Export-ready from day one.</strong> Whether you're importing a single pallet
+                        or a full container, we handle the paperwork, the packing, and the shipping — you
+                        just receive the delivery.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ SUPPLY CAPABILITY ═══ -->
+    <section class="energy-section dark" id="supply">
+        <div class="container">
+            <span class="section-badge">Full Supply Capability</span>
+            <h2 class="section-title">Whole, Ground, <span class="accent">Blended, or Private Label</span></h2>
+            <p class="section-sub">
+                Whatever form your market needs, we can supply it. We work with importers, processors,
+                spice blenders, retailers, and private-label brands around the world.
+            </p>
+
+            <div class="supply-grid">
+                <div class="supply-item reveal">
+                    <i class="fas fa-seedling"></i>
+                    <h4>Whole Spices</h4>
+                    <p>Whole cinnamon sticks, cloves, peppercorns, cardamom pods, nutmeg, and more.</p>
+                </div>
+                <div class="supply-item reveal">
+                    <i class="fas fa-mortar-pestle"></i>
+                    <h4>Ground &amp; Powdered</h4>
+                    <p>Freshly ground spices to your preferred particle size, packed for freshness.</p>
+                </div>
+                <div class="supply-item reveal">
+                    <i class="fas fa-blender"></i>
+                    <h4>Custom Blends</h4>
+                    <p>Seasoning blends, curry mixes, and signature recipes built to your specification.</p>
+                </div>
+                <div class="supply-item reveal">
+                    <i class="fas fa-tag"></i>
+                    <h4>Private Label</h4>
+                    <p>Your brand, your packaging, your spices — we handle sourcing, blending, and packing.</p>
+                </div>
+                <div class="supply-item reveal">
+                    <i class="fas fa-box"></i>
+                    <h4>Bulk &amp; Retail Formats</h4>
+                    <p>From 25kg jute sacks to retail-ready pouches — whatever suits your market.</p>
+                </div>
+                <div class="supply-item reveal">
+                    <i class="fas fa-ship"></i>
+                    <h4>Global Logistics</h4>
+                    <p>Air and sea freight to major ports and airports worldwide with full documentation.</p>
+                </div>
+            </div>
+
+            <p style="color:var(--text-muted);font-size:1rem;line-height:1.8;font-weight:300;margin-top:32px;max-width:800px;">
+                We are actively seeking long-term partnerships with importers, processors, spice houses,
+                and private-label brands who want a steady, reliable supply of East African spices. Whether
+                you need a single container or a recurring monthly shipment, we can build the supply chain
+                around your business.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ FINAL CTA ═══ -->
+    <section class="final-cta" id="contact">
+        <div class="content">
+            <h2>Partner With <span class="accent">AM Spices</span></h2>
+            <p>
+                Looking for a reliable, ethical supplier of East African spices? We are ready to build
+                a long-term partnership with you.
+            </p>
+            <a href="/partner" class="btn-primary">Become A Partner</a>
+            <a href="/am-food-supply" class="btn-secondary" style="margin-left:12px;">Back to Food &amp; Supply</a>
+        </div>
+    </section>
+
+    <!-- ═══ LIGHTBOX ═══ -->
+    <div class="lightbox-overlay" id="lightbox">
+        <div class="lightbox-content">
+            <button class="close-btn" id="closeLightbox">&times;</button>
+            <img src="" alt="Enlarged view" id="lightboxImg" />
+        </div>
+    </div>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="/favicon.png" alt="AM International Group" />
+                    <div class="tagline">"Building Businesses For Tomorrow"</div>
+                    <p style="max-width:300px;">
+                        AM International Group is a diversified business group investing across
+                        construction, real estate, food supply, energy, and strategic partnerships.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/#companies">Companies</a></li>
+                        <li><a href="/investments">Investments</a></li>
+                        <li><a href="/energy">Energy</a></li>
+                        <li><a href="/careers">Careers</a></li>
+                        <li><a href="/partner">Partner</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Industries</h4>
+                    <ul>
+                        <li><a href="/am-construction">Construction</a></li>
+                        <li><a href="/am-realestate">Real Estate</a></li>
+                        <li><a href="/am-food-supply">Food &amp; Supply</a></li>
+                        <li><a href="/am-tea">Tea</a></li>
+                        <li><a href="/am-spices">Spices</a></li>
+                        <li><a href="/am-fresh-produce">Fresh Produce</a></li>
+                        <li><a href="/am-sea-foods">Sea Foods</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="mailto:info@am-internationalgroup.com"><i class="fas fa-envelope" style="width:20px;"></i> info@am-internationalgroup.com</a></li>
+                        <li><a href="tel:+447943146345"><i class="fas fa-phone" style="width:20px;"></i> +44 7943 146345</a></li>
+                        <li><a href="#"><i class="fas fa-map-pin" style="width:20px;"></i> London, United Kingdom</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AM International Group. All rights reserved.</p>
+                <div class="legal">
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms of Service</a>
+                    <a href="/cookies">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+
+    <script>
+        // ─── SCROLL REVEAL ───
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal, .catalogue-item, .supply-item, .content-block').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ─── LIGHTBOX ───
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const closeBtn = document.getElementById('closeLightbox');
+
+        document.querySelectorAll('.full-img').forEach(img => {
+            img.addEventListener('click', function() {
+                lightboxImg.src = this.src;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                if (!lightbox.classList.contains('active')) {
+                    lightboxImg.src = '';
+                }
+            }, 300);
+        }
+
+        closeBtn.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+        });
+
+        // ─── HAMBURGER ───
+        (function() {
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('navLinks');
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    navLinks.classList.toggle('open');
+                });
+                document.querySelectorAll('.nav-links a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        hamburger.classList.remove('active');
+                        navLinks.classList.remove('open');
+                    });
+                });
+            }
+        })();
+
+        // ─── HEADER SCROLL ───
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 40) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        console.log('🌿 AM Spices — Authentic Spices from East Africa.');
+    </script>
+</body>
+</html>
