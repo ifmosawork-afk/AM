@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Holiday in Somalia | AM Tourism - AM International Group</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="/style.css" />
+
+    <style>
+        /* ─── ACCENT TEXT READABILITY FIX ─── */
+        :root {
+            --primary-light: #D42A47;
+            --whatsapp: #25D366;
+            --whatsapp-dark: #128C7E;
+        }
+
+        /* ─── HERO (text only) ─── */
+        .project-hero {
+            min-height: 65vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 140px 24px 60px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 30% 20%, rgba(122, 0, 25, 0.2), transparent 60%),
+                        radial-gradient(ellipse at 70% 80%, rgba(192, 192, 192, 0.05), transparent 50%),
+                        var(--bg-dark);
+        }
+        .project-hero .hero-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(192, 192, 192, 0.04);
+            pointer-events: none;
+            animation: ringPulse 12s ease-in-out infinite alternate;
+        }
+        .project-hero .hero-ring:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            top: -80px;
+            right: -80px;
+        }
+        .project-hero .hero-ring:nth-child(2) {
+            width: 350px;
+            height: 350px;
+            bottom: -40px;
+            left: -40px;
+            animation-delay: 4s;
+        }
+        .project-hero .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+        .project-hero .subtitle {
+            font-size: clamp(1rem, 1.2vw, 1.2rem);
+            color: var(--silver);
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            opacity: 0.75;
+            margin-bottom: 12px;
+        }
+        .project-hero h1 {
+            font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #FFFFFF 30%, var(--silver-light) 70%, var(--silver) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .project-hero h1 .accent {
+            color: var(--primary-light);
+            -webkit-text-fill-color: var(--primary-light);
+        }
+        .project-hero p {
+            color: var(--text-muted);
+            font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+            max-width: 700px;
+            margin: 0 auto 32px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin: 32px 0 40px;
+        }
+        .hero-metrics .metric-item {
+            text-align: center;
+        }
+        .hero-metrics .metric-item .number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--silver);
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-metrics .metric-item .label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            margin-top: 4px;
+        }
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        /* ─── IMAGE BANNER ─── */
+        .image-banner {
+            width: 100%;
+            background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+            min-height: 240px;
+            overflow: hidden;
+            border-top: 1px solid rgba(192, 192, 192, 0.06);
+            border-bottom: 1px solid rgba(192, 192, 192, 0.06);
+        }
+        .image-banner img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 640px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* ─── SECTIONS ─── */
+        .energy-section {
+            padding: 80px 0;
+            position: relative;
+        }
+        .energy-section.dark {
+            background: rgba(20, 20, 20, 0.6);
+            border-top: 1px solid rgba(192, 192, 192, 0.06);
+            border-bottom: 1px solid rgba(192, 192, 192, 0.06);
+        }
+        .energy-section.darker {
+            background: var(--bg-dark);
+        }
+
+        .section-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--silver);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+            opacity: 0.7;
+        }
+        .section-title {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #fff 40%, var(--silver-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-title .accent {
+            color: var(--primary-light);
+            -webkit-text-fill-color: var(--primary-light);
+        }
+        .section-sub {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 780px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* ─── TOUR GRID ─── */
+        .tour-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin-top: 48px;
+        }
+        .tour-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(122, 0, 25, 0.15);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        .tour-card:hover {
+            border-color: rgba(192, 192, 192, 0.25);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-red);
+        }
+        .tour-card .tour-img {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+            cursor: pointer;
+        }
+        .tour-card .tour-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .tour-card:hover .tour-img img {
+            transform: scale(1.06);
+        }
+        .tour-card .tour-img .tour-tag {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: rgba(122, 0, 25, 0.92);
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            backdrop-filter: blur(6px);
+        }
+        .tour-card .tour-body {
+            padding: 32px 30px 34px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .tour-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 2.2vw, 1.9rem);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .tour-card .tour-desc {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 18px;
+        }
+        .tour-card .tour-highlights {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px;
+            display: grid;
+            gap: 8px;
+        }
+        .tour-card .tour-highlights li {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            font-weight: 300;
+            padding-left: 22px;
+            position: relative;
+        }
+        .tour-card .tour-highlights li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+        .tour-card .tour-highlights li strong {
+            color: var(--silver);
+        }
+        .tour-card .tour-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding-top: 18px;
+            margin-top: auto;
+            border-top: 1px solid rgba(192, 192, 192, 0.08);
+        }
+        .tour-card .tour-meta .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+        .tour-card .tour-meta .meta-item i {
+            color: var(--silver);
+            opacity: 0.75;
+            font-size: 0.95rem;
+        }
+        .tour-card .tour-meta .meta-item strong {
+            color: var(--silver);
+            font-weight: 600;
+        }
+
+        /* ─── WHY SECTION ─── */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .why-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(122, 0, 25, 0.12);
+            border-radius: var(--radius);
+            padding: 30px 24px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .why-card:hover {
+            border-color: rgba(192, 192, 192, 0.2);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-red);
+        }
+        .why-card .icon {
+            font-size: 2.2rem;
+            color: var(--silver);
+            margin-bottom: 14px;
+            opacity: 0.8;
+        }
+        .why-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .why-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* ─── CTA ─── */
+        .final-cta {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 90px 24px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at center, rgba(122, 0, 25, 0.12), var(--bg-dark) 70%);
+            border-top: 1px solid rgba(192, 192, 192, 0.06);
+        }
+        .final-cta .content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+        .final-cta h2 {
+            font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+            font-weight: 900;
+            margin-bottom: 16px;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #FFFFFF 30%, var(--silver-light) 70%, var(--silver) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .final-cta h2 .accent {
+            color: var(--primary-light);
+            -webkit-text-fill-color: var(--primary-light);
+        }
+        .final-cta p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 620px;
+            margin: 0 auto 36px;
+            font-weight: 300;
+        }
+
+        /* ─── WHATSAPP BUTTON ─── */
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--whatsapp);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1.05rem;
+            padding: 18px 38px;
+            border-radius: 999px;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 28px rgba(37, 211, 102, 0.28);
+            border: none;
+        }
+        .btn-whatsapp:hover {
+            background: var(--whatsapp-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 36px rgba(37, 211, 102, 0.42);
+        }
+        .btn-whatsapp i {
+            font-size: 1.4rem;
+        }
+        .cta-sub {
+            display: block;
+            margin-top: 18px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* ─── REVEAL ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── LIGHTBOX ─── */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.93);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        .lightbox-overlay .lightbox-content {
+            max-width: 92%;
+            max-height: 88vh;
+            position: relative;
+        }
+        .lightbox-overlay .lightbox-content img {
+            width: 100%;
+            height: auto;
+            max-height: 88vh;
+            object-fit: contain;
+            border-radius: var(--radius);
+            box-shadow: 0 8px 60px rgba(0, 0, 0, 0.85);
+        }
+        .lightbox-overlay .close-btn {
+            position: absolute;
+            top: -42px;
+            right: -42px;
+            background: rgba(122, 0, 25, 0.9);
+            color: #fff;
+            border: none;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            font-size: 1.7rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+        .lightbox-overlay .close-btn:hover {
+            background: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            .why-grid { grid-template-columns: repeat(2, 1fr); }
+            .tour-grid { gap: 24px; }
+            .tour-card .tour-img { height: 260px; }
+        }
+        @media (max-width: 868px) {
+            .hero-metrics { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .hero-metrics .metric-item .number { font-size: 1.6rem; }
+            .image-banner img { max-height: 480px; }
+            .tour-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            .why-grid { grid-template-columns: 1fr; }
+            .energy-section { padding: 60px 0; }
+            .project-hero {
+                min-height: 50vh;
+                padding: 120px 24px 50px;
+            }
+            .project-hero h1 { font-size: 2.2rem; }
+            .project-hero .subtitle { font-size: 0.85rem; }
+            .image-banner img { max-height: 320px; }
+            .tour-card .tour-img { height: 220px; }
+            .tour-card .tour-body { padding: 24px 20px 26px; }
+            .lightbox-overlay { padding: 16px; }
+            .lightbox-overlay .close-btn {
+                top: -34px;
+                right: -6px;
+                width: 38px;
+                height: 38px;
+                font-size: 1.3rem;
+            }
+            .btn-whatsapp {
+                padding: 15px 28px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ HEADER ═══ -->
+    <header id="header">
+        <div class="container nav-wrapper">
+            <a href="/" class="nav-logo">
+                <img src="/favicon.png" alt="AM International Group" />
+                <span>AM<span style="font-weight:300;color:var(--text-muted);font-size:0.7rem;display:block;letter-spacing:1px;font-family:'Inter',sans-serif;">INTERNATIONAL GROUP</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/about">About</a></li>
+                <li><a href="/#companies">Companies</a></li>
+                <li><a href="/investments">Investments</a></li>
+                <li><a href="/energy">Energy</a></li>
+                <li class="nav-cta">
+                    <a href="/partner" class="btn-primary" style="padding:10px 24px;font-size:0.85rem;">Partner With Us</a>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="project-hero" id="hero">
+        <div class="hero-ring"></div>
+        <div class="hero-ring"></div>
+        <div class="hero-content">
+            <div class="subtitle">AM Tourism · Somalia</div>
+            <h1>Holiday in <span class="accent">Somalia</span></h1>
+            <p>
+                Discover a coastline the world has forgotten. Untouched beaches on the Indian Ocean,
+                ancient camel routes through the desert, vibrant markets in Mogadishu, and boat
+                journeys along one of the longest coastlines in Africa — all with the safety,
+                comfort, and local knowledge of AM Tourism.
+            </p>
+            <div class="hero-metrics">
+                <div class="metric-item">
+                    <div class="number">3,300 km</div>
+                    <div class="label">Mainland Coastline</div>
+                </div>
+                <div class="metric-item">
+                    <div class="number">4 Tours</div>
+                    <div class="label">Boat · Camel · City · Desert</div>
+                </div>
+                <div class="metric-item">
+                    <div class="number">365</div>
+                    <div class="label">Days of Sunshine</div>
+                </div>
+                <div class="metric-item">
+                    <div class="number">100%</div>
+                    <div class="label">Local Guides &amp; Support</div>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="#tours" class="btn-primary">Explore Our Tours</a>
+                <a href="#book" class="btn-secondary">Book on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ HEADER IMAGE BANNER ═══ -->
+    <section class="image-banner">
+        <img src="/images/somali-tour.jpg"
+             alt="Holiday in Somalia – AM Tourism"
+             loading="lazy"
+             onerror="console.error('FAILED:', this.currentSrc || this.src)" />
+    </section>
+
+    <!-- ═══ INTRO / OPPORTUNITY ═══ -->
+    <section class="energy-section darker" id="about">
+        <div class="container">
+            <span class="section-badge">Welcome to Somalia</span>
+            <h2 class="section-title">A Country of <span class="accent">Untold Beauty</span></h2>
+            <p class="section-sub">
+                Somalia is one of the last truly undiscovered destinations on earth. With the longest
+                mainland coastline in Africa, warm turquoise waters, ancient port cities, and a rich
+                nomadic culture stretching back thousands of years, it offers a travel experience
+                unlike anywhere else on the continent.
+            </p>
+            <p class="section-sub" style="margin-top:16px;">
+                AM Tourism is your trusted gateway. We handle every detail — from airport pickup and
+                secure transport to experienced local guides, comfortable accommodation, and
+                carefully planned itineraries that show you the real Somalia safely and respectfully.
+            </p>
+            <p class="section-sub" style="margin-top:16px;">
+                Whether you're diaspora returning home, an adventurous traveller, or a family looking
+                for something genuinely different, we have a tour built for you.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ TOURS ═══ -->
+    <section class="energy-section dark" id="tours">
+        <div class="container">
+            <span class="section-badge">Our Tours</span>
+            <h2 class="section-title">Four Ways to <span class="accent">Experience Somalia</span></h2>
+            <p class="section-sub">
+                Each of our signature tours is led by experienced local guides and can be booked
+                individually or combined into a multi-day package. All tours include secure
+                transport, refreshments, and full coordination by AM Tourism.
+            </p>
+
+            <div class="tour-grid">
+
+                <!-- BOAT TOURS -->
+                <div class="tour-card reveal">
+                    <div class="tour-img">
+                        <span class="tour-tag">Boat Tours</span>
+                        <img src="https://images.unsplash.com/photo-1660519167902-42fa6857567c?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                             alt="Boat Tours in Somalia"
+                             class="full-img"
+                             loading="lazy"
+                             onerror="console.error('FAILED:', this.currentSrc || this.src)" />
+                    </div>
+                    <div class="tour-body">
+                        <h3>Boat Tours</h3>
+                        <p class="tour-desc">
+                            Sail along Somalia's stunning Indian Ocean coastline. Crystal-clear waters,
+                            untouched beaches, and the chance to see dolphins, sea turtles, and
+                            traditional fishing dhows at work.
+                        </p>
+                        <ul class="tour-highlights">
+                            <li><strong>Coastal cruises</strong> along the Mogadishu and Marka shoreline</li>
+                            <li><strong>Snorkelling &amp; swimming</strong> in warm, clear waters</li>
+                            <li><strong>Fresh seafood lunch</strong> prepared on board</li>
+                            <li><strong>Sunset sailing</strong> with views of the Indian Ocean</li>
+                        </ul>
+                        <div class="tour-meta">
+                            <div class="meta-item"><i class="fas fa-clock"></i> Half or full day</div>
+                            <div class="meta-item"><i class="fas fa-users"></i> Up to <strong>12 guests</strong></div>
+                            <div class="meta-item"><i class="fas fa-shield-halved"></i> Life jackets &amp; crew</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAMEL TOURS -->
+                <div class="tour-card reveal">
+                    <div class="tour-img">
+                        <span class="tour-tag">Camel Tours</span>
+                        <img src="https://images.unsplash.com/flagged/photo-1550489518-40f49ba4bf20?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                             alt="Camel Tours in Somalia"
+                             class="full-img"
+                             loading="lazy"
+                             onerror="console.error('FAILED:', this.currentSrc || this.src)" />
+                    </div>
+                    <div class="tour-body">
+                        <h3>Camel Tours</h3>
+                        <p class="tour-desc">
+                            Somalia is home to one of the largest camel populations in the world. Ride
+                            through traditional nomadic lands and experience a way of life that has
+                            barely changed in centuries.
+                        </p>
+                        <ul class="tour-highlights">
+                            <li><strong>Guided camel rides</strong> with experienced herders</li>
+                            <li><strong>Nomadic camp visit</strong> — tea, storytelling, and local customs</li>
+                            <li><strong>Fresh camel milk tasting</strong>, a Somali tradition</li>
+                            <li><strong>Photography stops</strong> across open savannah and acacia land</li>
+                        </ul>
+                        <div class="tour-meta">
+                            <div class="meta-item"><i class="fas fa-clock"></i> 3–5 hours</div>
+                            <div class="meta-item"><i class="fas fa-users"></i> Small groups</div>
+                            <div class="meta-item"><i class="fas fa-person-hiking"></i> Easy pace</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CITY TOUR -->
+                <div class="tour-card reveal">
+                    <div class="tour-img">
+                        <span class="tour-tag">City Tour</span>
+                        <img src="https://images.unsplash.com/photo-1704013405510-8222bd2863b6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                             alt="City Tour in Mogadishu"
+                             class="full-img"
+                             loading="lazy"
+                             onerror="console.error('FAILED:', this.currentSrc || this.src)" />
+                    </div>
+                    <div class="tour-body">
+                        <h3>City Tour</h3>
+                        <p class="tour-desc">
+                            Explore Mogadishu — a city of resilience, history, and vibrant culture.
+                            From ancient architecture to bustling markets, our city tour shows you
+                            the capital through the eyes of those who know it best.
+                        </p>
+                        <ul class="tour-highlights">
+                            <li><strong>Historic landmarks</strong> and old town architecture</li>
+                            <li><strong>Lively markets</strong> — spices, fabrics, and local crafts</li>
+                            <li><strong>Lido Beach</strong> and the waterfront promenade</li>
+                            <li><strong>Authentic Somali cuisine</strong> at a trusted local restaurant</li>
+                        </ul>
+                        <div class="tour-meta">
+                            <div class="meta-item"><i class="fas fa-clock"></i> Full day</div>
+                            <div class="meta-item"><i class="fas fa-car"></i> Private transport</div>
+                            <div class="meta-item"><i class="fas fa-user-tie"></i> Expert local guide</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DESERT TOUR -->
+                <div class="tour-card reveal">
+                    <div class="tour-img">
+                        <span class="tour-tag">Desert Tour</span>
+                        <img src="/images/somali-tour.jpg"
+                             alt="Desert Tour in Somalia"
+                             class="full-img"
+                             loading="lazy"
+                             onerror="console.error('FAILED:', this.currentSrc || this.src)" />
+                    </div>
+                    <div class="tour-body">
+                        <h3>Desert Tour</h3>
+                        <p class="tour-desc">
+                            Venture beyond the coast into Somalia's vast interior. Golden dunes,
+                            open desert plains, and star-filled night skies — an unforgettable
+                            journey into the heart of the Horn of Africa.
+                        </p>
+                        <ul class="tour-highlights">
+                            <li><strong>4x4 desert expedition</strong> with experienced drivers</li>
+                            <li><strong>Traditional desert camp</strong> with evening meal under the stars</li>
+                            <li><strong>Sunrise &amp; sunset viewpoints</strong> over the dunes</li>
+                            <li><strong>Cultural encounters</strong> with desert communities</li>
+                        </ul>
+                        <div class="tour-meta">
+                            <div class="meta-item"><i class="fas fa-clock"></i> 1–2 days</div>
+                            <div class="meta-item"><i class="fas fa-tent"></i> Overnight option</div>
+                            <div class="meta-item"><i class="fas fa-shield-halved"></i> Full support crew</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ WHY BOOK WITH US ═══ -->
+    <section class="energy-section darker" id="why">
+        <div class="container">
+            <span class="section-badge">Why AM Tourism</span>
+            <h2 class="section-title">Travel With <span class="accent">Confidence</span></h2>
+            <p class="section-sub">
+                We are a Somali-owned and operated tourism company with deep local roots. Every tour
+                is planned with your safety, comfort, and experience as the top priority.
+            </p>
+
+            <div class="why-grid">
+                <div class="why-card reveal">
+                    <div class="icon"><i class="fas fa-user-shield"></i></div>
+                    <h4>Safety First</h4>
+                    <p>Vetted routes, secure transport, and 24/7 local support on every tour.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="icon"><i class="fas fa-map-location-dot"></i></div>
+                    <h4>Local Expertise</h4>
+                    <p>Guides who were born here and know every road, beach, and story.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="icon"><i class="fas fa-hand-holding-heart"></i></div>
+                    <h4>Tailored Trips</h4>
+                    <p>Custom itineraries for families, diaspora, groups, and solo travellers.</p>
+                </div>
+                <div class="why-card reveal">
+                    <div class="icon"><i class="fas fa-headset"></i></div>
+                    <h4>Always Reachable</h4>
+                    <p>Direct WhatsApp line to our team — before, during, and after your trip.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CTA / WHATSAPP ═══ -->
+    <section class="final-cta" id="book">
+        <div class="content">
+            <h2>Ready to Book Your <span class="accent">Somali Adventure?</span></h2>
+            <p>
+                Message us on WhatsApp to check availability, get pricing, or build a custom
+                itinerary. Our team replies personally — no call centres, no waiting.
+            </p>
+            <a href="https://wa.me/252904369186?text=Hello%20AM%20Tourism%2C%20I%27d%20like%20to%20book%20a%20tour%20in%20Somalia."
+               class="btn-whatsapp"
+               target="_blank"
+               rel="noopener">
+                <i class="fab fa-whatsapp"></i>
+                Book on WhatsApp
+            </a>
+            <span class="cta-sub">+252 90 436 9186 · Available 7 days a week</span>
+        </div>
+    </section>
+
+    <!-- ═══ LIGHTBOX ═══ -->
+    <div class="lightbox-overlay" id="lightbox">
+        <div class="lightbox-content">
+            <button class="close-btn" id="closeLightbox">&times;</button>
+            <img src="" alt="Enlarged view" id="lightboxImg" />
+        </div>
+    </div>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="/favicon.png" alt="AM International Group" />
+                    <div class="tagline">"Building Businesses For Tomorrow"</div>
+                    <p style="max-width:300px;">
+                        AM International Group is a diversified business group investing across
+                        construction, real estate, food supply, energy, education, tourism, and
+                        strategic partnerships.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/#companies">Companies</a></li>
+                        <li><a href="/investments">Investments</a></li>
+                        <li><a href="/energy">Energy</a></li>
+                        <li><a href="/careers">Careers</a></li>
+                        <li><a href="/partner">Partner</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Industries</h4>
+                    <ul>
+                        <li><a href="/am-construction">Construction</a></li>
+                        <li><a href="/am-realestate">Real Estate</a></li>
+                        <li><a href="/am-food-supply">Food &amp; Supply</a></li>
+                        <li><a href="/am-tourism">Tourism</a></li>
+                        <li><a href="/am-tea">Tea</a></li>
+                        <li><a href="/am-spices">Spices</a></li>
+                        <li><a href="/am-sea-foods">Sea Foods</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="mailto:info@am-internationalgroup.com"><i class="fas fa-envelope" style="width:20px;"></i> info@am-internationalgroup.com</a></li>
+                        <li><a href="tel:+447943146345"><i class="fas fa-phone" style="width:20px;"></i> +44 7943 146345</a></li>
+                        <li><a href="https://wa.me/252904369186" target="_blank"><i class="fab fa-whatsapp" style="width:20px;"></i> +252 90 436 9186</a></li>
+                        <li><a href="#"><i class="fas fa-map-pin" style="width:20px;"></i> Mogadishu, Somalia</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AM International Group. All rights reserved.</p>
+                <div class="legal">
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms of Service</a>
+                    <a href="/cookies">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══ Global JavaScript ═══ -->
+    <script src="/script.js"></script>
+
+    <script>
+        // ─── SCROLL REVEAL ───
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal, .tour-card, .why-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ─── LIGHTBOX ───
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const closeBtn = document.getElementById('closeLightbox');
+
+        document.querySelectorAll('.full-img').forEach(img => {
+            img.addEventListener('click', function() {
+                lightboxImg.src = this.src;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                if (!lightbox.classList.contains('active')) {
+                    lightboxImg.src = '';
+                }
+            }, 300);
+        }
+
+        closeBtn.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+        });
+
+        // ─── HAMBURGER ───
+        (function() {
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('navLinks');
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    navLinks.classList.toggle('open');
+                });
+                document.querySelectorAll('.nav-links a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        hamburger.classList.remove('active');
+                        navLinks.classList.remove('open');
+                    });
+                });
+            }
+        })();
+
+        // ─── HEADER SCROLL ───
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 40) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        console.log('🐪 AM Tourism - Somalia — Holiday in Somalia.');
+    </script>
+</body>
+</html>
