@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AM International School | AM International Group</title>
+    <title>AM International School - Somalia | AM International Group</title>
     <link rel="icon" type="image/png" href="/favicon.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -256,62 +256,6 @@
             line-height: 1.7;
         }
         .content-block .text-card .note strong {
-            color: var(--silver);
-        }
-
-        /* ─── UNIFORM SECTION ─── */
-        .uniform-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 28px;
-            margin-top: 32px;
-        }
-        .uniform-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(122, 0, 25, 0.15);
-            border-radius: var(--radius);
-            padding: 32px 28px;
-            transition: var(--transition);
-        }
-        .uniform-card:hover {
-            border-color: rgba(192, 192, 192, 0.2);
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-red);
-        }
-        .uniform-card .uniform-icon {
-            font-size: 2.4rem;
-            color: var(--primary);
-            margin-bottom: 12px;
-            display: block;
-            opacity: 0.85;
-        }
-        .uniform-card h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 12px;
-        }
-        .uniform-card ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .uniform-card ul li {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.8;
-            padding: 6px 0 6px 24px;
-            position: relative;
-            font-weight: 300;
-        }
-        .uniform-card ul li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: var(--silver);
-        }
-        .uniform-card ul li strong {
             color: var(--silver);
         }
 
@@ -635,14 +579,84 @@
             }
         }
 
+        /* ─── UNIFORM SECTION ─── */
+        .uniform-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 32px;
+        }
+        .uniform-item {
+            background: var(--bg-card);
+            border: 1px solid rgba(122, 0, 25, 0.15);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            transition: var(--transition);
+        }
+        .uniform-item:hover {
+            border-color: rgba(192, 192, 192, 0.2);
+            box-shadow: var(--shadow-red);
+            transform: translateY(-4px);
+        }
+        .uniform-item .icon {
+            font-size: 2.4rem;
+            color: var(--silver);
+            margin-bottom: 12px;
+            display: block;
+            opacity: 0.7;
+        }
+        .uniform-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .uniform-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            font-weight: 300;
+            margin-bottom: 12px;
+        }
+        .uniform-item .swatch {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(192, 192, 192, 0.06);
+        }
+        .uniform-item .swatch .color-box {
+            width: 42px;
+            height: 42px;
+            border-radius: 8px;
+            background: #7A0019;
+            border: 2px solid rgba(192, 192, 192, 0.2);
+            flex-shrink: 0;
+        }
+        .uniform-item .swatch .label {
+            font-size: 0.85rem;
+            color: var(--silver);
+            font-weight: 500;
+        }
+        .uniform-item .swatch .label small {
+            display: block;
+            color: var(--text-muted);
+            font-weight: 300;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
         /* ─── RESPONSIVE ─── */
         @media (max-width: 1024px) {
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .revenue-grid { grid-template-columns: repeat(2, 1fr); }
             .invest-grid { grid-template-columns: repeat(2, 1fr); }
             .phase-grid { grid-template-columns: repeat(2, 1fr); }
-            .uniform-grid { grid-template-columns: 1fr; }
             .content-block .full-img { height: 380px; }
+            .uniform-split { grid-template-columns: 1fr; }
         }
         @media (max-width: 868px) {
             .hero-metrics { grid-template-columns: repeat(2, 1fr); gap: 16px; }
@@ -664,7 +678,6 @@
             .image-banner img { max-height: 320px; }
             .content-block .full-img { height: 240px; }
             .content-block .text-card { padding: 24px 20px; }
-            .uniform-card { padding: 24px 20px; }
             .investment-table { font-size: 0.78rem; }
             .investment-table th,
             .investment-table td { padding: 10px 12px; }
@@ -695,7 +708,7 @@
         </div>
     </header>
 
-    <!-- ═══ HERO (TEXT ONLY) ═══ -->
+    <!-- ═══ HERO ═══ -->
     <section class="project-hero" id="hero">
         <div class="hero-ring"></div>
         <div class="hero-ring"></div>
@@ -734,7 +747,7 @@
 
     <!-- ═══ CLEAN IMAGE BANNER ═══ -->
     <section class="image-banner">
-        <img src="images/somalia-school.jpg" alt="AM International School – British Curriculum in Somalia" loading="lazy" />
+        <img src="images/somalia-school.jpg" alt="AM International School – Somalia" loading="lazy" />
     </section>
 
     <!-- ═══ THE OPPORTUNITY ═══ -->
@@ -754,9 +767,9 @@
                 still being rooted in Somali culture, language, and values.
             </p>
             <p class="section-sub" style="margin-top:16px;">
-                Existing international schools in Mogadishu operate at or near capacity. Parents
-                consistently seek British curriculum options, and demand outweighs available places
-                every academic year.
+                Existing international schools in Mogadishu operate at or near capacity. Demand
+                consistently exceeds supply, and there is significant room for a new, high-quality
+                British curriculum school serving both the diaspora and local families.
             </p>
 
             <div class="stats-grid">
@@ -769,12 +782,12 @@
                     <div class="label">Annual Remittances to Somalia</div>
                 </div>
                 <div class="stat-card reveal">
-                    <div class="number">High</div>
-                    <div class="label">Demand for English Education</div>
+                    <div class="number">1,300</div>
+                    <div class="label">Students at Comparable British Schools</div>
                 </div>
                 <div class="stat-card reveal">
-                    <div class="number">Limited</div>
-                    <div class="label">Supply of British Curriculum Places</div>
+                    <div class="number">High</div>
+                    <div class="label">Demand for English Education</div>
                 </div>
             </div>
         </div>
@@ -793,8 +806,7 @@
             </p>
 
             <div class="content-block reveal">
-                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Students in British Curriculum Classroom" class="full-img" loading="lazy" />
-                <div class="text-card">
+                <div class="text-card" style="border-radius:var(--radius);">
                     <div class="sub">Curriculum Overview</div>
                     <h3>From Nursery to Sixth Form</h3>
                     <p>
@@ -852,8 +864,7 @@
             </div>
 
             <div class="content-block reveal" style="margin-top:40px;">
-                <img src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="School Campus Facilities" class="full-img" loading="lazy" />
-                <div class="text-card">
+                <div class="text-card" style="border-radius:var(--radius);">
                     <div class="sub">Facilities &amp; Infrastructure</div>
                     <h3>Built for Learning, Safety, and Community</h3>
                     <p>
@@ -878,62 +889,69 @@
         </div>
     </section>
 
-    <!-- ═══ SCHOOL UNIFORMS ═══ -->
-    <section class="energy-section dark" id="uniforms">
+    <!-- ═══ SCHOOL UNIFORM ═══ -->
+    <section class="energy-section dark" id="uniform">
         <div class="container">
-            <span class="section-badge">School Uniforms</span>
-            <h2 class="section-title">Modest. Professional. <span class="accent">Unmistakably Ours.</span></h2>
+            <span class="section-badge">School Uniform</span>
+            <h2 class="section-title">A Distinctive Uniform <span class="accent">&amp; Additional Revenue Stream</span></h2>
             <p class="section-sub">
-                Every AM International School student wears a signature burgundy uniform — designed to
-                respect Somali cultural and religious values while projecting the pride and professionalism
-                of a serious academic institution. Uniforms are supplied exclusively through the school,
-                creating a reliable and recurring revenue stream.
+                Our school uniform has been designed to reflect the school's identity while respecting
+                Somali cultural values and Islamic dress code. The signature burgundy colour — matched
+                to the AM brand — creates a strong, unifying visual identity across the entire campus.
             </p>
 
             <div class="content-block reveal">
-                <img src="images/uniform.jpg" alt="AM International School Uniform – Burgundy Hijab and Long Dress for Girls, Polo Shirt and Trousers for Boys" class="full-img" loading="lazy" />
+                <img src="images/uniform.jpg" alt="AM International School Uniform" class="full-img" loading="lazy" />
                 <div class="text-card">
-                    <div class="sub">The Signature Uniform</div>
-                    <h3>Burgundy — The Colour of Our School</h3>
+                    <div class="sub">Uniform Design</div>
+                    <h3>Burgundy. Modest. Distinctive.</h3>
                     <p>
-                        Our uniform has been designed in consultation with parents, students, and local
-                        community leaders. The deep burgundy colour reflects our brand identity, while
-                        the cut and composition respect Somali cultural and religious traditions. Every
-                        student is instantly recognisable as part of the AM International School family.
+                        The uniform is manufactured to high standards and supplied to every enrolled
+                        student. Beyond being a source of school pride, uniforms represent a
+                        <strong>recurring revenue stream</strong> — with families purchasing multiple
+                        sets per student across the academic year.
                     </p>
 
-                    <div class="uniform-grid">
-                        <div class="uniform-card">
-                            <span class="uniform-icon"><i class="fas fa-female"></i></span>
+                    <div class="uniform-split">
+                        <div class="uniform-item">
+                            <span class="icon"><i class="fas fa-female"></i></span>
                             <h4>Girls' Uniform</h4>
-                            <ul>
-                                <li><strong>Hijab:</strong> Burgundy hijab in breathable, modest fabric</li>
-                                <li><strong>Long Dress:</strong> Burgundy long-sleeve dress, ankle-length</li>
-                                <li><strong>Optional:</strong> Burgundy cardigan or blazer for cooler months</li>
-                                <li><strong>Shoes:</strong> Plain black, closed-toe (school-approved)</li>
-                                <li><strong>PE Kit:</strong> Burgundy and white sports top with black leggings</li>
-                            </ul>
+                            <p>
+                                A long, modest dress in burgundy, paired with a matching burgundy hijab.
+                                Designed for comfort, modesty, and cultural alignment — worn across all
+                                year groups from Primary through Sixth Form.
+                            </p>
+                            <div class="swatch">
+                                <div class="color-box"></div>
+                                <div class="label">
+                                    Burgundy
+                                    <small>Signature Colour</small>
+                                </div>
+                            </div>
                         </div>
-                        <div class="uniform-card">
-                            <span class="uniform-icon"><i class="fas fa-male"></i></span>
+                        <div class="uniform-item">
+                            <span class="icon"><i class="fas fa-male"></i></span>
                             <h4>Boys' Uniform</h4>
-                            <ul>
-                                <li><strong>Polo Shirt:</strong> Burgundy polo with embroidered school crest</li>
-                                <li><strong>Trousers:</strong> Black or dark charcoal, tailored fit</li>
-                                <li><strong>Optional:</strong> Burgundy jumper or blazer for formal occasions</li>
-                                <li><strong>Shoes:</strong> Plain black, closed-toe (school-approved)</li>
-                                <li><strong>PE Kit:</strong> Burgundy and white sports top with black shorts</li>
-                            </ul>
+                            <p>
+                                A burgundy polo shirt paired with dark trousers. Simple, smart, and
+                                appropriate for both classroom learning and physical education across
+                                all year groups.
+                            </p>
+                            <div class="swatch">
+                                <div class="color-box"></div>
+                                <div class="label">
+                                    Burgundy
+                                    <small>Signature Colour</small>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="note">
-                        <strong>Uniform as a revenue stream.</strong> All uniforms are supplied exclusively
-                        through the school's own uniform shop. With ~1,900 students requiring multiple
-                        sets (minimum 2–3 per student) plus annual replacements, this is a significant
-                        recurring revenue line in addition to tuition. Estimated annual uniform revenue
-                        at full capacity: <strong>~$900,000–$1,200,000</strong>, contributing roughly
-                        7–9% of total school income.
+                        <strong>Additional Revenue:</strong> Uniform sales generate an estimated
+                        $250,000–$400,000 per year at full enrolment, with an average of 2–3 uniform
+                        sets per student. PE kits, winter options, sports uniforms, and branded
+                        accessories (bags, caps, ties) provide further recurring revenue.
                     </div>
                 </div>
             </div>
@@ -951,12 +969,6 @@
                 style="color:var(--silver);">$28–32 million USD</strong>, covering land, construction,
                 equipment, and initial operating costs.
             </p>
-            <p class="section-sub" style="margin-top:12px;">
-                Premium international schools in East Africa typically cost $20–35 million to develop,
-                with larger campuses exceeding that range. School construction costs in Somalia are
-                significantly higher than in comparable settings, due to security and logistics
-                requirements.
-            </p>
 
             <table class="investment-table">
                 <thead>
@@ -970,7 +982,7 @@
                     <tr>
                         <td>Land Acquisition</td>
                         <td>$8M – $10M</td>
-                        <td>20,000+ sqm site in a secure, accessible area of Mogadishu. Prime land in Mogadishu can reach $4,000/sqm.</td>
+                        <td>20,000+ sqm site in a secure, accessible area of Mogadishu.</td>
                     </tr>
                     <tr>
                         <td>Site Preparation &amp; Infrastructure</td>
@@ -1033,8 +1045,8 @@
             <h2 class="section-title">Revenue, Margins &amp; <span class="accent">Investor Returns</span></h2>
             <p class="section-sub">
                 International schools in Africa generate strong, recurring revenue with healthy operating
-                margins. This model combines tuition, boarding, uniforms, and ancillary services into a
-                diversified income base that stabilises cash flow and supports long-term growth.
+                margins. Our model is built on a tiered tuition structure that balances accessibility
+                for local families with premium pricing for diaspora and international students.
             </p>
 
             <div class="revenue-grid">
@@ -1050,31 +1062,30 @@
                 </div>
                 <div class="revenue-item reveal">
                     <div class="phase">Year 5–6</div>
-                    <div class="amount">$14M+</div>
-                    <div class="desc">Sixth Form fully operational. Enrolment at capacity of 1,900–2,100 students, including uniforms and ancillary services.</div>
+                    <div class="amount">$12M+</div>
+                    <div class="desc">Sixth Form fully operational. Enrolment at capacity of 1,900–2,100 students.</div>
                 </div>
             </div>
 
             <div class="content-block reveal" style="margin-top:40px;">
                 <div class="text-card" style="border-radius:var(--radius);">
                     <div class="sub">Revenue Assumptions</div>
-                    <h3>How We Reach $14M+ Annual Revenue</h3>
+                    <h3>How We Reach $12M+ Annual Revenue</h3>
                     <p>
                         Our revenue model is built on a tiered tuition structure that balances
                         accessibility for local families with premium pricing for diaspora and
-                        international students. Uniforms and ancillary services add meaningful
-                        incremental income on top of tuition.
+                        international students. All figures are in USD.
                     </p>
                     <ul>
                         <li><strong>Primary (Nursery–Year 6):</strong> 850 students × ~$4,200/year = $3.6M</li>
                         <li><strong>Secondary (Years 7–11, IGCSE):</strong> 700 students × ~$6,800/year = $4.8M</li>
                         <li><strong>Sixth Form (Years 12–13, A-Level/BTEC):</strong> 450 students × ~$8,500/year = $3.8M</li>
                         <li><strong>Boarding Fees:</strong> 250 boarders × ~$3,500/year = $0.9M</li>
-                        <li><strong>Uniforms &amp; School Shop:</strong> ~1,900 students × ~$550/year = $1.05M</li>
+                        <li><strong>Uniform Sales:</strong> 1,900 students × ~$200/year = $0.38M</li>
                         <li><strong>Other Income:</strong> Registration, transport, summer programmes = $0.5M</li>
                     </ul>
                     <div class="note">
-                        <strong>Total Annual Revenue at Capacity: ~$14.65M</strong>
+                        <strong>Total Annual Revenue at Capacity: ~$14M</strong>
                     </div>
                 </div>
             </div>
@@ -1085,21 +1096,20 @@
                     <h3>Operating Margin &amp; Investor Returns</h3>
                     <p>
                         Operating costs at full capacity are estimated at approximately 60–65% of revenue,
-                        leaving a net operating margin of 35–40%. Uniforms carry particularly healthy
-                        margins, since they are supplied exclusively through the school's own shop.
+                        leaving a net operating margin of 35–40%. This is in line with leading education
+                        companies operating in African markets.
                     </p>
                     <ul>
                         <li><strong>Teacher &amp; Staff Salaries (150+ staff):</strong> ~$4.8M/year</li>
                         <li><strong>Administration &amp; Support:</strong> ~$1.2M/year</li>
                         <li><strong>Facilities, Maintenance &amp; Utilities:</strong> ~$1.0M/year</li>
-                        <li><strong>Uniform Procurement &amp; Shop Operations:</strong> ~$0.55M/year</li>
                         <li><strong>Marketing &amp; Recruitment:</strong> ~$0.4M/year</li>
                         <li><strong>Other Operating Costs:</strong> ~$0.6M/year</li>
-                        <li><strong>Total Annual Operating Costs:</strong> ~$8.55M</li>
+                        <li><strong>Total Annual Operating Costs:</strong> ~$8.0M</li>
                     </ul>
                     <div class="note">
-                        <strong>Net Operating Income at Capacity: ~$6.1M/year</strong><br>
-                        <strong>Operating Margin: ~42%</strong><br>
+                        <strong>Net Operating Income at Capacity: ~$6.0M/year</strong><br>
+                        <strong>Operating Margin: ~43%</strong><br>
                         <strong>Payback Period: 5–6 years</strong><br>
                         <strong>Investor IRR: 18–24%</strong>
                     </div>
@@ -1165,15 +1175,15 @@
                 stabilises operations before scaling to full capacity.
             </p>
 
-            <div class="content-block reveal">
-                <img src="images/stages-school.jpg" alt="School Development Stages – From Planning to Launch" class="full-img" loading="lazy" />
+            <div class="content-block reveal" style="margin-bottom:40px;">
+                <img src="images/stages-school.jpg" alt="Development Stages – AM International School" class="full-img" loading="lazy" />
                 <div class="text-card">
                     <div class="sub">Development Stages</div>
-                    <h3>Four Phases, One Vision</h3>
+                    <h3>From Concept to Campus</h3>
                     <p>
-                        Each phase has clearly defined milestones, budgets, and deliverables. The phased
-                        approach minimises risk, allows for course correction, and ensures that students
-                        experience a fully prepared campus from day one of each stage.
+                        Each phase of the build is carefully sequenced to ensure quality, safety, and
+                        a smooth pathway to opening day. The campus is designed to open with Primary
+                        and lower Secondary first, then scale progressively as enrolment grows.
                     </p>
                 </div>
             </div>
@@ -1264,7 +1274,6 @@
                         <li><a href="/am-spices">Spices</a></li>
                         <li><a href="/am-fresh-produce">Fresh Produce</a></li>
                         <li><a href="/am-sea-foods">Sea Foods</a></li>
-                        <li><a href="/am-international-school">International School</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -1300,7 +1309,7 @@
             });
         }, { threshold: 0.15 });
 
-        document.querySelectorAll('.reveal, .stat-card, .revenue-item, .invest-card, .phase-step, .content-block, .uniform-card').forEach(el => {
+        document.querySelectorAll('.reveal, .stat-card, .revenue-item, .invest-card, .phase-step, .content-block').forEach(el => {
             observer.observe(el);
         });
 
@@ -1363,7 +1372,7 @@
             }
         });
 
-        console.log('🏫 AM International School — British Education in Somalia.');
+        console.log('🏫 AM International School - Somalia — British Education.');
     </script>
 </body>
 </html>
