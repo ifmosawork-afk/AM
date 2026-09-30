@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AM International School | AM International Group</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="/style.css" />
+
+    <style>
+        /* ─── HERO (text only) ─── */
+        .project-hero {
+            min-height: 65vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 140px 24px 60px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 30% 20%, rgba(122, 0, 25, 0.2), transparent 60%),
+                        radial-gradient(ellipse at 70% 80%, rgba(192, 192, 192, 0.05), transparent 50%),
+                        var(--bg-dark);
+        }
+        .project-hero .hero-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(192, 192, 192, 0.04);
+            pointer-events: none;
+            animation: ringPulse 12s ease-in-out infinite alternate;
+        }
+        .project-hero .hero-ring:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            top: -80px;
+            right: -80px;
+            animation-delay: 0s;
+        }
+        .project-hero .hero-ring:nth-child(2) {
+            width: 350px;
+            height: 350px;
+            bottom: -40px;
+            left: -40px;
+            animation-delay: 4s;
+        }
+        .project-hero .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+        .project-hero .subtitle {
+            font-size: clamp(1rem, 1.2vw, 1.2rem);
+            color: var(--silver);
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            opacity: 0.75;
+            margin-bottom: 12px;
+        }
+        .project-hero h1 {
+            font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #FFFFFF 30%, var(--silver-light) 70%, var(--silver) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .project-hero h1 .accent {
+            color: var(--primary);
+            -webkit-text-fill-color: var(--primary);
+        }
+        .project-hero p {
+            color: var(--text-muted);
+            font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+            max-width: 700px;
+            margin: 0 auto 32px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin: 32px 0 40px;
+        }
+        .hero-metrics .metric-item {
+            text-align: center;
+        }
+        .hero-metrics .metric-item .number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--silver);
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-metrics .metric-item .label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            margin-top: 4px;
+        }
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        /* ─── CLEAN IMAGE BANNER ─── */
+        .image-banner {
+            width: 100%;
+            background: var(--bg-dark);
+            overflow: hidden;
+            border-top: 1px solid rgba(192, 192, 192, 0.06);
+            border-bottom: 1px solid rgba(192, 192, 192, 0.06);
+        }
+        .image-banner img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 640px;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* ─── SECTIONS ─── */
+        .energy-section {
+            padding: 80px 0;
+            position: relative;
+        }
+        .energy-section.dark {
+            background: rgba(20, 20, 20, 0.6);
+            border-top: 1px solid rgba(192, 192, 192, 0.06);
+            border-bottom: 1px solid rgba(192, 192, 192, 0.06);
+        }
+        .energy-section.darker {
+            background: var(--bg-dark);
+        }
+
+        .section-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--silver);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+            opacity: 0.7;
+        }
+        .section-title {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #fff 40%, var(--silver-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-title .accent {
+            color: var(--primary);
+            -webkit-text-fill-color: var(--primary);
+        }
+        .section-sub {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 780px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* ─── CONTENT BLOCK ─── */
+        .content-block {
+            margin-top: 32px;
+        }
+        .content-block .full-img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            border-radius: var(--radius) var(--radius) 0 0;
+            display: block;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .content-block .full-img:hover {
+            opacity: 0.92;
+            transform: scale(1.005);
+        }
+        .content-block .text-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(122, 0, 25, 0.15);
+            border-radius: 0 0 var(--radius) var(--radius);
+            padding: 40px 36px;
+            transition: var(--transition);
+        }
+        .content-block .text-card:hover {
+            border-color: rgba(192, 192, 192, 0.2);
+            box-shadow: var(--shadow-red);
+        }
+        .content-block .text-card .sub {
+            color: var(--silver);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 300;
+            opacity: 0.7;
+            margin-bottom: 4px;
+        }
+        .content-block .text-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .content-block .text-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 12px;
+            max-width: 100%;
+        }
+        .content-block .text-card ul {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            padding-left: 20px;
+            font-weight: 300;
+            margin-bottom: 0;
+        }
+        .content-block .text-card ul li {
+            margin-bottom: 4px;
+        }
+        .content-block .text-card ul li strong {
+            color: var(--silver);
+        }
+        .content-block .text-card .note {
+            background: rgba(122, 0, 25, 0.12);
+            border-left: 3px solid var(--primary);
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin-top: 16px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .content-block .text-card .note strong {
+            color: var(--silver);
+        }
+
+        /* ─── UNIFORM SECTION ─── */
+        .uniform-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin-top: 32px;
+        }
+        .uniform-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(122, 0, 25, 0.15);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            transition: var(--transition);
+        }
+        .uniform-card:hover {
+            border-color: rgba(192, 192, 192, 0.2);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-red);
+        }
+        .uniform-card .uniform-icon {
+            font-size: 2.4rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: block;
+            opacity: 0.85;
+        }
+        .uniform-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .uniform-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .uniform-card ul li {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            padding: 6px 0 6px 24px;
+            position: relative;
+            font-weight: 300;
+        }
+        .uniform-card ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--silver);
+        }
+        .uniform-card ul li strong {
+            color: var(--silver);
+        }
+
+        /* ─── STATS GRID ─── */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+        }
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(122, 0, 25, 0.12);
+            border-radius: var(--radius);
+            padding: 28px 22px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .stat-card:hover {
+            border-color: rgba(192, 192, 192, 0.2);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-red);
+        }
+        .stat-card .number {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--silver);
+            font-family: 'Playfair Display', serif;
+            line-height: 1.2;
+        }
+        .stat-card .label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            margin-top: 6px;
+        }
+
+        /* ─── INVESTMENT TABLE ─── */
+        .investment-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0 16px;
+            font-size: 0.95rem;
+            background: rgba(20, 20, 20, 0.5);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+        .investment-table thead {
+            background: rgba(122, 0, 25, 0.2);
+        }
+        .investment-table th {
+            color: var(--silver);
+            font-weight: 600;
+            text-align: left;
+            padding: 14px 20px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .investment-table td {
+            padding: 14px 20px;
+            color: var(--text-muted);
+            border-bottom: 1px solid rgba(192, 192, 192, 0.04);
+        }
+        .investment-table tr:last-child td {
+            border-bottom: none;
+        }
+        .investment-table td:first-child {
+            font-weight: 500;
+            color: #fff;
+        }
+        .investment-table td strong {
+            color: var(--silver);
+        }
+        .investment-table .total-row {
+            border-top: 2px solid rgba(192, 192, 192, 0.15);
+            background: rgba(122, 0, 25, 0.1);
+        }
+        .investment-table .total-row td {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        /* ─── REVENUE GRID ─── */
+        .revenue-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+        }
+        .revenue-item {
+            background: var(--bg-card);
+            border: 1px solid rgba(122, 0, 25, 0.12);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            transition: var(--transition);
+            text-align: center;
+        }
+        .revenue-item:hover {
+            border-color: rgba(192, 192, 192, 0.2);
+            box-shadow: var(--shadow-red);
+        }
+        .revenue-item .phase {
+            font-size: 0.8rem;
+            color: var(--silver);
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        .revenue-item .amount {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--silver);
+            font-family: 'Playfair Display', serif;
+            margin: 8px 0;
+        }
+        .revenue-item .desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* ─── INVEST OPTIONS ─── */
+        .invest-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+        }
+        .invest-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(122, 0, 25, 0.12);
+            border-radius: var(--radius);
+            padding: 28px 22px;
+            transition: var(--transition);
+            text-align: center;
+        }
+        .invest-card:hover {
+            border-color: rgba(192, 192, 192, 0.2);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-red);
+        }
+        .invest-card .title {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--silver);
+            margin-bottom: 4px;
+            font-family: 'Playfair Display', serif;
+        }
+        .invest-card .min {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .invest-card .return {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin: 8px 0;
+            color: var(--silver);
+        }
+        .invest-card .benefits {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ─── PHASE GRID ─── */
+        .phase-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 32px;
+        }
+        .phase-step {
+            background: var(--bg-card);
+            border: 1px solid rgba(122, 0, 25, 0.12);
+            border-radius: var(--radius);
+            padding: 26px 22px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .phase-step:hover {
+            border-color: var(--silver);
+            box-shadow: var(--shadow-red);
+        }
+        .phase-step .step-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            opacity: 0.7;
+            margin-bottom: 8px;
+        }
+        .phase-step h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .phase-step p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            font-weight: 300;
+            margin-bottom: 0;
+        }
+
+        /* ─── CTA ─── */
+        .final-cta {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 24px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at center, rgba(122, 0, 25, 0.12), var(--bg-dark) 70%);
+            border-top: 1px solid rgba(192, 192, 192, 0.06);
+        }
+        .final-cta .content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+        .final-cta h2 {
+            font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+            font-weight: 900;
+            margin-bottom: 16px;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #FFFFFF 30%, var(--silver-light) 70%, var(--silver) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .final-cta h2 .accent {
+            color: var(--primary);
+            -webkit-text-fill-color: var(--primary);
+        }
+        .final-cta p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 620px;
+            margin: 0 auto 32px;
+            font-weight: 300;
+        }
+
+        /* ─── REVEAL ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── LIGHTBOX ─── */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.93);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        .lightbox-overlay .lightbox-content {
+            max-width: 92%;
+            max-height: 88vh;
+            position: relative;
+        }
+        .lightbox-overlay .lightbox-content img {
+            width: 100%;
+            height: auto;
+            max-height: 88vh;
+            object-fit: contain;
+            border-radius: var(--radius);
+            box-shadow: 0 8px 60px rgba(0, 0, 0, 0.85);
+        }
+        .lightbox-overlay .close-btn {
+            position: absolute;
+            top: -42px;
+            right: -42px;
+            background: rgba(122, 0, 25, 0.9);
+            color: #fff;
+            border: none;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            font-size: 1.7rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+        .lightbox-overlay .close-btn:hover {
+            background: var(--primary);
+            transform: rotate(90deg);
+        }
+        @media (max-width: 640px) {
+            .lightbox-overlay { padding: 16px; }
+            .lightbox-overlay .close-btn {
+                top: -34px;
+                right: -6px;
+                width: 38px;
+                height: 38px;
+                font-size: 1.3rem;
+            }
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .revenue-grid { grid-template-columns: repeat(2, 1fr); }
+            .invest-grid { grid-template-columns: repeat(2, 1fr); }
+            .phase-grid { grid-template-columns: repeat(2, 1fr); }
+            .uniform-grid { grid-template-columns: 1fr; }
+            .content-block .full-img { height: 380px; }
+        }
+        @media (max-width: 868px) {
+            .hero-metrics { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .hero-metrics .metric-item .number { font-size: 1.6rem; }
+            .image-banner img { max-height: 480px; }
+        }
+        @media (max-width: 640px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .revenue-grid { grid-template-columns: 1fr; }
+            .invest-grid { grid-template-columns: 1fr; }
+            .phase-grid { grid-template-columns: 1fr; }
+            .energy-section { padding: 60px 0; }
+            .project-hero {
+                min-height: 50vh;
+                padding: 120px 24px 50px;
+            }
+            .project-hero h1 { font-size: 2.2rem; }
+            .project-hero .subtitle { font-size: 0.85rem; }
+            .image-banner img { max-height: 320px; }
+            .content-block .full-img { height: 240px; }
+            .content-block .text-card { padding: 24px 20px; }
+            .uniform-card { padding: 24px 20px; }
+            .investment-table { font-size: 0.78rem; }
+            .investment-table th,
+            .investment-table td { padding: 10px 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ HEADER ═══ -->
+    <header id="header">
+        <div class="container nav-wrapper">
+            <a href="/" class="nav-logo">
+                <img src="/favicon.png" alt="AM International Group" />
+                <span>AM<span style="font-weight:300;color:var(--text-muted);font-size:0.7rem;display:block;letter-spacing:1px;font-family:'Inter',sans-serif;">INTERNATIONAL GROUP</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/about">About</a></li>
+                <li><a href="/#companies">Companies</a></li>
+                <li><a href="/investments">Investments</a></li>
+                <li><a href="/energy">Energy</a></li>
+                <li class="nav-cta">
+                    <a href="/partner" class="btn-primary" style="padding:10px 24px;font-size:0.85rem;">Partner With Us</a>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ═══ HERO (TEXT ONLY) ═══ -->
+    <section class="project-hero" id="hero">
+        <div class="hero-ring"></div>
+        <div class="hero-ring"></div>
+        <div class="hero-content">
+            <div class="subtitle">AM International School · Somalia</div>
+            <h1>British Education, <span class="accent">Rooted in Somalia</span></h1>
+            <p>
+                A world-class British curriculum school in Mogadishu — offering IGCSE, A-Level, and BTEC
+                pathways for the children of Somalia's diaspora and local families. Built for those who
+                want to return home without compromising their children's education.
+            </p>
+            <div class="hero-metrics">
+                <div class="metric-item">
+                    <div class="number">1,900+</div>
+                    <div class="label">Total Student Capacity</div>
+                </div>
+                <div class="metric-item">
+                    <div class="number">Ages 5–18</div>
+                    <div class="label">Nursery to Sixth Form</div>
+                </div>
+                <div class="metric-item">
+                    <div class="number">IGCSE</div>
+                    <div class="label">A-Level &amp; BTEC Pathways</div>
+                </div>
+                <div class="metric-item">
+                    <div class="number">$30M</div>
+                    <div class="label">Total Capital Investment</div>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="#investment" class="btn-primary">View Investment Breakdown</a>
+                <a href="#returns" class="btn-secondary">Investor Returns</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CLEAN IMAGE BANNER ═══ -->
+    <section class="image-banner">
+        <img src="images/somalia-school.jpg" alt="AM International School – British Curriculum in Somalia" loading="lazy" />
+    </section>
+
+    <!-- ═══ THE OPPORTUNITY ═══ -->
+    <section class="energy-section darker" id="opportunity">
+        <div class="container">
+            <span class="section-badge">The Opportunity</span>
+            <h2 class="section-title">Somalia's Diaspora <span class="accent">Wants to Come Home</span></h2>
+            <p class="section-sub">
+                Over 2 million Somalis live abroad, sending more than $2 billion in remittances home every
+                year. A growing number of these families want to return — to invest, to build,
+                and to raise their children in Somalia. But many hesitate for one reason: education.
+            </p>
+            <p class="section-sub" style="margin-top:16px;">
+                There is a well-documented demand for English-medium, internationally recognised schooling
+                in Somalia. Parents want their children to have access to British qualifications —
+                IGCSE, A-Level, and BTEC — that open doors to universities and careers worldwide, while
+                still being rooted in Somali culture, language, and values.
+            </p>
+            <p class="section-sub" style="margin-top:16px;">
+                Existing international schools in Mogadishu operate at or near capacity. Parents
+                consistently seek British curriculum options, and demand outweighs available places
+                every academic year.
+            </p>
+
+            <div class="stats-grid">
+                <div class="stat-card reveal">
+                    <div class="number">2M+</div>
+                    <div class="label">Somali Diaspora Globally</div>
+                </div>
+                <div class="stat-card reveal">
+                    <div class="number">$2B+</div>
+                    <div class="label">Annual Remittances to Somalia</div>
+                </div>
+                <div class="stat-card reveal">
+                    <div class="number">High</div>
+                    <div class="label">Demand for English Education</div>
+                </div>
+                <div class="stat-card reveal">
+                    <div class="number">Limited</div>
+                    <div class="label">Supply of British Curriculum Places</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CURRICULUM ═══ -->
+    <section class="energy-section dark" id="curriculum">
+        <div class="container">
+            <span class="section-badge">The Curriculum</span>
+            <h2 class="section-title">British Education, <span class="accent">Globally Recognised</span></h2>
+            <p class="section-sub">
+                AM International School will follow the full British curriculum, from Early Years through
+                to Sixth Form. Students will sit externally examined qualifications through Pearson
+                Edexcel and Cambridge International — the same exam boards used by leading international
+                schools around the world.
+            </p>
+
+            <div class="content-block reveal">
+                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Students in British Curriculum Classroom" class="full-img" loading="lazy" />
+                <div class="text-card">
+                    <div class="sub">Curriculum Overview</div>
+                    <h3>From Nursery to Sixth Form</h3>
+                    <p>
+                        Our academic programme is structured around the English National Curriculum,
+                        adapted for an international context and enriched with Somali language, Arabic,
+                        and Islamic studies. Students progress through clearly defined key stages, each
+                        with its own assessment milestones and qualifications.
+                    </p>
+                    <ul>
+                        <li><strong>Early Years &amp; Primary (Ages 5–11):</strong> English, Mathematics, Science, Computing, Humanities, Art, PE, Somali, Arabic, Islamic Studies</li>
+                        <li><strong>Secondary – Key Stage 3 (Ages 11–14):</strong> Broad foundation across all core and creative subjects</li>
+                        <li><strong>Key Stage 4 – IGCSE (Ages 14–16):</strong> Pearson Edexcel IGCSEs in 8–10 subjects, including English, Maths, Sciences, and electives</li>
+                        <li><strong>Sixth Form – A-Level / BTEC (Ages 16–18):</strong> AS and A-Level pathways plus Pearson BTEC Level 3 Diplomas for applied, career-focused learning</li>
+                    </ul>
+                    <div class="note">
+                        <strong>University-ready.</strong> IGCSE and A-Level qualifications are recognised
+                        by universities worldwide — including the UK, Europe, North America, the Gulf,
+                        and across Africa. BTEC pathways offer direct routes into employment and
+                        higher-level apprenticeships.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CAMPUS & ENROLMENT ═══ -->
+    <section class="energy-section darker" id="campus">
+        <div class="container">
+            <span class="section-badge">Campus &amp; Enrolment</span>
+            <h2 class="section-title">A Campus Built for <span class="accent">1,900+ Students</span></h2>
+            <p class="section-sub">
+                Our proposed campus will be purpose-built on a secure, accessible site in Mogadishu —
+                designed to accommodate approximately 1,900 to 2,100 students across two schools on
+                one integrated campus: a Primary School (Nursery to Year 6) and a Secondary &amp; Sixth
+                Form School (Years 7 to 13).
+            </p>
+
+            <div class="stats-grid">
+                <div class="stat-card reveal">
+                    <div class="number">800–900</div>
+                    <div class="label">Primary Students (Ages 5–11)</div>
+                </div>
+                <div class="stat-card reveal">
+                    <div class="number">1,100–1,200</div>
+                    <div class="label">Secondary &amp; Sixth Form (Ages 11–18)</div>
+                </div>
+                <div class="stat-card reveal">
+                    <div class="number">~25,000</div>
+                    <div class="label">Square Metres (Built Area)</div>
+                </div>
+                <div class="stat-card reveal">
+                    <div class="number">20,000+</div>
+                    <div class="label">Square Metres (Land Area)</div>
+                </div>
+            </div>
+
+            <div class="content-block reveal" style="margin-top:40px;">
+                <img src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="School Campus Facilities" class="full-img" loading="lazy" />
+                <div class="text-card">
+                    <div class="sub">Facilities &amp; Infrastructure</div>
+                    <h3>Built for Learning, Safety, and Community</h3>
+                    <p>
+                        The campus will be designed to international standards, with separate wings for
+                        Primary and Secondary students, secure perimeter fencing, and modern facilities
+                        that support both academic and extracurricular excellence.
+                    </p>
+                    <ul>
+                        <li><strong>Classrooms:</strong> 70+ purpose-built classrooms, equipped with interactive smartboards</li>
+                        <li><strong>Science Labs:</strong> 6 fully equipped laboratories for Physics, Chemistry, and Biology</li>
+                        <li><strong>Computer Labs:</strong> 4 ICT suites with 30+ workstations each</li>
+                        <li><strong>Library:</strong> A two-storey library with digital resources and study spaces</li>
+                        <li><strong>Sports Facilities:</strong> Football pitch, basketball courts, and an indoor multi-purpose hall</li>
+                        <li><strong>Auditorium:</strong> 500-seat hall for assemblies, performances, and community events</li>
+                        <li><strong>Dining Hall:</strong> Modern canteen serving nutritious meals for day and boarding students</li>
+                        <li><strong>Health Centre:</strong> On-site clinic with a full-time nurse</li>
+                        <li><strong>Boarding Houses:</strong> Separate accommodation for boys and girls, with capacity for 200–300 students</li>
+                        <li><strong>Security:</strong> 24/7 guarded perimeter, CCTV, and controlled access points</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ SCHOOL UNIFORMS ═══ -->
+    <section class="energy-section dark" id="uniforms">
+        <div class="container">
+            <span class="section-badge">School Uniforms</span>
+            <h2 class="section-title">Modest. Professional. <span class="accent">Unmistakably Ours.</span></h2>
+            <p class="section-sub">
+                Every AM International School student wears a signature burgundy uniform — designed to
+                respect Somali cultural and religious values while projecting the pride and professionalism
+                of a serious academic institution. Uniforms are supplied exclusively through the school,
+                creating a reliable and recurring revenue stream.
+            </p>
+
+            <div class="content-block reveal">
+                <img src="images/uniform.jpg" alt="AM International School Uniform – Burgundy Hijab and Long Dress for Girls, Polo Shirt and Trousers for Boys" class="full-img" loading="lazy" />
+                <div class="text-card">
+                    <div class="sub">The Signature Uniform</div>
+                    <h3>Burgundy — The Colour of Our School</h3>
+                    <p>
+                        Our uniform has been designed in consultation with parents, students, and local
+                        community leaders. The deep burgundy colour reflects our brand identity, while
+                        the cut and composition respect Somali cultural and religious traditions. Every
+                        student is instantly recognisable as part of the AM International School family.
+                    </p>
+
+                    <div class="uniform-grid">
+                        <div class="uniform-card">
+                            <span class="uniform-icon"><i class="fas fa-female"></i></span>
+                            <h4>Girls' Uniform</h4>
+                            <ul>
+                                <li><strong>Hijab:</strong> Burgundy hijab in breathable, modest fabric</li>
+                                <li><strong>Long Dress:</strong> Burgundy long-sleeve dress, ankle-length</li>
+                                <li><strong>Optional:</strong> Burgundy cardigan or blazer for cooler months</li>
+                                <li><strong>Shoes:</strong> Plain black, closed-toe (school-approved)</li>
+                                <li><strong>PE Kit:</strong> Burgundy and white sports top with black leggings</li>
+                            </ul>
+                        </div>
+                        <div class="uniform-card">
+                            <span class="uniform-icon"><i class="fas fa-male"></i></span>
+                            <h4>Boys' Uniform</h4>
+                            <ul>
+                                <li><strong>Polo Shirt:</strong> Burgundy polo with embroidered school crest</li>
+                                <li><strong>Trousers:</strong> Black or dark charcoal, tailored fit</li>
+                                <li><strong>Optional:</strong> Burgundy jumper or blazer for formal occasions</li>
+                                <li><strong>Shoes:</strong> Plain black, closed-toe (school-approved)</li>
+                                <li><strong>PE Kit:</strong> Burgundy and white sports top with black shorts</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="note">
+                        <strong>Uniform as a revenue stream.</strong> All uniforms are supplied exclusively
+                        through the school's own uniform shop. With ~1,900 students requiring multiple
+                        sets (minimum 2–3 per student) plus annual replacements, this is a significant
+                        recurring revenue line in addition to tuition. Estimated annual uniform revenue
+                        at full capacity: <strong>~$900,000–$1,200,000</strong>, contributing roughly
+                        7–9% of total school income.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ INVESTMENT BREAKDOWN ═══ -->
+    <section class="energy-section darker" id="investment">
+        <div class="container">
+            <span class="section-badge">Capital Expenditure</span>
+            <h2 class="section-title">Investment <span class="accent">Breakdown</span></h2>
+            <p class="section-sub">
+                Building a world-class international school in Somalia requires significant upfront
+                investment. The estimated total capital expenditure is <strong
+                style="color:var(--silver);">$28–32 million USD</strong>, covering land, construction,
+                equipment, and initial operating costs.
+            </p>
+            <p class="section-sub" style="margin-top:12px;">
+                Premium international schools in East Africa typically cost $20–35 million to develop,
+                with larger campuses exceeding that range. School construction costs in Somalia are
+                significantly higher than in comparable settings, due to security and logistics
+                requirements.
+            </p>
+
+            <table class="investment-table">
+                <thead>
+                    <tr>
+                        <th>Cost Category</th>
+                        <th>Estimated Cost (USD)</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Land Acquisition</td>
+                        <td>$8M – $10M</td>
+                        <td>20,000+ sqm site in a secure, accessible area of Mogadishu. Prime land in Mogadishu can reach $4,000/sqm.</td>
+                    </tr>
+                    <tr>
+                        <td>Site Preparation &amp; Infrastructure</td>
+                        <td>$2M – $3M</td>
+                        <td>Grading, access roads, utilities, water, power, drainage, perimeter fencing.</td>
+                    </tr>
+                    <tr>
+                        <td>Building Construction</td>
+                        <td>$9M – $12M</td>
+                        <td>~25,000 sqm of built area across classrooms, labs, library, sports, dining, boarding, admin.</td>
+                    </tr>
+                    <tr>
+                        <td>Furniture &amp; Equipment</td>
+                        <td>$2M – $3M</td>
+                        <td>Classroom furniture, lab equipment, computers, smartboards, library resources.</td>
+                    </tr>
+                    <tr>
+                        <td>Sports &amp; Outdoor Facilities</td>
+                        <td>$1M – $2M</td>
+                        <td>Football pitch, basketball courts, playgrounds, landscaping.</td>
+                    </tr>
+                    <tr>
+                        <td>Security Systems &amp; Setup</td>
+                        <td>$1M – $2M</td>
+                        <td>24/7 security infrastructure, CCTV, access control, guard facilities.</td>
+                    </tr>
+                    <tr>
+                        <td>Technology &amp; IT Infrastructure</td>
+                        <td>$1M – $1.5M</td>
+                        <td>Campus-wide Wi-Fi, servers, student information system, digital learning platform.</td>
+                    </tr>
+                    <tr>
+                        <td>Initial Working Capital</td>
+                        <td>$3M – $4M</td>
+                        <td>First-year operating costs, staff recruitment, marketing, and pre-opening expenses.</td>
+                    </tr>
+                    <tr>
+                        <td>Contingency (10%)</td>
+                        <td>$2M – $3M</td>
+                        <td>For cost overruns, currency fluctuation, and unforeseen expenses.</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td><strong>Total Capital Investment</strong></td>
+                        <td><strong>$28M – $32M</strong></td>
+                        <td><strong>Full development cycle</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size:0.9rem;color:var(--text-muted);font-style:italic;margin-top:8px;">
+                * All figures are estimates subject to detailed feasibility study, site selection, and
+                local cost verification. Actual costs may vary based on final design and market conditions.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ REVENUE & RETURNS ═══ -->
+    <section class="energy-section dark" id="returns">
+        <div class="container">
+            <span class="section-badge">Financial Projections</span>
+            <h2 class="section-title">Revenue, Margins &amp; <span class="accent">Investor Returns</span></h2>
+            <p class="section-sub">
+                International schools in Africa generate strong, recurring revenue with healthy operating
+                margins. This model combines tuition, boarding, uniforms, and ancillary services into a
+                diversified income base that stabilises cash flow and supports long-term growth.
+            </p>
+
+            <div class="revenue-grid">
+                <div class="revenue-item reveal">
+                    <div class="phase">Year 1–2</div>
+                    <div class="amount">$4.5M</div>
+                    <div class="desc">Phased enrolment starting with Primary and lower Secondary. Approximately 500–700 students.</div>
+                </div>
+                <div class="revenue-item reveal">
+                    <div class="phase">Year 3–4</div>
+                    <div class="amount">$8.5M</div>
+                    <div class="desc">Full Primary and Secondary operations. Enrolment reaches 1,200–1,400 students.</div>
+                </div>
+                <div class="revenue-item reveal">
+                    <div class="phase">Year 5–6</div>
+                    <div class="amount">$14M+</div>
+                    <div class="desc">Sixth Form fully operational. Enrolment at capacity of 1,900–2,100 students, including uniforms and ancillary services.</div>
+                </div>
+            </div>
+
+            <div class="content-block reveal" style="margin-top:40px;">
+                <div class="text-card" style="border-radius:var(--radius);">
+                    <div class="sub">Revenue Assumptions</div>
+                    <h3>How We Reach $14M+ Annual Revenue</h3>
+                    <p>
+                        Our revenue model is built on a tiered tuition structure that balances
+                        accessibility for local families with premium pricing for diaspora and
+                        international students. Uniforms and ancillary services add meaningful
+                        incremental income on top of tuition.
+                    </p>
+                    <ul>
+                        <li><strong>Primary (Nursery–Year 6):</strong> 850 students × ~$4,200/year = $3.6M</li>
+                        <li><strong>Secondary (Years 7–11, IGCSE):</strong> 700 students × ~$6,800/year = $4.8M</li>
+                        <li><strong>Sixth Form (Years 12–13, A-Level/BTEC):</strong> 450 students × ~$8,500/year = $3.8M</li>
+                        <li><strong>Boarding Fees:</strong> 250 boarders × ~$3,500/year = $0.9M</li>
+                        <li><strong>Uniforms &amp; School Shop:</strong> ~1,900 students × ~$550/year = $1.05M</li>
+                        <li><strong>Other Income:</strong> Registration, transport, summer programmes = $0.5M</li>
+                    </ul>
+                    <div class="note">
+                        <strong>Total Annual Revenue at Capacity: ~$14.65M</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-block reveal" style="margin-top:24px;">
+                <div class="text-card" style="border-radius:var(--radius);">
+                    <div class="sub">Operating Costs &amp; Net Returns</div>
+                    <h3>Operating Margin &amp; Investor Returns</h3>
+                    <p>
+                        Operating costs at full capacity are estimated at approximately 60–65% of revenue,
+                        leaving a net operating margin of 35–40%. Uniforms carry particularly healthy
+                        margins, since they are supplied exclusively through the school's own shop.
+                    </p>
+                    <ul>
+                        <li><strong>Teacher &amp; Staff Salaries (150+ staff):</strong> ~$4.8M/year</li>
+                        <li><strong>Administration &amp; Support:</strong> ~$1.2M/year</li>
+                        <li><strong>Facilities, Maintenance &amp; Utilities:</strong> ~$1.0M/year</li>
+                        <li><strong>Uniform Procurement &amp; Shop Operations:</strong> ~$0.55M/year</li>
+                        <li><strong>Marketing &amp; Recruitment:</strong> ~$0.4M/year</li>
+                        <li><strong>Other Operating Costs:</strong> ~$0.6M/year</li>
+                        <li><strong>Total Annual Operating Costs:</strong> ~$8.55M</li>
+                    </ul>
+                    <div class="note">
+                        <strong>Net Operating Income at Capacity: ~$6.1M/year</strong><br>
+                        <strong>Operating Margin: ~42%</strong><br>
+                        <strong>Payback Period: 5–6 years</strong><br>
+                        <strong>Investor IRR: 18–24%</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ INVESTMENT OPTIONS ═══ -->
+    <section class="energy-section darker" id="invest">
+        <div class="container">
+            <span class="section-badge">Investment Options</span>
+            <h2 class="section-title">How to <span class="accent">Participate</span></h2>
+            <p class="section-sub">
+                We are seeking strategic partners to fund the development and launch of AM International
+                School. Multiple investment structures are available to match different risk-return
+                profiles.
+            </p>
+
+            <div class="invest-grid">
+                <div class="invest-card reveal">
+                    <div class="title">Founding Partner</div>
+                    <div class="min">Min: $2M</div>
+                    <div class="return">22–28% IRR</div>
+                    <div class="benefits">Equity stake in the school · Board representation · Naming rights on a campus building · First rights on future schools</div>
+                </div>
+                <div class="invest-card reveal">
+                    <div class="title">Strategic Investor</div>
+                    <div class="min">Min: $500K</div>
+                    <div class="return">18–22% IRR</div>
+                    <div class="benefits">Equity stake · Priority enrolment for family members · Annual investor updates</div>
+                </div>
+                <div class="invest-card reveal">
+                    <div class="title">Education Bond</div>
+                    <div class="min">Min: $100K</div>
+                    <div class="return">10–12% Fixed</div>
+                    <div class="benefits">Senior secured bond · Fixed annual returns · Priority enrolment for children</div>
+                </div>
+                <div class="invest-card reveal">
+                    <div class="title">Diaspora Investor</div>
+                    <div class="min">Min: $50K</div>
+                    <div class="return">14–18% IRR</div>
+                    <div class="benefits">Equity stake · Guaranteed admission for your children · Community of like-minded investors</div>
+                </div>
+            </div>
+
+            <p style="color:var(--text-muted);font-size:1rem;line-height:1.8;font-weight:300;margin-top:32px;max-width:800px;">
+                All investment structures include regular financial reporting, annual general meetings,
+                and transparent governance. We are committed to building a school that serves the
+                community while delivering strong returns to investors.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ DEVELOPMENT PHASES ═══ -->
+    <section class="energy-section dark" id="phases">
+        <div class="container">
+            <span class="section-badge">Development Plan</span>
+            <h2 class="section-title">From Groundbreaking <span class="accent">to Grand Opening</span></h2>
+            <p class="section-sub">
+                The school will be developed in four phases over approximately 24–30 months, allowing
+                for careful planning, quality construction, and a phased enrolment model that
+                stabilises operations before scaling to full capacity.
+            </p>
+
+            <div class="content-block reveal">
+                <img src="images/stages-school.jpg" alt="School Development Stages – From Planning to Launch" class="full-img" loading="lazy" />
+                <div class="text-card">
+                    <div class="sub">Development Stages</div>
+                    <h3>Four Phases, One Vision</h3>
+                    <p>
+                        Each phase has clearly defined milestones, budgets, and deliverables. The phased
+                        approach minimises risk, allows for course correction, and ensures that students
+                        experience a fully prepared campus from day one of each stage.
+                    </p>
+                </div>
+            </div>
+
+            <div class="phase-grid">
+                <div class="phase-step reveal">
+                    <div class="step-num">Phase 1</div>
+                    <h4>Planning &amp; Design</h4>
+                    <p>Site selection, architectural design, regulatory approvals, and community engagement. <strong>Months 1–6</strong></p>
+                </div>
+                <div class="phase-step reveal">
+                    <div class="step-num">Phase 2</div>
+                    <h4>Construction</h4>
+                    <p>Site preparation, building construction, and infrastructure. <strong>Months 7–20</strong></p>
+                </div>
+                <div class="phase-step reveal">
+                    <div class="step-num">Phase 3</div>
+                    <h4>Furnishing &amp; Hiring</h4>
+                    <p>Furniture, equipment, IT infrastructure, and recruitment of senior academic staff. <strong>Months 21–24</strong></p>
+                </div>
+                <div class="phase-step reveal">
+                    <div class="step-num">Phase 4</div>
+                    <h4>Launch &amp; Scale</h4>
+                    <p>Phased enrolment starting with Primary and KS3, expanding to IGCSE and Sixth Form. <strong>Months 25–36</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="final-cta" id="contact">
+        <div class="content">
+            <h2>Build Somalia's Future, <span class="accent">One Student at a Time</span></h2>
+            <p>
+                This is more than an investment. It is an opportunity to shape the next generation
+                of Somali leaders — while earning strong, stable returns. Partner with us.
+            </p>
+            <a href="/partner" class="btn-primary">Request Investment Memorandum</a>
+            <a href="/" class="btn-secondary" style="margin-left:12px;">Back to Home</a>
+        </div>
+    </section>
+
+    <!-- ═══ LIGHTBOX ═══ -->
+    <div class="lightbox-overlay" id="lightbox">
+        <div class="lightbox-content">
+            <button class="close-btn" id="closeLightbox">&times;</button>
+            <img src="" alt="Enlarged view" id="lightboxImg" />
+        </div>
+    </div>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="/favicon.png" alt="AM International Group" />
+                    <div class="tagline">"Building Businesses For Tomorrow"</div>
+                    <p style="max-width:300px;">
+                        AM International Group is a diversified business group investing across
+                        construction, real estate, food supply, energy, education, and strategic
+                        partnerships.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/#companies">Companies</a></li>
+                        <li><a href="/investments">Investments</a></li>
+                        <li><a href="/energy">Energy</a></li>
+                        <li><a href="/careers">Careers</a></li>
+                        <li><a href="/partner">Partner</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Industries</h4>
+                    <ul>
+                        <li><a href="/am-construction">Construction</a></li>
+                        <li><a href="/am-realestate">Real Estate</a></li>
+                        <li><a href="/am-food-supply">Food &amp; Supply</a></li>
+                        <li><a href="/am-tea">Tea</a></li>
+                        <li><a href="/am-spices">Spices</a></li>
+                        <li><a href="/am-fresh-produce">Fresh Produce</a></li>
+                        <li><a href="/am-sea-foods">Sea Foods</a></li>
+                        <li><a href="/am-international-school">International School</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="mailto:info@am-internationalgroup.com"><i class="fas fa-envelope" style="width:20px;"></i> info@am-internationalgroup.com</a></li>
+                        <li><a href="tel:+447943146345"><i class="fas fa-phone" style="width:20px;"></i> +44 7943 146345</a></li>
+                        <li><a href="#"><i class="fas fa-map-pin" style="width:20px;"></i> London, United Kingdom</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AM International Group. All rights reserved.</p>
+                <div class="legal">
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms of Service</a>
+                    <a href="/cookies">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══ Global JavaScript ═══ -->
+    <script src="/script.js"></script>
+
+    <script>
+        // ─── SCROLL REVEAL ───
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal, .stat-card, .revenue-item, .invest-card, .phase-step, .content-block, .uniform-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ─── LIGHTBOX ───
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const closeBtn = document.getElementById('closeLightbox');
+
+        document.querySelectorAll('.full-img').forEach(img => {
+            img.addEventListener('click', function() {
+                lightboxImg.src = this.src;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                if (!lightbox.classList.contains('active')) {
+                    lightboxImg.src = '';
+                }
+            }, 300);
+        }
+
+        closeBtn.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+        });
+
+        // ─── HAMBURGER ───
+        (function() {
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('navLinks');
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    navLinks.classList.toggle('open');
+                });
+                document.querySelectorAll('.nav-links a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        hamburger.classList.remove('active');
+                        navLinks.classList.remove('open');
+                    });
+                });
+            }
+        })();
+
+        // ─── HEADER SCROLL ───
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 40) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        console.log('🏫 AM International School — British Education in Somalia.');
+    </script>
+</body>
+</html>
