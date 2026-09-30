@@ -13,6 +13,12 @@
     <link rel="stylesheet" href="/style.css" />
 
     <style>
+        /* ─── ACCENT TEXT READABILITY FIX ─── */
+        :root {
+            /* Lighter burgundy used ONLY for text accents on dark backgrounds */
+            --primary-light: #D42A47;
+        }
+
         /* ─── HERO (text only) ─── */
         .project-hero {
             min-height: 65vh;
@@ -75,8 +81,8 @@
             background-clip: text;
         }
         .project-hero h1 .accent {
-            color: var(--primary);
-            -webkit-text-fill-color: var(--primary);
+            color: var(--primary-light);
+            -webkit-text-fill-color: var(--primary-light);
         }
         .project-hero p {
             color: var(--text-muted);
@@ -117,7 +123,8 @@
         /* ─── CLEAN IMAGE BANNER ─── */
         .image-banner {
             width: 100%;
-            background: var(--bg-dark);
+            background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+            min-height: 240px;
             overflow: hidden;
             border-top: 1px solid rgba(192, 192, 192, 0.06);
             border-bottom: 1px solid rgba(192, 192, 192, 0.06);
@@ -168,8 +175,8 @@
             background-clip: text;
         }
         .section-title .accent {
-            color: var(--primary);
-            -webkit-text-fill-color: var(--primary);
+            color: var(--primary-light);
+            -webkit-text-fill-color: var(--primary-light);
         }
         .section-sub {
             font-size: 1.1rem;
@@ -191,6 +198,7 @@
             display: block;
             cursor: pointer;
             transition: var(--transition);
+            background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
         }
         .content-block .full-img:hover {
             opacity: 0.92;
@@ -445,8 +453,8 @@
             font-family: 'Playfair Display', serif;
             font-size: 1.4rem;
             font-weight: 800;
-            color: var(--primary);
-            opacity: 0.7;
+            color: var(--primary-light);
+            opacity: 1;
             margin-bottom: 8px;
         }
         .phase-step h4 {
@@ -493,8 +501,8 @@
             background-clip: text;
         }
         .final-cta h2 .accent {
-            color: var(--primary);
-            -webkit-text-fill-color: var(--primary);
+            color: var(--primary-light);
+            -webkit-text-fill-color: var(--primary-light);
         }
         .final-cta p {
             color: var(--text-muted);
@@ -747,7 +755,10 @@
 
     <!-- ═══ CLEAN IMAGE BANNER ═══ -->
     <section class="image-banner">
-        <img src="images/somalia-school.jpg" alt="AM International School – Somalia" loading="lazy" />
+        <img src="/images/somalia-school.jpg"
+             alt="AM International School – Somalia"
+             loading="lazy"
+             onerror="console.error('FAILED:', this.currentSrc || this.src)" />
     </section>
 
     <!-- ═══ THE OPPORTUNITY ═══ -->
@@ -901,7 +912,11 @@
             </p>
 
             <div class="content-block reveal">
-                <img src="images/uniform.jpg" alt="AM International School Uniform" class="full-img" loading="lazy" />
+                <img src="/images/uniform.jpg"
+                     alt="AM International School Uniform"
+                     class="full-img"
+                     loading="lazy"
+                     onerror="console.error('FAILED:', this.currentSrc || this.src)" />
                 <div class="text-card">
                     <div class="sub">Uniform Design</div>
                     <h3>Burgundy. Modest. Distinctive.</h3>
@@ -1176,7 +1191,11 @@
             </p>
 
             <div class="content-block reveal" style="margin-bottom:40px;">
-                <img src="images/stages-school.jpg" alt="Development Stages – AM International School" class="full-img" loading="lazy" />
+                <img src="/images/stages-school.jpg"
+                     alt="Development Stages – AM International School"
+                     class="full-img"
+                     loading="lazy"
+                     onerror="console.error('FAILED:', this.currentSrc || this.src)" />
                 <div class="text-card">
                     <div class="sub">Development Stages</div>
                     <h3>From Concept to Campus</h3>
