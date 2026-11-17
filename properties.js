@@ -6,7 +6,9 @@ const sel={loc:document.getElementById('f-loc'),type:document.getElementById('f-
 let data=[];
 try{const r=await fetch('/data/properties.json',{cache:'no-cache'});data=await r.json()}catch(e){}
 data=(Array.isArray(data)?data:[]).filter(p=>p&&p.title);
-const kes=n=>'KES '+Number(n).toLocaleString('en-US');
+
+/* USD formatter — replaces the old kes() */
+const usd=n=>'USD '+Number(n).toLocaleString('en-US');
 const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
 
 /* ── lightbox ── */
@@ -25,11 +27,11 @@ const eForm=enq.querySelector('form'),eProp=enq.querySelector('.enq-prop'),eStat
 let cur=null;
 enq.querySelector('.enq-x').addEventListener('click',()=>enq.close());
 enq.addEventListener('click',e=>{if(e.target===enq)enq.close()});
-function openEnq(p){cur=p;eProp.textContent=p.title+' · '+p.location+(p.price?' · KES '+Number(p.price).toLocaleString('en-US'):'');eStat.textContent='';eStat.className='enq-status';eForm.hidden=false;enq.showModal()}
+function openEnq(p){cur=p;eProp.textContent=p.title+' · '+p.location+(p.price?' · '+usd(p.price):'');eStat.textContent='';eStat.className='enq-status';eForm.hidden=false;enq.showModal()}
 eForm.addEventListener('submit',async e=>{
  e.preventDefault();
  const fd=new FormData(eForm);
- const body={access_key:KEY,subject:'Property enquiry: '+cur.title+(cur.id?' ('+cur.id+')':''),from_name:'AM International Group website',name:fd.get('name'),email:fd.get('email'),phone:fd.get('phone'),message:fd.get('message')||'(no message)',property:cur.title,reference:cur.id||'',location:cur.location,price:cur.price?'KES '+Number(cur.price).toLocaleString('en-US'):'',botcheck:fd.get('botcheck')?true:false};
+ const body={access_key:KEY,subject:'Property enquiry: '+cur.title+(cur.id?' ('+cur.id+')':''),from_name:'AM International Group website',name:fd.get('name'),email:fd.get('email'),phone:fd.get('phone'),message:fd.get('message')||'(no message)',property:cur.title,reference:cur.id||'',location:cur.location,price:cur.price?usd(cur.price):'',botcheck:fd.get('botcheck')?true:false};
  eBtn.disabled=true;eBtn.textContent='Sending...';
  try{
   const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(body)});
@@ -53,20 +55,26 @@ function card(p){
   const z=el('button','p-zoom');z.type='button';z.setAttribute('aria-label','View full photo: '+p.title);
   z.append(i);z.addEventListener('click',()=>openLB(p));c.append(z);
  }else c.append(el('div','p-img p-noimg'));
+
  const b=el('div','body');
  b.append(el('span','tag',[p.location,p.type,p.mode==='rent'?'For rent':'For sale'].filter(Boolean).join(' · ')));
  b.append(el('h3',null,p.title));
- b.append(el('span','price',p.price?kes(p.price)+(p.mode==='rent'?' / month':''):'Price on request'));
- if(p.price_usd)b.append(el('span','p-usd','About USD '+Number(p.price_usd).toLocaleString('en-US')));
+
+ /* USD only */
+ b.append(el('span','price',p.price?usd(p.price)+(p.mode==='rent'?' / month':''):'Price on request'));
+
  const f=el('div','facts');
  if(p.bedrooms!=null)f.append(el('span',null,p.bedrooms+' bed'));
  if(p.bathrooms!=null)f.append(el('span',null,p.bathrooms+' bath'));
  if(p.size)f.append(el('span',null,p.size));
  b.append(f);
+
  if(p.description)b.append(el('p','p-desc',p.description));
+
  const st=p.status||'available';
  const u=fmtDate(p.updated);
  b.append(el('span','status',(STATUS[st]||'Available')+(u?' · Updated '+u:'')));
+
  if(st!=='sold'){
   const r=el('button','btn sm','Request details');r.type='button';r.addEventListener('click',()=>openEnq(p));
   const act=el('div','p-actions');act.append(r);b.append(act);
@@ -74,11 +82,22 @@ function card(p){
  c.append(b);return c;
 }
 
-/* ── filters / draw ── */
+/* ── filters (USD bands) / draw ── */
 function fill(s,vals){[...new Set(vals.filter(Boolean))].sort().forEach(v=>{const o=el('option',null,v);o.value=v;s.append(o)})}
 function draw(){
- const l=sel.loc.value,t=sel.type.value,m=Number(sel.price.value)||0;
- const list=data.filter(p=>(!l||p.location===l)&&(!t||p.type===t)&&(!m||(p.price&&p.price<=m)));
+ const l=sel.loc.value,t=sel.type.value;
+ const band=sel.price.value.split('-');           /* "min-max" in USD, either side may be empty */
+ const min=Number(band[0])||0;
+ const max=Number(band[1])||0;
+ const list=data.filter(p=>{
+   if(l&&p.location!==l)return false;
+   if(t&&p.type!==t)return false;
+   if(!band.join(''))return true;
+   if(p.price==null)return false;
+   if(min&&p.price<min)return false;
+   if(max&&p.price>max)return false;
+   return true;
+ });
  grid.replaceChildren(...list.map(card));
  empty.hidden=list.length>0;
 }
