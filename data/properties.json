@@ -5,11 +5,10 @@
     "location": "Garowe, Somalia",
     "type": "House",
     "mode": "sale",
-    "price": 25800000,
-    "price_usd": 200000,
+    "price": 200000,
     "image": "/images/garowe-1.webp",
     "image_position": "center",
-    "description": "House in Garowe, Somalia. About USD 200,000.",
+    "description": "House in Garowe, Somalia. USD 200,000.",
     "status": "available",
     "updated": "2026-11-17"
   }
