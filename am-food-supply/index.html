@@ -705,37 +705,5 @@
 
     <!-- ═══ Global JavaScript ═══ -->
     <script src="/script.js"></script>
-
-    <script>
-        // ─── Hamburger toggle ───
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-
-        if (hamburger && navLinks) {
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('active');
-                navLinks.classList.toggle('open');
-            });
-
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
-                    hamburger.classList.remove('active');
-                    navLinks.classList.remove('open');
-                });
-            });
-        }
-
-        // ─── Header scroll effect ───
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 40) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        console.log('🚀 AM Food & Supply — Connecting Farmers to Global Markets.');
-    </script>
 </body>
 </html>
