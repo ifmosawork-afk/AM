@@ -19,7 +19,7 @@ lb.addEventListener('click',()=>lb.close());
 function openLB(p){lbImg.src=p.image;lbImg.alt=p.title+' in '+p.location;lbCap.textContent=p.title+' · '+p.location;lb.showModal()}
 
 /* ── enquiry modal (Web3Forms only) ── */
-const KEY='280f5487-132e-4d78-a5ea-281f4a258dc7';
+const KEY='88ed3dc8-a679-419b-b7ee-1295d433fe3b';
 const enq=document.createElement('dialog');enq.className='enquiry';
 enq.innerHTML='<div class="enq-box"><button type="button" class="enq-x" aria-label="Close">Close</button><h3>Request details</h3><p class="enq-prop"></p><form class="enq-form"><label>Full name<input name="name" type="text" autocomplete="name" required></label><label>Email<input name="email" type="email" autocomplete="email" required></label><label>Phone<input name="phone" type="tel" autocomplete="tel" required></label><label>Message (optional)<textarea name="message" rows="3"></textarea></label><input type="checkbox" name="botcheck" class="enq-bot" tabindex="-1" autocomplete="off"><button type="submit" class="btn">Send request</button><p class="enq-fine">We use your details only to reply to your enquiry.</p></form><p class="enq-status" role="status"></p></div>';
 document.body.append(enq);
