@@ -724,7 +724,7 @@
 
     <script src="/script.js"></script>
 
-    <script>
+       <script>
         // ─── SCROLL REVEAL ───
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -734,8 +734,9 @@
             });
         }, { threshold: 0.15 });
 
-        document.querySelectorAll('.reveal, .tea-card, .feature-item, .process-step').forEach(el => {
+        document.querySelectorAll('.reveal').forEach(el => {
             observer.observe(el);
         });
+    </script>
 </body>
 </html>
