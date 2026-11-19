@@ -929,9 +929,10 @@
                 Looking for a reliable, ethical seafood supplier from the East African coast?
                 We are ready to build a long-term partnership with you.
             </p>
-            <a href="/partner" class="btn-primary">Become A Partner</a>
-            <a href="/am-food-supply" class="btn-secondary" style="margin-left:12px;">Back to Food &amp; Supply</a>
-        </div>
+<div class="btn-group">
+    <a href="/partner" class="btn-primary">Partner With Us</a>
+    <a href="/" class="btn-secondary">Back to Home</a>
+</div>
     </section>
 
     <!-- ═══ LIGHTBOX ═══ -->
@@ -1003,81 +1004,5 @@
 
     <!-- ═══ Global JavaScript ═══ -->
     <script src="/script.js"></script>
-
-    <script>
-        // ─── SCROLL REVEAL ───
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.15 });
-
-        document.querySelectorAll('.reveal, .pillar-item, .community-item, .hub-card, .supply-item, .content-block').forEach(el => {
-            observer.observe(el);
-        });
-
-        // ─── LIGHTBOX ───
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const closeBtn = document.getElementById('closeLightbox');
-
-        document.querySelectorAll('.full-img').forEach(img => {
-            img.addEventListener('click', function() {
-                lightboxImg.src = this.src;
-                lightbox.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-        });
-
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = '';
-            setTimeout(() => {
-                if (!lightbox.classList.contains('active')) {
-                    lightboxImg.src = '';
-                }
-            }, 300);
-        }
-
-        closeBtn.addEventListener('click', closeLightbox);
-        lightbox.addEventListener('click', function(e) {
-            if (e.target === this) closeLightbox();
-        });
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
-        });
-
-        // ─── HAMBURGER ───
-        (function() {
-            const hamburger = document.getElementById('hamburger');
-            const navLinks = document.getElementById('navLinks');
-            if (hamburger && navLinks) {
-                hamburger.addEventListener('click', function() {
-                    hamburger.classList.toggle('active');
-                    navLinks.classList.toggle('open');
-                });
-                document.querySelectorAll('.nav-links a').forEach(function(link) {
-                    link.addEventListener('click', function() {
-                        hamburger.classList.remove('active');
-                        navLinks.classList.remove('open');
-                    });
-                });
-            }
-        })();
-
-        // ─── HEADER SCROLL ───
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 40) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        console.log('🐟 AM Sea Foods — Sustainable Seafood, Ethical Trade.');
-    </script>
 </body>
 </html>
