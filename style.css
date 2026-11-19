@@ -38,15 +38,8 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-img {
-    max-width: 100%;
-    display: block;
-}
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
 
 .container {
     max-width: 1180px;
@@ -54,10 +47,7 @@ img {
     padding: 0 24px;
 }
 
-h1,
-h2,
-h3,
-h4 {
+h1, h2, h3, h4 {
     font-family: 'Playfair Display', 'Georgia', serif;
     font-weight: 600;
     letter-spacing: -0.005em;
@@ -68,7 +58,10 @@ h4 {
 .btn-primary,
 .btn-secondary,
 .btn-silver {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
     padding: 13px 30px;
     font-family: 'Inter', sans-serif;
     font-size: 0.85rem;
@@ -110,6 +103,21 @@ h4 {
 .btn-silver:hover {
     background: #fff;
     border-color: #fff;
+}
+
+/* ───────── BUTTON GROUPS ───────── */
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    margin-top: 32px;
+}
+
+.btn-group .btn-primary,
+.btn-group .btn-secondary {
+    margin: 0 !important;
+    box-sizing: border-box;
 }
 
 /* ───────── HEADER / NAV ───────── */
@@ -178,9 +186,7 @@ header.scrolled {
     color: var(--text-muted);
     transition: color var(--transition);
 }
-.nav-links a:hover {
-    color: #fff;
-}
+.nav-links a:hover { color: #fff; }
 .nav-links .nav-cta a {
     padding: 10px 22px;
     background: var(--primary);
@@ -191,9 +197,7 @@ header.scrolled {
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
-.nav-links .nav-cta a:hover {
-    background: var(--primary-light);
-}
+.nav-links .nav-cta a:hover { background: var(--primary-light); }
 
 .hamburger {
     display: none;
@@ -210,15 +214,9 @@ header.scrolled {
     background: var(--silver);
     transition: var(--transition);
 }
-.hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-.hamburger.active span:nth-child(2) {
-    opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
 /* ───────── HERO ───────── */
 .hero {
@@ -232,9 +230,8 @@ header.scrolled {
         var(--bg-dark);
     border-bottom: 1px solid var(--border);
 }
-.hero-content {
-    max-width: 780px;
-}
+.hero-content { max-width: 780px; }
+
 .eyebrow {
     display: inline-block;
     font-family: 'Inter', sans-serif;
@@ -256,6 +253,7 @@ header.scrolled {
     height: 1px;
     background: var(--primary-light);
 }
+
 .hero h1 {
     font-size: clamp(2.4rem, 5.5vw, 4rem);
     font-weight: 600;
@@ -296,10 +294,7 @@ header.scrolled {
     padding-left: 20px;
     border-left: 2px solid var(--primary);
 }
-.trust-item h3 {
-    font-size: 1.05rem;
-    font-weight: 600;
-}
+.trust-item h3 { font-size: 1.05rem; font-weight: 600; }
 .trust-item p {
     font-size: 0.88rem;
     color: var(--text-muted);
@@ -307,17 +302,13 @@ header.scrolled {
 }
 
 /* ───────── SECTIONS & TITLES ───────── */
-section {
-    padding: 96px 0;
-}
+section { padding: 96px 0; }
 
 .section-title {
     max-width: 640px;
     margin-bottom: 56px;
 }
-.section-title .eyebrow {
-    margin-bottom: 14px;
-}
+.section-title .eyebrow { margin-bottom: 14px; }
 .section-title h2 {
     font-size: clamp(1.9rem, 3.5vw, 2.6rem);
     line-height: 1.2;
@@ -344,9 +335,7 @@ section {
     overflow: hidden;
     transition: border-color var(--transition);
 }
-.company-card:hover {
-    border-color: var(--border-strong);
-}
+.company-card:hover { border-color: var(--border-strong); }
 .company-card .card-img {
     height: 200px;
     overflow: hidden;
@@ -393,10 +382,7 @@ section {
     gap: 8px;
     transition: color var(--transition), gap var(--transition);
 }
-.card-link:hover {
-    color: #fff;
-    gap: 12px;
-}
+.card-link:hover { color: #fff; gap: 12px; }
 
 /* ───────── ABOUT ───────── */
 .about-section {
@@ -422,9 +408,7 @@ section {
     margin-bottom: 20px;
     font-weight: 300;
 }
-.about-text .btn-primary {
-    margin-top: 8px;
-}
+.about-text .btn-primary { margin-top: 8px; }
 .about-stats {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -436,12 +420,8 @@ section {
     border-right: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
 }
-.about-stats .stat:nth-child(2n) {
-    border-right: none;
-}
-.about-stats .stat:nth-last-child(-n + 2) {
-    border-bottom: none;
-}
+.about-stats .stat:nth-child(2n) { border-right: none; }
+.about-stats .stat:nth-last-child(-n + 2) { border-bottom: none; }
 .about-stats .stat .num {
     font-family: 'Playfair Display', serif;
     font-size: 2.2rem;
@@ -478,14 +458,8 @@ section {
     display: block;
     letter-spacing: 0.1em;
 }
-.why-item h4 {
-    font-size: 1.08rem;
-    margin-bottom: 6px;
-}
-.why-item p {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-}
+.why-item h4 { font-size: 1.08rem; margin-bottom: 6px; }
+.why-item p { color: var(--text-muted); font-size: 0.9rem; }
 
 /* ───────── VISION ───────── */
 .vision-section {
@@ -502,10 +476,7 @@ section {
     padding-top: 24px;
     border-top: 2px solid var(--primary);
 }
-.vision-item h3 {
-    font-size: 1.5rem;
-    margin-bottom: 14px;
-}
+.vision-item h3 { font-size: 1.5rem; margin-bottom: 14px; }
 .vision-item p {
     color: var(--text-muted);
     font-size: 1.02rem;
@@ -536,9 +507,7 @@ section {
     margin-bottom: 16px;
     border-bottom: 1px solid var(--border);
 }
-.location-group ul {
-    list-style: none;
-}
+.location-group ul { list-style: none; }
 .location-group li {
     display: flex;
     justify-content: space-between;
@@ -687,9 +656,7 @@ footer {
     font-size: 0.9rem;
     transition: color var(--transition);
 }
-.footer-col ul a:hover {
-    color: #fff;
-}
+.footer-col ul a:hover { color: #fff; }
 .footer-social {
     display: flex;
     gap: 10px;
@@ -729,91 +696,9 @@ footer {
     display: flex;
     gap: 24px;
 }
-.footer-bottom .legal a:hover {
-    color: #fff;
-}
+.footer-bottom .legal a:hover { color: #fff; }
 
-/* ───────── RESPONSIVE ───────── */
-@media (max-width: 1024px) {
-    .company-grid,
-    .why-grid,
-    .locations-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .about-grid {
-        gap: 48px;
-    }
-}
-
-@media (max-width: 868px) {
-    section {
-        padding: 72px 0;
-    }
-    .nav-links {
-        display: none;
-    }
-    .hamburger {
-        display: flex;
-    }
-    .nav-links.open {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: rgba(11, 11, 12, 0.98);
-        padding: 24px;
-        gap: 18px;
-        border-bottom: 1px solid var(--border);
-    }
-    .about-grid,
-    .vision-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-    .cta-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 28px;
-    }
-    .footer-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 36px;
-    }
-}
-
-@media (max-width: 640px) {
-    .trust-grid,
-    .company-grid,
-    .why-grid,
-    .locations-grid,
-    .team-preview,
-    .footer-grid {
-        grid-template-columns: 1fr;
-    }
-    .trust-grid {
-        gap: 20px;
-    }
-    .hero {
-        min-height: auto;
-        padding: 120px 0 72px;
-    }
-    .footer-bottom {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-}
-
-@media (max-width: 400px) {
-    .hero-buttons a {
-        width: 100%;
-    }
-}
-/* ───────── PROPERTIES (AM International Group) ───────── */
-
-/* filters */
+/* ───────── PROPERTIES ───────── */
 .filters {
     display: flex;
     flex-wrap: wrap;
@@ -848,14 +733,12 @@ footer {
 .filters select:hover { border-color: var(--silver); }
 .filters select:focus { outline: 2px solid var(--primary-light); outline-offset: 1px; }
 
-/* grid */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 24px;
 }
 
-/* card */
 .card {
     display: flex;
     flex-direction: column;
@@ -950,8 +833,6 @@ footer {
     margin-top: auto;
     padding-top: 16px;
 }
-
-/* button size helper (reuses your .btn-primary) */
 .card .btn.sm {
     padding: 10px 20px;
     font-size: 0.74rem;
@@ -967,7 +848,6 @@ footer {
 }
 .card .btn.sm:hover { background: var(--primary-light); }
 
-/* empty state */
 .empty-state {
     text-align: center;
     padding: 72px 24px;
@@ -1134,53 +1014,105 @@ footer {
 .enq-status.ok { color: #7ad4a0; }
 .enq-status.bad { color: #e58c8c; }
 
-/* ── responsive ── */
-@media (max-width: 640px) {
-    .filters { gap: 12px; }
-    .filters select { min-width: 140px; width: 100%; }
-    .grid { grid-template-columns: 1fr; }
-    .card .p-img, .card .p-noimg { height: 210px; }
-    .enq-box { padding: 24px 20px; }
-}
 /* ═══════════════════════════════════════════════════════════
-   GLOBAL RESPONSIVE GRID COLLAPSE
-   Any inline grid (e.g. style="display:grid;grid-template-columns:1fr 1fr")
-   collapses to a single column on small screens.
+   RESPONSIVE — consolidated
    ═══════════════════════════════════════════════════════════ */
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+    .company-grid,
+    .why-grid,
+    .locations-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .about-grid { gap: 48px; }
+}
 
-    /* Catch-all: any element using inline grid with 2+ columns */
+@media (max-width: 868px) {
+    section { padding: 72px 0; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(11, 11, 12, 0.98);
+        padding: 24px;
+        gap: 18px;
+        border-bottom: 1px solid var(--border);
+    }
+    .about-grid,
+    .vision-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .cta-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 28px;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Collapse any inline two-column grid used in page <style> blocks */
     [style*="display:grid"],
     [style*="display: grid"] {
         grid-template-columns: 1fr !important;
     }
-
-    /* Ensure grid children can shrink instead of overflowing */
     [style*="display:grid"] > *,
     [style*="display: grid"] > * {
         min-width: 0;
         max-width: 100%;
     }
-
-    /* Inline 2-col grids that hold cards: allow them to stack with normal gap */
-    [style*="grid-template-columns:1fr 1fr"],
-    [style*="grid-template-columns: 1fr 1fr"] {
-        grid-template-columns: 1fr !important;
-    }
 }
-<!-- ═══ PARTNER CTA ═══ -->
-<section class="content-section alt" style="border-bottom:none;">
-    <div class="container">
-        <div class="section-label">Partner With Us</div>
-        <h2>Supply the World with East Africa's Finest</h2>
-        <p class="lead">
-            Whether you're looking for premium teas, aromatic spices, or fresh fruits, AM Food & Supply
-            is your trusted partner. We are ready to export to your market.
-        </p>
-        <div class="btn-group">
-            <a href="/partner" class="btn-primary">Partner With Us</a>
-            <a href="/" class="btn-secondary">Back to Home</a>
-        </div>
-    </div>
-</section>
+
+@media (max-width: 640px) {
+    .trust-grid,
+    .company-grid,
+    .why-grid,
+    .locations-grid,
+    .team-preview,
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    .trust-grid { gap: 20px; }
+    .hero {
+        min-height: auto;
+        padding: 120px 0 72px;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Button groups stack full-width */
+    .btn-group {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+    .btn-group .btn-primary,
+    .btn-group .btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Properties */
+    .filters { gap: 12px; }
+    .filters select { min-width: 140px; width: 100%; }
+    .grid { grid-template-columns: 1fr; }
+    .card .p-img,
+    .card .p-noimg { height: 210px; }
+    .enq-box { padding: 24px 20px; }
+}
+
+@media (max-width: 400px) {
+    .hero-buttons a { width: 100%; }
+}
