@@ -73,9 +73,7 @@
         }
 
         /* ─── PARTNER LAYOUT ─── */
-        .partner-section {
-            padding: 80px 0;
-        }
+        .partner-section { padding: 80px 0; }
         .partner-grid {
             display: grid;
             grid-template-columns: 1fr 1.1fr;
@@ -195,6 +193,8 @@
             grid-template-columns: 1fr 1fr;
             gap: 16px;
         }
+
+        /* labels — bright white for contrast */
         .p-form label {
             display: flex;
             flex-direction: column;
@@ -204,15 +204,19 @@
             font-weight: 600;
             letter-spacing: 1.2px;
             text-transform: uppercase;
-            color: var(--text-muted);
+            color: #fff;
         }
-        .p-form label span { color: var(--primary-light); }
+
+        /* required asterisks — lighter red so they're visible on dark bg */
+        .p-form label span { color: #ff6b81; }
+
+        /* inputs — pure white typed text */
         .p-form input,
         .p-form select,
         .p-form textarea {
             background: var(--bg-dark);
             border: 1px solid rgba(192, 192, 192, 0.16);
-            color: var(--text-light);
+            color: #fff;
             padding: 12px 14px;
             font-size: 0.95rem;
             font-family: 'Inter', sans-serif;
@@ -220,12 +224,20 @@
             width: 100%;
             transition: border-color var(--transition), box-shadow var(--transition);
         }
+
+        /* placeholders — dimmer than typed text so the distinction is clear */
+        .p-form ::placeholder {
+            color: rgba(255, 255, 255, 0.45);
+            opacity: 1; /* Firefox dims placeholders by default — override for consistency */
+        }
+
         .p-form input:focus,
         .p-form select:focus,
         .p-form textarea:focus {
             outline: none;
             border-color: var(--silver);
             box-shadow: 0 0 0 3px rgba(192, 192, 192, 0.08);
+            color: #fff; /* guard against any browser dimming on focus */
         }
         .p-form textarea {
             resize: vertical;
@@ -420,13 +432,14 @@
                                 <option value="Investment">Investment</option>
                                 <option value="Joint Venture">Joint Venture</option>
                                 <option value="Supplier">Supplier / Procurement</option>
-                                <option value="Digital Marketing">Digital Marketing</option>
+                                <option value="Distribution">Distribution</option>
                                 <option value="Construction Project">Construction Project</option>
                                 <option value="Real Estate">Real Estate</option>
                                 <option value="Energy">Energy</option>
                                 <option value="Food &amp; Supply">Food &amp; Supply</option>
                                 <option value="Sports Agency">Sports Agency</option>
                                 <option value="Manpower">Manpower</option>
+                                <option value="Digital Marketing">Digital Marketing</option>
                                 <option value="Other">Other</option>
                             </select>
                         </label>
@@ -487,6 +500,7 @@
                         <li><a href="/energy">Energy</a></li>
                         <li><a href="/am-sports-agency">Sports Agency</a></li>
                         <li><a href="/am-manpower">Manpower</a></li>
+                        <li><a href="/am-digital">Digital</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
