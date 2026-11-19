@@ -1142,3 +1142,30 @@ footer {
     .card .p-img, .card .p-noimg { height: 210px; }
     .enq-box { padding: 24px 20px; }
 }
+/* ═══════════════════════════════════════════════════════════
+   GLOBAL RESPONSIVE GRID COLLAPSE
+   Any inline grid (e.g. style="display:grid;grid-template-columns:1fr 1fr")
+   collapses to a single column on small screens.
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+    /* Catch-all: any element using inline grid with 2+ columns */
+    [style*="display:grid"],
+    [style*="display: grid"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Ensure grid children can shrink instead of overflowing */
+    [style*="display:grid"] > *,
+    [style*="display: grid"] > * {
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    /* Inline 2-col grids that hold cards: allow them to stack with normal gap */
+    [style*="grid-template-columns:1fr 1fr"],
+    [style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+    }
+}
