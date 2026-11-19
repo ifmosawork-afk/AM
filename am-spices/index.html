@@ -775,11 +775,13 @@
             <p>
                 Looking for a reliable, ethical supplier of East African spices? We are ready to build
                 a long-term partnership with you.
-            </p>
-            <a href="/partner" class="btn-primary">Become A Partner</a>
-            <a href="/am-food-supply" class="btn-secondary" style="margin-left:12px;">Back to Food &amp; Supply</a>
+        </p>
+        <div class="btn-group">
+            <a href="/partner" class="btn-primary">Partner With Us</a>
+            <a href="/" class="btn-secondary">Back to Home</a>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- ═══ LIGHTBOX ═══ -->
     <div class="lightbox-overlay" id="lightbox">
@@ -853,19 +855,6 @@
     <script src="/script.js"></script>
 
     <script>
-        // ─── SCROLL REVEAL ───
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.15 });
-
-        document.querySelectorAll('.reveal, .catalogue-item, .supply-item, .content-block').forEach(el => {
-            observer.observe(el);
-        });
-
         // ─── LIGHTBOX ───
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
@@ -896,36 +885,5 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
         });
-
-        // ─── HAMBURGER ───
-        (function() {
-            const hamburger = document.getElementById('hamburger');
-            const navLinks = document.getElementById('navLinks');
-            if (hamburger && navLinks) {
-                hamburger.addEventListener('click', function() {
-                    hamburger.classList.toggle('active');
-                    navLinks.classList.toggle('open');
-                });
-                document.querySelectorAll('.nav-links a').forEach(function(link) {
-                    link.addEventListener('click', function() {
-                        hamburger.classList.remove('active');
-                        navLinks.classList.remove('open');
-                    });
-                });
-            }
-        })();
-
-        // ─── HEADER SCROLL ───
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 40) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        console.log('🌿 AM Spices — Authentic Spices from East Africa.');
-    </script>
 </body>
 </html>
