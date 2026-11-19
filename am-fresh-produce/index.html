@@ -851,18 +851,19 @@
     </section>
 
     <!-- ═══ FINAL CTA ═══ -->
-    <section class="final-cta" id="contact">
-        <div class="content">
-            <h2>Partner With <span class="accent">AM Fresh Produce</span></h2>
-            <p>
-                Looking for a reliable, ethical supplier of fresh fruits and produce from Kenya?
-                We are ready to build a long-term partnership with you.
-            </p>
-<div class="btn-group">
-    <a href="/partner" class="btn-primary">Partner With Us</a>
-    <a href="/" class="btn-secondary">Back to Home</a>
-</div>
-    </section>
+<section class="final-cta" id="contact">
+    <div class="content">
+        <h2>Partner With <span class="accent">AM Fresh Produce</span></h2>
+        <p>
+            Looking for a reliable, ethical supplier of fresh fruits and produce from Kenya?
+            We are ready to build a long-term partnership with you.
+        </p>
+        <div class="btn-group">
+            <a href="/partner" class="btn-primary">Partner With Us</a>
+            <a href="/" class="btn-secondary">Back to Home</a>
+        </div>
+    </div>
+</section>
 
     <!-- ═══ LIGHTBOX ═══ -->
     <div class="lightbox-overlay" id="lightbox">
@@ -933,5 +934,30 @@
     </footer>
 
     <script src="/script.js"></script>
+    <script>
+    (function () {
+        var lb = document.getElementById('lightbox');
+        var lbImg = document.getElementById('lightboxImg');
+        var closeBtn = document.getElementById('closeLightbox');
+        if (!lb || !lbImg) return;
+
+        document.querySelectorAll('.full-img').forEach(function (img) {
+            img.addEventListener('click', function () {
+                lbImg.src = img.src;
+                lbImg.alt = img.alt;
+                lb.classList.add('active');
+            });
+        });
+
+        function close() { lb.classList.remove('active'); }
+        closeBtn && closeBtn.addEventListener('click', close);
+        lb.addEventListener('click', function (e) {
+            if (e.target === lb) close();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') close();
+        });
+    })();
+</script>
 </body>
 </html>
