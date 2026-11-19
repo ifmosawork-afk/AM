@@ -928,10 +928,12 @@
             <p>
                 Looking for a reliable, ethical seafood supplier from the East African coast?
                 We are ready to build a long-term partnership with you.
-            </p>
-            <a href="/partner" class="btn-primary">Become A Partner</a>
-            <a href="/am-food-supply" class="btn-secondary" style="margin-left:12px;">Back to Food &amp; Supply</a>
+        </p>
+        <div class="btn-group">
+            <a href="/partner" class="btn-primary">Partner With Us</a>
+            <a href="/" class="btn-secondary">Back to Home</a>
         </div>
+    </div>
     </section>
 
     <!-- ═══ LIGHTBOX ═══ -->
@@ -1048,36 +1050,4 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
         });
-
-        // ─── HAMBURGER ───
-        (function() {
-            const hamburger = document.getElementById('hamburger');
-            const navLinks = document.getElementById('navLinks');
-            if (hamburger && navLinks) {
-                hamburger.addEventListener('click', function() {
-                    hamburger.classList.toggle('active');
-                    navLinks.classList.toggle('open');
-                });
-                document.querySelectorAll('.nav-links a').forEach(function(link) {
-                    link.addEventListener('click', function() {
-                        hamburger.classList.remove('active');
-                        navLinks.classList.remove('open');
-                    });
-                });
-            }
-        })();
-
-        // ─── HEADER SCROLL ───
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 40) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        console.log('🐟 AM Sea Foods — Sustainable Seafood, Ethical Trade.');
-    </script>
-</body>
 </html>
